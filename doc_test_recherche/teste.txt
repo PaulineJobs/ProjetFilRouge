@@ -1,0 +1,8 @@
+stoplist
+1
+taille
+4
+image
+8
+son
+6
