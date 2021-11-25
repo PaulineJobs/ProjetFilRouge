@@ -1,0 +1,6 @@
+
+stoplist 1
+max 2
+image 10
+
+son 8
