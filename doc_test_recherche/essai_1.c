@@ -6,68 +6,72 @@
 
 int main() {
     
-    //creation des pointeurs pour acceder aux fichier
+    //creation des pointeurs pour acceder aux fichiers
     FILE *ptrFichier1, *ptrFichier2;
     //nom du fichier
-    char fichierTeste[] = "test.txt";
+    char fichierTeste[] = "config.txt";//nom du fichier (ou bien chemin d'acces)
     char lettre;
     int del_line, temp = 1;
 
     ptrFichier1 = fopen(fichierTeste, "r");//on ouvre le fichier en lecture seul
 
-    if(ptrFichier1 == NULL){// si le fichier est ouvert
+    if(ptrFichier1 == NULL){// si le fichier n'est pas ouvert on arret tout!
         exit(1);
     }
 
-    char texte[256];//nom du parametre
+    char texte[256];//nom du parametre rechercher
     char nomParam[256];
     int valeur = 0;// valeur du parametre
     int ligneASupprimer, numLigne = 0;
     int nouvelleValeur = 0;
 
     while(!feof(ptrFichier1)){//on affiche le fichier tant que EndOfFile est faux
-        fscanf(ptrFichier1, "%s %d", texte, &valeur);
-        printf("\n%s %d\n", texte, valeur);
+        fscanf(ptrFichier1, "%s %d", texte, &valeur);// on lie le nom et la valeur
+        printf("\n%s %d\n", texte, valeur);// on affiche dans le terminal
     }
     
-    //on demande la ligne ou le parametre doit etre changé
+    //on demande le nom du parametre qui doit etre changé
     printf("\n\nEntrer le parametre qui doit etre modifié : ");
     scanf("%s", nomParam);
-    //mettre le "curseur" au debut du fichier
+    //mettre le "curseur" au debut du fichier 1
     rewind(ptrFichier1);
 
-    ptrFichier2 = fopen("test_V2.txt", "w");//on ouvre le fichier de copy
+    ptrFichier2 = fopen("config_V2.txt", "w");//on ouvre le fichier de copie 
 
-    while(!feof(ptrFichier1)){//on affiche le fichier tant que EndOfFile est faux
+    while(!feof(ptrFichier1)){//faire tant que EndOfFile est faux
         fscanf(ptrFichier1, "%s %d", texte, &valeur);// on lie dans le fichier d'origine
 
-        int test = strcmp(texte, nomParam);
+        int test = strcmp(texte, nomParam);// si le parametre lu est identique au parametre demandé test = 0
         if(test == 0){
             printf("Entrer la nouvelle valeur:");
             scanf("%d", &nouvelleValeur);
-            fprintf(ptrFichier2, "%s %d", texte, nouvelleValeur);
-            fscanf(ptrFichier1, "%s %d", texte, &valeur);
+            fprintf(ptrFichier2, "%s %d", texte, nouvelleValeur);// on ecrit dan le fichier 2 le nom du parametre + ça new value
+            fscanf(ptrFichier1, "%s %d", texte, &valeur);//on passe l'ancienne valeur du parametre
         }
 
-        fprintf(ptrFichier2, "\n%s %d\n", texte, valeur);//on ecrit dans le nouveau fichier
+        fprintf(ptrFichier2, "\n%s %d\n", texte, valeur);//on ecrit dans le nouveau fichier les autres parametre
     }
 
 
 
 
-    fclose(ptrFichier1);
+    fclose(ptrFichier1);//on ferme les fichiers
     fclose(ptrFichier2);
     
+    /*
+    on supprime le fichier 1
+    on renome le fichier 2 en fichier 1!
+    */
 
+    // on affiche le nouveau test_V2.txt dans le terminal (pour les tests)
+    ptrFichier1 = fopen("config_V2.txt", "r");//on ouvre le fichier de copy
 
-    ptrFichier1 = fopen("test_V2.txt", "r");//on ouvre le fichier de copy
-
-    while(!feof(ptrFichier1)){//on affiche le fichier tant que EndOfFile est faux
+    while(!feof(ptrFichier1)){  //on affiche le fichier tant que EndOfFile est faux
         fscanf(ptrFichier1, "%s %d", texte, &valeur);
         printf("\n%s %d\n", texte, valeur);
     }
 
-    fclose(ptrFichier1);
+    fclose(ptrFichier1);//on ferme le fichier
 
 return 0;
 }
