@@ -1,7 +1,8 @@
+nombreligne 7
 stoplist 1
 max 4
 image 10
-son 8
+son 6
 mabite 79
 monchibre 30
 matete 160

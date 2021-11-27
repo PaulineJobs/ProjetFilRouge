@@ -1,8 +1,0 @@
-stoplist 1
-max 5 new
-image 10
-son 8
-mabite 79
-monchibre 30
-matete 160
-matete 160
