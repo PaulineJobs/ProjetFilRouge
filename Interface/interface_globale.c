@@ -11,67 +11,50 @@ void ouverture(){
 	printf(" Ouverture de l'application \n");
 	printf(" Bienvenu sur le moteur de recherche Dora l'exploratrice ! \n");
 	printf(" \n");
+	//on dirige l'utilisateur vers le menu pricipal
 	menuPrincipal();
-
 }
 
 
 
-// 2 choix : se connecter ou faire une recherche	
+// Menu principal : 2 choix : se connecter ou faire une recherche	
 void menuPrincipal(){
 	printf(" \n");
-	
 	//Variables
-	char choixAction;
-	
-	choixAction='0';
+	char choixAction[10];
 	
 	//Fonction
-	//on demande le choix : recherche, connexion, fermeture de l'application 
-/*	do{
+	//On demande une première fois son choix à l'utilisateur : rechercher ou se connecter
+	choixAction[0]='0';
+	printf(" Menu Principal : Que voulez-vous faire ? \n \r");
+	printf(" A- Faire une recherche \n \r");
+	printf(" B- Accéder aux droits administrateur \n \r");
+	printf(" C- fermer l'application\n \r");
+	scanf("%s",&choixAction);
+	//on redemande tant que la valeur saisie n'est pas une valeur attendue
+	while((choixAction[0]!='A')&&(choixAction[0]!='B')&&(choixAction[0]!='C')){
+		printf(" Erreur : caractère invalide. Choisissez A,B ou C\n \r");
 		printf(" Menu Principal : Que voulez-vous faire ? \n \r");
 		printf(" A- Faire une recherche \n \r");
 		printf(" B- Accéder aux droits administrateur \n \r");
 		printf(" C- fermer l'application\n \r");
-		printf("mon choix avant le scanf est : %c\n",choixAction);
-		scanf("%c",&choixAction);
-		//printf("mon choix aprés le scanf est : %c\n",choixAction);	
-	} while((choixAction!='A')&&(choixAction!='B')&&(choixAction!='C'));*/
-	
-
-	
-	while((choixAction!='A')&&(choixAction!='B')&&(choixAction!='C')){
-		printf(" Menu Principal : Que voulez-vous faire ? \n \r");
-		printf(" A- Faire une recherche \n \r");
-		printf(" B- Accéder aux droits administrateur \n \r");
-		printf(" C- fermer l'application\n \r");
-		printf("mon choix avant le scanf est : %c\n",choixAction);
-		fflush(stdin);
-		fflush(stdout);
-		scanf("%c",&choixAction);
-		printf("mon choix aprés le scanf est : %c\n",choixAction);	
+		scanf("%s",&choixAction);
 	}
-	
-	
-	//On fait une recherche 
-	if (choixAction=='A') {
+	//Si l'utilisateur a demandé la fonction recherche 
+	if (choixAction[0]=='A') {
 		printf(" Vous avez choisir d'effectuer une recherche\n");
-		printf("Cette fonction est en maintenance\n");
-		
+		printf("Cette fonction est en maintenance\n");	
 	}
-	
-	//On se connecte
-	if (choixAction=='B') {
+	//Si l'utilisateur a demandé la fonction connexion
+	if (choixAction[0]=='B') {
 		printf(" Vous avez choisi d'acceder aux droits administrateur\n");
-		seConnecter();
-		
+		seConnecter();	
 	}
-	//on ferme l'application
-	if (choixAction=='C') {
+	//Si l'utilisateur a demandé la fonction fermeture de l'application
+	if (choixAction[0]=='C') {
 		printf(" Vous avez choisi de fermer l'application\n");
 		exit(0);	
 	}
-
 }
 
 
@@ -80,44 +63,45 @@ void menuPrincipal(){
 //connexion pour acceder aux droits administrateurs
 void seConnecter(){
 	printf(" \n");
-	
 	//Variables
-	char motDePasse[4]; 
-	char choixReconnexion;
+	char motDePasse[10]; 
+	char choixReconnexion[10];
+	choixReconnexion[0]='0';
 	
 	//fonction
 	//on rentre le mot de passe
 	printf("Une connexion est requise \n");
     printf("Entrez le mot de passe à 4 chiffres (qui est 1234)\n"); 
     scanf("%s",&motDePasse); 
-    
     //si le mot de passe est correcte, on connecte
     if(strcmp(motDePasse,"1234")==0){ 
 		printf("Connexion réussie\n");
 		printf(" Vous êtes désormais administrateur  \n \r");
-		choixAdmin();
-		
-		
-	} else { //si la connexion a échoué, on propose :reconnexion ou retour au menu
-		
-		do{
+		choixAdmin();	
+	} else { //si la connexion a échoué, on propose : reconnexion ou retour au menu
+		printf("Mot de passse incorrecte\n");
+		printf("Voulez-vous réessayer ?\n");
+		printf("A-Oui, je veux me reconnecter\n");
+		printf("B-non, je veux retourner au menu principal\n");
+		scanf("%s",&choixReconnexion);
+		//on redemande tant que la valeur saisie n'est pas une valeur attendue
+		 while((choixReconnexion[0]!='A')&&(choixReconnexion[0]!='B')){
+			printf(" Erreur : caractère invalide. Choisissez A ou B\n \r");
 			printf("Vous n'avez pas réussi à vous connecter\n");
 			printf("Voulez-vous réessayer ?\n");
 			printf("A-Oui, je veux me reconnecter\n");
 			printf("B-non, je veux retourner au menu principal\n");
-			scanf("%c",&choixReconnexion);
-		} while((choixReconnexion!='A')&&(choixReconnexion!='B'));
-	 
-	    //On se reconnecte
-		if(choixReconnexion=='A'){
+			scanf("%s",&choixReconnexion);
+		}
+	   //Si l'utilisateur a demandé la fonction reconnexion
+		if(choixReconnexion[0]=='A'){
 			seConnecter();
 		} else {
-			//on retourne au menu principal
+			//Si l'utilisateur a demandé la fonction retour au menu principal
 			printf("Vous allez être redirigé vers le menu principal\n");
-			printf("Cette fonction est en maintenance\n");
+			menuPrincipal();
 		}
 	}
-
 }
 
 
@@ -128,45 +112,54 @@ void choixAdmin(){
 	printf(" \n");
 	
 	//Variables
-	char choixAction;
-	choixAction='0';
+	char choixAction[10];
+	choixAction[0]='0';
 	
 	//Fonction
 	
 	//on demande le choix : recherche, configurer, ou indexer
-	do{
+	printf(" Que voulez-vous faire ? \n \r");
+	printf(" A- Faire une recherche \n \r");
+	printf(" B- Indexer un document \n \r");
+	printf(" C- Configurer la méthode d'indexation \n \r");
+	printf(" D- Retour au menu principal (attention, vous devrez à nouveau vous reconnecter pour acceder à ce menu) \n \r");
+	scanf("%s",&choixAction);
+	//on redemande tant que la valeur saisie n'est pas une valeur attendue
+	while((choixAction[0]!='A')&&(choixAction[0]!='B')&&(choixAction[0]!='C')&&(choixAction[0]!='D')){
+		printf(" Erreur : caractère invalide. Choisissez A, B, C, ou D\n \r");
 		printf(" Que voulez-vous faire ? \n \r");
 		printf(" A- Faire une recherche \n \r");
 		printf(" B- Indexer un document \n \r");
 		printf(" C- Configurer la méthode d'indexation \n \r");
-		printf(" D- Retour au menu principal (attention, vous devrez à nouveau vous reconnecter pour acceder à ce menu) \n \r");
-		scanf("%c",&choixAction);
-	} while((choixAction!='A')&&(choixAction!='B')&&(choixAction!='C')&&(choixAction!='D'));
-	
+		printf(" D- Retourner au menu principal (attention, vous devrez à nouveau vous reconnecter pour acceder à ce menu) \n \r");
+		scanf("%s",&choixAction);
+		
+	}
 	//On fait une recherche 
-	if (choixAction=='A') {
+	if (choixAction[0]=='A') {
 		printf(" Vous avez choisir d'effectuer une recherche\n");
 		printf("Cette fonction est en maintenance\n");	
 	}
 	
 	//On indexe
-	if (choixAction=='B') {
+	if (choixAction[0]=='B') {
 		printf(" Vous avez choisi d'indexer un document\n");
 		printf("Cette fonction est en maintenance\n");	
 	}
 	
 	//on configure
-	if (choixAction=='C') {
+	if (choixAction[0]=='C') {
 		printf(" Vous avez choisi de configurer la méthode d'indexation \n");
 		printf("Cette fonction est en maintenance\n");		
 	}
 	
 	//retour
-	if (choixAction=='D') {
+	if (choixAction[0]=='D') {
 		printf(" Vous avez choisi de retourner au menu principal\n");
 		menuPrincipal();
 
 	}
+
 
 }	
 	
