@@ -45,11 +45,12 @@ int main() {
         if(test == 0){
             printf("Entrer la nouvelle valeur:");
             scanf("%d", &nouvelleValeur);
-            fprintf(ptrFichier2, "%s %d", texte, nouvelleValeur);// on ecrit dan le fichier 2 le nom du parametre + ça new value
-            fscanf(ptrFichier1, "%s %d", texte, &valeur);//on passe l'ancienne valeur du parametre
+            fprintf(ptrFichier2, "%s %d new\n", texte, nouvelleValeur);// on ecrit dan le fichier 2 le nom du parametre + ça new value
+            printf("%s %d old\n", texte, valeur);//on passe l'ancienne valeur du parametre
+            //fscanf(ptrFichier1, "%s %d", texte, &valeur);//on passe l'ancienne valeur du parametre
         }
-
-        fprintf(ptrFichier2, "\n%s %d\n", texte, valeur);//on ecrit dans le nouveau fichier les autres parametre
+        else
+            fprintf(ptrFichier2, "%s %d\n", texte, valeur);//on ecrit dans le nouveau fichier les autres parametre
     }
 
 
@@ -59,8 +60,12 @@ int main() {
     fclose(ptrFichier2);
     
     /*
-    on supprime le fichier 1
-    on renome le fichier 2 en fichier 1!
+    on supprime le fichier 1*/
+    const char * commandSupp = "ls -al";
+    const char * commandRename = ("mv %s~ %s", fichierTeste, fichierTeste);
+    system(commandSupp);
+    system(commandRename);
+    /*on renome le fichier 2 en fichier 1!
     */
 
     // on affiche le nouveau test_V2.txt dans le terminal (pour les tests)
