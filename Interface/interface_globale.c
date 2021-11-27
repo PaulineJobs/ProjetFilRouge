@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "interface_globale.h"
+#include "../WILLY/modifParametre.c"
 //codé par Pauline
 
 // message d'ouverture de l'application 
@@ -150,7 +151,8 @@ void choixAdmin(){
 	//on configure
 	if (choixAction[0]=='C') {
 		printf(" Vous avez choisi de configurer la méthode d'indexation \n");
-		printf("Cette fonction est en maintenance\n");		
+		//printf("Cette fonction est en maintenance\n");	
+		editConfig();
 	}
 	
 	//retour
