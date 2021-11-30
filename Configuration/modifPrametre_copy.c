@@ -4,17 +4,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*int main() {
-    //editConfig();
-
-    return 0;
-}*/
+int main(){
+    editConfig();
+}
 
 int editConfig(){
         //creation des pointeurs pour acceder aux fichiers
     FILE *ptrFichier1, *ptrFichier2;
     //nom du fichier
-    char fichierTeste[] = ".config";//nom du fichier (ou bien chemin d'acces)
+    char fichierTeste[] = "../Configuration/.config";//nom du fichier (ou bien chemin d'acces)
     char lettre;
     int del_line, temp = 1;
     
@@ -34,19 +32,46 @@ int editConfig(){
 
     fscanf(ptrFichier1, "%s %d", texte, &nbrLigne);
 
-    for(int i=0; i<nbrLigne; i++){//on affiche le fichier tant que EndOfFile est faux
+    for(int i=0; i<(nbrLigne - 1); i++){//on affiche le fichier tant que EndOfFile est faux
         fscanf(ptrFichier1, "%s %d", texte, &valeur);// on lie le nom et la valeur
         printf("\n%s %d\n", texte, valeur);// on affiche dans le terminal
     }
 
-    //on demande le nom du parametre qui doit etre changé
+    //on demande le nom du parametre qui doit etre modifié
+//---------------------------------------------------------------------------------------------------
+
+    int pala = 0;
+    do{
+        rewind(ptrFichier1);
+        printf("\n\nEntrer le parametre qui doit etre modifié : ");
+        scanf("%s", nomParam);
+        for(int i=0; i<nbrLigne; i++){//faire tant que EndOfFile est faux
+            fscanf(ptrFichier1, "%s %d", texte, &valeur);// on lie dans le fichier d'origine
+            int test2 = strcmp(texte, nomParam);
+            if(test2 == 0){
+                pala = 1;
+            }else{
+                pala = 0;
+            }
+        }
+    }   while(pala==0);
+
+
+//---------------------------------------------------------------------------------------------------
+
+
     printf("\n\nEntrer le parametre qui doit etre modifié : ");
     scanf("%s", nomParam);
     //mettre le "curseur" au debut du fichier 1
     rewind(ptrFichier1);
+    while(strcmp(texte, nomParam) != 0){
+        printf("Entrer la nouvelle valeur:");
+        scanf("%d", &nouvelleValeur);
+    }
 
-    ptrFichier2 = fopen(".config~", "w");//on ouvre le fichier de copie 
+    ptrFichier2 = fopen("../Configuration/.config~", "w");//on ouvre le fichier de copie 
 
+//faire une boucle while pour tester la saisie
     for(int i=0; i<nbrLigne; i++){//faire tant que EndOfFile est faux
         fscanf(ptrFichier1, "%s %d", texte, &valeur);// on lie dans le fichier d'origine
 
@@ -69,15 +94,15 @@ int editConfig(){
     on renome le fichier 2 en fichier 1!
     */
 
-   remove(".config");
-   rename(".config~", ".config");
+   remove("../Configuration/.config");
+   rename("../Configuration/.config~", "../Configuration/.config");
     // on affiche le nouveau test_V2.txt dans le terminal (pour les tests)
-    ptrFichier1 = fopen(".config", "r");//on ouvre le fichier de copy
+    ptrFichier1 = fopen("../Configuration/.config", "r");//on ouvre le fichier de copy
     
 
     //juste pour l'affichage :
     nbrLigne++;
-    for(int i=0; i<nbrLigne; i++){  //on affiche le fichier tant que EndOfFile est faux
+    for(int i=0; i<(nbrLigne - 1); i++){  //on affiche le fichier tant que EndOfFile est faux
        fscanf(ptrFichier1, "%s %d", texte, &valeur);
        printf("\n%s %d\n", texte, valeur);
     }

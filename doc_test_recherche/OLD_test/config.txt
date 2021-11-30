@@ -1,5 +1,0 @@
-stoplist			        1
-taille d2s n bits		    4
-IMAME valeur des n bits 	8
-SON nombre n d'echantillon 	6
-nombre d'intervalle m 		10
