@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "interface_globale.h"
+#include "login.h"
+
 //codé par Pauline
 
+
 int main(){
-	ouverture();
+	if (estCorrect()){
+		printf("bravo\n");
+	}
 	return 0;
 }
-	
