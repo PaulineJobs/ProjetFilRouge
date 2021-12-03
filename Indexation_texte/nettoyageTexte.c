@@ -15,10 +15,10 @@ void passageXmlClean()//Mettre en paramettre d'entré le nom du fichier choisit
     char var;
   
     // ouvrir le fichier en lecture
-    texteXml = fopen("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Corpus/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.xml", "r");
+    texteXml = fopen("Corpus/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.xml", "r");
 
     // ouvrir le fichier en écriture
-    texteClean = fopen("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean", "w");
+    texteClean = fopen("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean", "w");
   
     // Lire le contenu du fichier
     while((var = getc(texteXml)) != EOF)
@@ -36,10 +36,10 @@ void majMin()
     int sup;
   
     // ouvrir le fichier en lecture
-    maj = fopen("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean", "r");
+    maj = fopen("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean", "r");
 
     // ouvrir le fichier en écriture
-    min = fopen("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrerr.clean", "w");
+    min = fopen("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrerr.clean", "w");
 
   
     // Lire le contenu du fichier
@@ -54,7 +54,7 @@ void majMin()
     fclose(maj);
     fclose(min);
 
-    sup = remove("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean");
+    sup = remove("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean");
 }
 
 void suppressionBalise(){
@@ -65,10 +65,10 @@ void suppressionBalise(){
     balise = 0;
   
     // ouvrir le fichier en lecture
-    init = fopen("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrerr.clean", "r");
+    init = fopen("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrerr.clean", "r");
 
     // ouvrir le fichier en écriture
-    clean = fopen("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/plusDeBalise.clean", "w");
+    clean = fopen("Nettoyer/plusDeBalise.clean", "w");
 
     while((lettre = fgetc(init)) != EOF){
         if(lettre == '<'){ 
@@ -88,7 +88,7 @@ void suppressionBalise(){
     fclose(init);
     fclose(clean);
 
-    sup = remove("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrerr.clean");
+    sup = remove("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrerr.clean");
   
 }
 
@@ -98,10 +98,10 @@ void espaceApostrophe(){
     int sup;
   
     // ouvrir le fichier en lecture 
-    texte = fopen("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/plusDeBalise.clean", "r");
+    texte = fopen("Nettoyer/plusDeBalise.clean", "r");
 
     // ouvrir le fichier en écriture
-    apostrophe = fopen("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/apostrophe.clean", "w");
+    apostrophe = fopen("Nettoyer/apostrophe.clean", "w");
 
     while((lettre = getc(texte)) != EOF){
         putc(lettre, apostrophe);
@@ -116,7 +116,7 @@ void espaceApostrophe(){
     fclose(texte);
     fclose(apostrophe);
 
-    sup = remove("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/plusDeBalise.clean");
+    sup = remove("Nettoyer/plusDeBalise.clean");
   
 }
 
@@ -126,10 +126,10 @@ void retirePonctuation(){
     int sup;
   
     // ouvrir le fichier en lecture 
-    texte = fopen("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/apostrophe.clean", "r");
+    texte = fopen("Nettoyer/apostrophe.clean", "r");
 
     // ouvrir le fichier en écriture
-    ponctuation = fopen("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean", "w");
+    ponctuation = fopen("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean", "w");
 
     while((lettre = getc(texte)) != EOF){
         if(lettre == '.'){ 
@@ -148,7 +148,7 @@ void retirePonctuation(){
     fclose(texte);
     fclose(ponctuation);
 
-    sup = remove("/home/manon/Desktop/Fac/Projet_fil_rouge/Indexation_texte/Nettoyer/apostrophe.clean");
+    sup = remove("Nettoyer/apostrophe.clean");
   
 }
 
