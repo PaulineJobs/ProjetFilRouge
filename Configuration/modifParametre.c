@@ -3,15 +3,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+/*
+int main(){
+    editConfig();
+}
+*/
 int editConfig(){
-        //creation des pointeurs pour acceder aux fichiers
+    //creation de pointeur pour acceder au fichier
     FILE *ptrFichier1, *ptrFichier2;
     //nom du fichier
-    char fichierTeste[] = "../Configuration/.config";//nom du fichier (ou bien chemin d'acces)
-    char lettre;
-    int del_line, temp = 1;
-    
+    char fichierTeste[] = "../Configuration/.config";//nom du fichier (ou bien chemin d'acces
 
     ptrFichier1 = fopen(fichierTeste, "r");//on ouvre le fichier en lecture seul
 
@@ -19,42 +20,45 @@ int editConfig(){
         exit(1);
     }
 
+    int numLigne = 0;//numero de la ligne de lecture
     char texte[256];//nom du parametre rechercher
-    char nomParam[256];
     int valeur = 0;// valeur du parametre
-    int ligneASupprimer, numLigne = 0;
     int nouvelleValeur = 0;
     int nbrLigne = 0;
 
-    fscanf(ptrFichier1, "%s %d", texte, &nbrLigne);
+
+    fscanf(ptrFichier1, "%d %s %d", &numLigne, texte, &nbrLigne);
 
     for(int i=0; i<(nbrLigne - 1); i++){//on affiche le fichier tant que EndOfFile est faux
-        fscanf(ptrFichier1, "%s %d", texte, &valeur);// on lie le nom et la valeur
-        printf("\n%s %d\n", texte, valeur);// on affiche dans le terminal
+        fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);// on lie le nom et la valeur
+        printf("\n%d %s %d\n",numLigne, texte, valeur);// on affiche dans le terminal
     }
 
-    //on demande le nom du parametre qui doit etre 
-    printf("\n\nEntrer le parametre qui doit etre modifié : ");
-    scanf("%s", nomParam);
-    //mettre le "curseur" au debut du fichier 1
-    rewind(ptrFichier1);
+    //on demande le mumero de la ligne qui doit etre modifié
+//---------------------------------------------------------------------------------------------------
+    do{
+        rewind(ptrFichier1);
+        printf("\n\nEntrer le numero du parametre qui doit etre modifié : ");
+        scanf("%d", &numLigne);
+        
+    }   while(numLigne<0 || numLigne>=nbrLigne);
+    int newNumLigne = numLigne;
+//---------------------------------------------------------------------------------------------------
 
     ptrFichier2 = fopen("../Configuration/.config~", "w");//on ouvre le fichier de copie 
 
-//faire une boucle while pour tester la saisie
 
-    for(int i=0; i<nbrLigne; i++){//faire tant que EndOfFile est faux
-        fscanf(ptrFichier1, "%s %d", texte, &valeur);// on lie dans le fichier d'origine
+    for(int i=0; i<(nbrLigne-1); i++){//faire tant que EndOfFile est faux
+        fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);// on lie dans le fichier d'origine
 
-        int test = strcmp(texte, nomParam);// si le parametre lu est identique au parametre demandé test = 0
-        if(test == 0){
+        if(newNumLigne == numLigne){
             printf("Entrer la nouvelle valeur:");
             scanf("%d", &nouvelleValeur);
-            fprintf(ptrFichier2, "%s %d\n", texte, nouvelleValeur);// on ecrit dan le fichier 2 le nom du parametre + ça new value
-            fscanf(ptrFichier1, "%s %d", texte, &valeur);//on passe l'ancienne valeur du parametre
+            fprintf(ptrFichier2, "%d %s %d\n",numLigne, texte, nouvelleValeur);// on ecrit dan le fichier 2 le nom du parametre + ça new value
+            fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);//on passe l'ancienne valeur du parametre
         }
 
-        fprintf(ptrFichier2, "%s %d\n", texte, valeur);//on ecrit dans le nouveau fichier les autres parametre
+        fprintf(ptrFichier2, "%d %s %d\n",numLigne, texte, valeur);// on ecrit dan le fichier 2 le nom du parametre + ça new value
     }
 
     fclose(ptrFichier1);//on ferme les fichiers
@@ -74,8 +78,8 @@ int editConfig(){
     //juste pour l'affichage :
     nbrLigne++;
     for(int i=0; i<(nbrLigne - 1); i++){  //on affiche le fichier tant que EndOfFile est faux
-       fscanf(ptrFichier1, "%s %d", texte, &valeur);
-       printf("\n%s %d\n", texte, valeur);
+       fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);
+       printf("\n%d %s %d\n",numLigne, texte, valeur);
     }
 
     fclose(ptrFichier1);//on ferme le fichier
