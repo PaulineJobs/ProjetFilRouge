@@ -1,3 +1,8 @@
+/*
+Fichier réalisé par : Manon COUFFIN
+Derniere modif le : 04/12/2021
+Lier aux fichiers : tstNettoyageTexte.c et nettoyageTexte.h
+*/
 
 #include <stdio.h>
 #include <dirent.h>
@@ -135,7 +140,7 @@ void retirePonctuation(){
         if(lettre == '.'){ 
             putc(' ', ponctuation);
         }
-        else if((lettre == ';') || (lettre == '?') || (lettre == ',') || (lettre == ':') || (lettre == '/') || (lettre == '!')){
+        else if((lettre == ';') || (lettre == '?') || (lettre == ',') || (lettre == ':') || (lettre == '/') || (lettre == '!')|| (lettre == '(')|| (lettre == ')')){
 
         }
         else{

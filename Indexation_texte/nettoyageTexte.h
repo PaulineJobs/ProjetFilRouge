@@ -1,5 +1,11 @@
-#ifndef ELEMENT_H 
-#define ELEMENT_H
+/*
+Fichier réalisé par : Manon COUFFIN
+Derniere modif le : 04/12/2021
+Lier aux fichiers : tstNettoyageTexte.c et nettoyageTexte.c
+*/
+
+#ifndef NETTOYAGETEXTE_H 
+#define NETTOYAGETEXTE_H
 
 #include <stdio.h>
 #include <dirent.h>
