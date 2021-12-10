@@ -3,11 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-/*
-int main(){
-    editConfig();
-}
-*/
+
 int editConfig(){
     //creation de pointeur pour acceder au fichier
     FILE *ptrFichier1, *ptrFichier2;
@@ -34,8 +30,7 @@ int editConfig(){
         printf("\n%d %s %d\n",numLigne, texte, valeur);// on affiche dans le terminal
     }
 
-    //on demande le mumero de la ligne qui doit etre modifié
-//---------------------------------------------------------------------------------------------------
+    //vérification de la saisie
     do{
         rewind(ptrFichier1);
         printf("\n\nEntrer le numero du parametre qui doit etre modifié : ");
@@ -43,12 +38,12 @@ int editConfig(){
         
     }   while(numLigne<0 || numLigne>=nbrLigne);
     int newNumLigne = numLigne;
-//---------------------------------------------------------------------------------------------------
+
 
     ptrFichier2 = fopen("../Configuration/.config~", "w");//on ouvre le fichier de copie 
 
 
-    for(int i=0; i<(nbrLigne-1); i++){//faire tant que EndOfFile est faux
+    for(int i=0; i<(nbrLigne-1); i++){
         fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);// on lie dans le fichier d'origine
 
         if(newNumLigne == numLigne){
@@ -64,10 +59,8 @@ int editConfig(){
     fclose(ptrFichier1);//on ferme les fichiers
     fclose(ptrFichier2);
     
-    /*
-    on supprime le fichier 1
-    on renome le fichier 2 en fichier 1!
-    */
+    //on supprime le fichier 1
+    //on renome le fichier 2 en fichier 1!
 
    remove("../Configuration/.config");
    rename("../Configuration/.config~", "../Configuration/.config");
@@ -84,5 +77,38 @@ int editConfig(){
 
     fclose(ptrFichier1);//on ferme le fichier
 
+    return 0;
+}
+
+//------------------------------------------------------------------------------------
+
+int config(char nom[]){
+    int valeur, numLigne, nbrLigne = 0;
+    char nomFichier[] = "../Configuration/.config";
+    char texte[256];
+
+    FILE *ptrFichier1;
+    ptrFichier1 = fopen(nomFichier, "r");//ouverture du fichier en lecture seul
+
+    if(ptrFichier1 == NULL){// si le fichier n'est pas ouvert on arret tout!
+        exit(1);
+    }
+    fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &nbrLigne);
+    for(int i=0; i<(nbrLigne - 1); i++){
+        fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);// on lie le nom et la valeur
+        if((strcmp(texte, nom)) == 0){
+            return valeur;
+        }else{
+            return -1;
+        }
+    }
+    fclose(ptrFichier1);
+}
+
+int main(){
+    //editConfig();
+    //char nom[] = "max";
+    int parametre = config("nbrbi");
+    printf("parameter is: %d\n", parametre);
     return 0;
 }
