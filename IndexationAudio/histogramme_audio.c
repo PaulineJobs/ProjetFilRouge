@@ -5,10 +5,70 @@
 #include <ctype.h>
 #include <wchar.h>
 #include "histogramme_audio.h"
-//Pauline
+
+
+
+int lireConfigAudioM(){
+	
+	FILE * fichierConfig;
+	fichierConfig = fopen("../Configuration/.config","r");
+	
+	
+	int valeurLue;
+
+	int numLigneLu;
+	int numLigne;
+	
+	char* criterem="indexationAudioM";
+	char critereLu[50];
+	
+	
+	fscanf(fichierConfig, "%d %s %d",&numLigneLu, critereLu, &valeurLue);		
+	
+    while (strcmp(critereLu,criterem)!=0){
+		fscanf(fichierConfig, "%d %s %d",&numLigneLu, critereLu, &valeurLue);
+	}
+	
+	fclose(fichierConfig);
+	
+	return valeurLue;
+}
+
+
+int lireConfigAudioN(){
+
+	
+	FILE * fichierConfig;
+	fichierConfig = fopen("../Configuration/.config","r");
+	
+	
+	int valeurLue;
+
+	int numLigneLu;
+	int numLigne;
+	
+	char* criteren="indexationAudioN";
+	char critereLu[50];
+	
+	
+	fscanf(fichierConfig, "%d %s %d",&numLigneLu, critereLu, &valeurLue);
+
+	
+    while (strcmp(critereLu,criteren)!=0){
+		fscanf(fichierConfig, "%d %s %d",&numLigneLu, critereLu, &valeurLue);
+	}
+	
+	fclose(fichierConfig);
+	
+	return valeurLue;
+}
+
 
 //on cree l'histogramme du fichier audio
-void histogrammeAudio(int m, int n,char* NomFichierParam){
+
+
+
+void histogrammeAudio(char* NomFichierParam){
 	
 	//variables
     FILE *fichierbin=NULL;
@@ -19,6 +79,10 @@ void histogrammeAudio(int m, int n,char* NomFichierParam){
     double valeurLue;
 	char emplacement []="../Corpus/AUDIO/";
 	char nomFichier[strlen(NomFichierParam)];
+	
+	int m=lireConfigAudioM();
+	int n=lireConfigAudioN();
+
 	
 	
     // ouvrir le fichier en lecture et avoir le nombre de valeurs
@@ -124,15 +188,21 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 	}
 }
 
+
+
+
+
+
+
 void fichierIndexe(){
 	
 	char nomFichier[50];
 	printf("Saisissez le nom de votre fichier\n");
 	scanf("%s",nomFichier);
 	
-	int m=100;
 	//n ne peux pas etre superieur au nombre de valeur dans le fichier 
-	int n=1024;
-	histogrammeAudio(m,n,nomFichier);
+
+	histogrammeAudio(nomFichier);
 
 }
+
