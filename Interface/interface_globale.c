@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "interface_globale.h"
+#include "../Configuration/modifParametre.c"
 //codé par Pauline
 
 // message d'ouverture de l'application 
@@ -30,7 +31,7 @@ void menuPrincipal(){
 		printf(" A- Faire une recherche \n \r");
 		printf(" B- Accéder aux droits administrateur \n \r");
 		printf(" C- fermer l'application\n \r");
-		scanf("%s",&choixAction);
+		scanf("%s",choixAction);
 		switch (choixAction[0]){	
 		case 'A' :
 			//Si l'utilisateur a demandé la fonction recherche 
@@ -72,7 +73,7 @@ void seConnecter(){
 		//on rentre le mot de passe
 		printf("Une connexion est requise \n");
 		printf("Entrez le mot de passe à 4 chiffres (qui est 1234)\n"); 
-		scanf("%s",&motDePasse); 
+		scanf("%s",motDePasse); 
 		//si le mot de passe est correcte, on connecte
 		if (strcmp(motDePasse,"1234")==0){
 			printf("Connexion réussie\n");
@@ -87,7 +88,7 @@ void seConnecter(){
 			printf("Voulez-vous réessayer ?\n");
 			printf("A-Oui, je veux me reconnecter\n");
 			printf("Autre caractère-non, je veux retourner au menu principal\n");
-			scanf("%s",&choixConnexion);
+			scanf("%s",choixConnexion);
 			//reconnexion
 			if(choixConnexion[0]=='A'){
 				printf("Vous avez choisi de vous reconnecter\n");
@@ -119,7 +120,7 @@ void choixAdmin(){
 		printf(" B- Indexer un document \n \r");
 		printf(" C- Configurer la méthode d'indexation \n \r");
 		printf(" D- Retourner au menu principal (attention, vous devrez à nouveau vous reconnecter pour acceder à ce menu) \n \r");
-		scanf("%s",&choixAction);
+		scanf("%s",choixAction);
 		//on etudie le choix
 		switch (choixAction[0]){
 		//On fait une recherche 
@@ -137,7 +138,9 @@ void choixAdmin(){
 		//on configure
 		case 'C' :
 			printf(" Vous avez choisi de configurer la méthode d'indexation \n");
-			printf("Cette fonction est en maintenance\n");
+			//printf("Cette fonction est en maintenance\n");
+			editConfig();
+			
 			exit(0);	
 			break;	
 		//on retourne au Menu principal
