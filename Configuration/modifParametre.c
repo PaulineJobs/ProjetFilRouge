@@ -105,10 +105,11 @@ int config(char nom[]){
     fclose(ptrFichier1);
 }
 
+/*
 int main(){
     //editConfig();
     //char nom[] = "max";
     int parametre = config("nbrbi");
     printf("parameter is: %d\n", parametre);
     return 0;
-}
+}*/

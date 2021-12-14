@@ -3,6 +3,8 @@
 #include <string.h>
 #include "interface_globale.h"
 #include "../Configuration/modifParametre.c"
+#include "../IndexationAudio/histogramme_audio.c"
+
 //codé par Pauline
 
 // message d'ouverture de l'application 
@@ -132,8 +134,8 @@ void choixAdmin(){
 		//On indexe
 		case 'B':
 			printf(" Vous avez choisi d'indexer un document\n");
-			printf("Cette fonction est en maintenance\n");
-			exit(0);	
+			printf("\n");
+			fichierIndexe();	
 			break;
 		//on configure
 		case 'C' :

@@ -111,39 +111,43 @@ void histogrammeAudio(char* NomFichierParam){
 		//on verifie l'allocation
 		if(histogramme==NULL){
 			printf("ERREUR: Impossible d'indexer ce fichier\n");
-			exit(0);
-		}
-		
-		//on initialise l'histogramme à zero
-		for (int i=0; i<k;i++){
-			for(int j=0;j<m;j++){
-				histogramme[i][j]=0;
-			}
-		}
-		
 
-		//on remplit l'histogramme
-		while (ftell(fichierbin)/8!=nbrValeurs){
-			for (int i=0; i<k;i++){
-			fread(&valeurLue,sizeof(double),1,fichierbin);
-				for(int j=0;j<m;j++){
-					if((valeurLue>intervalleFrequence*j-1)&&(valeurLue<=intervalleFrequence*(j+1)-1)){
-						histogramme[i][j]+=1;
-						
+		
+		} else {
+				//on initialise l'histogramme à zero
+				for (int i=0; i<k;i++){
+					for(int j=0;j<m;j++){
+						histogramme[i][j]=0;
 					}
 				}
-			}
-		}
+				
+
+				//on remplit l'histogramme
+				while (ftell(fichierbin)/8!=nbrValeurs){
+					for (int i=0; i<k;i++){
+					fread(&valeurLue,sizeof(double),1,fichierbin);
+						for(int j=0;j<m;j++){
+							if((valeurLue>intervalleFrequence*j-1)&&(valeurLue<=intervalleFrequence*(j+1)-1)){
+								histogramme[i][j]+=1;
+								
+							}
+						}
+					}
+				}
+				
+				//on ferme le fichier bin
+				fclose(fichierbin);
+				
+				//on cree le descripteur
+				descripteurAudio(histogramme,NomFichierParam,m,k);
+				
 		
-		//on ferme le fichier bin
-		fclose(fichierbin);
-		
-		//on cree le descripteur
-		descripteurAudio(histogramme,NomFichierParam,m,k);
-		
+		} 
+				
 	} else {
-		printf("ERREUR : impossible d'indexer le document\n Le fichier n'as pas pu ếtre ouvert ou n'existe pas \n");
+		printf("ERREUR : nom du fichier inconnu \n");
 	}
+
 }
 
 
@@ -182,14 +186,13 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 		}
 	
 	fclose(descripteur);
+	printf("Votre fichier a bien été indexé\n");
+	printf("\n");
 	
 	} else {
-		printf("ERREUR : impossible d'indexer le document\n Le descripteur n'a pas pu etre cree\n");
+		printf("ERREUR : impossible d'indexer le document\n");
 	}
 }
-
-
-
 
 
 
@@ -202,7 +205,28 @@ void fichierIndexe(){
 	
 	//n ne peux pas etre superieur au nombre de valeur dans le fichier 
 
-	histogrammeAudio(nomFichier);
+	typeFichier(nomFichier);
 
+}
+
+void typeFichier(char* nomFichier){
+	
+    int j;
+    if (strlen(nomFichier) > 4) {
+       for (j = 0; nomFichier[j + 3]; j++) {
+          if (!strcmp(&nomFichier[j], ".txt") ){
+             printf("Indexation d'un fichier texte ou image\n");
+          }
+          
+          if (!strcmp(&nomFichier[j], ".bin")){
+			 printf("Indexation d'un fichier audio\n");
+			 histogrammeAudio(nomFichier);
+			 
+		 } 
+	 
+       }
+    }
+ 
+	
 }
 
