@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "configuration.h"
 
 int editConfig(){
     //creation de pointeur pour acceder au fichier
@@ -82,6 +83,7 @@ int editConfig(){
 
 //------------------------------------------------------------------------------------
 
+
 int config(char nom[]){
     int valeur, numLigne, nbrLigne = 0;
     char nomFichier[] = "../Configuration/.config";
@@ -91,24 +93,27 @@ int config(char nom[]){
     ptrFichier1 = fopen(nomFichier, "r");//ouverture du fichier en lecture seul
 
     if(ptrFichier1 == NULL){// si le fichier n'est pas ouvert on arret tout!
-        exit(1);
+        exit(1);//
     }
     fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &nbrLigne);
     for(int i=0; i<(nbrLigne - 1); i++){
         fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);// on lie le nom et la valeur
         if((strcmp(texte, nom)) == 0){
+            fclose(ptrFichier1);
             return valeur;
-        }else{
-            return -1;
         }
     }
     fclose(ptrFichier1);
+    return -1;
 }
+
 
 int main(){
     //editConfig();
-    //char nom[] = "max";
-    int parametre = config("nbrbi");
-    printf("parameter is: %d\n", parametre);
+    int parametre = config("max");
+    printf("la valeur est: %d\n", parametre);
     return 0;
 }
+
+//si changement ds .config -> supprimer ts les fichiers ds les dossiers
+//eventuellement faire un fichier par defaut si le .config est erroné
