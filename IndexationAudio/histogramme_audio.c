@@ -4,6 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <wchar.h>
+#include <dirent.h>
 #include "histogramme_audio.h"
 
 
@@ -186,8 +187,10 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 		}
 	
 	fclose(descripteur);
-	printf("Votre fichier a bien été indexé\n");
-	printf("\n");
+	
+	//MAJ liste descripteurs
+	miseAJourListeDescripteurs(NomFichierParam);
+
 	
 	} else {
 		printf("ERREUR : impossible d'indexer le document\n");
@@ -197,29 +200,12 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 
 
 
-void fichierIndexe(){
-	
-	char nomFichier[50];
-	printf("Saisissez le nom de votre fichier\n");
-	scanf("%s",nomFichier);
-	
-	//n ne peux pas etre superieur au nombre de valeur dans le fichier 
-
-	typeFichier(nomFichier);
-
-}
-
 void typeFichier(char* nomFichier){
 	
     int j;
     if (strlen(nomFichier) > 4) {
-       for (j = 0; nomFichier[j + 3]; j++) {
-          if (!strcmp(&nomFichier[j], ".txt") ){
-             printf("Indexation d'un fichier texte ou image\n");
-          }
-          
+       for (j = 0; nomFichier[j + 3]; j++) {         
           if (!strcmp(&nomFichier[j], ".bin")){
-			 printf("Indexation d'un fichier audio\n");
 			 histogrammeAudio(nomFichier);
 			 
 		 } 
@@ -230,3 +216,25 @@ void typeFichier(char* nomFichier){
 	
 }
 
+void automatisationAudio(){
+    struct dirent *dir;
+    // opendir() renvoie un pointeur de type DIR. 
+    DIR *d = opendir("../Corpus/AUDIO/"); 
+    if (d) {
+        while ((dir = readdir(d)) != NULL){
+			typeFichier(dir->d_name);
+        }
+        closedir(d);
+    }
+  
+}
+
+
+void miseAJourListeDescripteurs(char* nomFichierParam){
+	FILE* listeDescripteurs;
+	listeDescripteurs=fopen("../Liste_descripteurs/Liste_descripteurs_audios.txt","a");
+	fprintf(listeDescripteurs,nomFichierParam);
+	fprintf(listeDescripteurs,"\n");
+	fclose(listeDescripteurs);
+	
+}

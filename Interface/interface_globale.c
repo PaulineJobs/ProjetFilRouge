@@ -13,6 +13,8 @@ void ouverture(){
 	printf(" \n");
 	printf(" Ouverture de l'application \n");
 	printf(" Bienvenu sur le moteur de recherche Dora l'exploratrice ! \n");
+	rmListeDescripteurs();
+	automatisationAudio(); //indexation des fichiers audio
 	printf(" \n");
 	//on dirige l'utilisateur vers le menu pricipal
 	menuPrincipal();
@@ -119,9 +121,8 @@ void choixAdmin(){
 		//on demande le choix de l'administrateur
 		printf(" Que voulez-vous faire ? \n \r");
 		printf(" A- Faire une recherche \n \r");
-		printf(" B- Indexer un document \n \r");
-		printf(" C- Configurer la méthode d'indexation \n \r");
-		printf(" D- Retourner au menu principal (attention, vous devrez à nouveau vous reconnecter pour acceder à ce menu) \n \r");
+		printf(" B- Configurer la méthode d'indexation \n \r");
+		printf(" C- Retourner au menu principal (attention, vous devrez à nouveau vous reconnecter pour acceder à ce menu) \n \r");
 		scanf("%s",choixAction);
 		//on etudie le choix
 		switch (choixAction[0]){
@@ -132,13 +133,8 @@ void choixAdmin(){
 			exit(0);
 			break;
 		//On indexe
-		case 'B':
-			printf(" Vous avez choisi d'indexer un document\n");
-			printf("\n");
-			fichierIndexe();	
-			break;
 		//on configure
-		case 'C' :
+		case 'B' :
 			printf(" Vous avez choisi de configurer la méthode d'indexation \n");
 			//printf("Cette fonction est en maintenance\n");
 			editConfig();
@@ -146,7 +142,7 @@ void choixAdmin(){
 			exit(0);	
 			break;	
 		//on retourne au Menu principal
-		case 'D' :
+		case 'C' :
 			printf(" Vous avez choisi de retourner au menu principal\n");
 			break;
 		//Si le caractère est invalide, on redemande le choix
@@ -155,5 +151,13 @@ void choixAdmin(){
 
 		}
 	}
+}
+
+
+void rmListeDescripteurs(){
+	remove("../Liste_descripteurs/Liste_descripteurs_textes.txt");
+	remove("../Liste_descripteurs/Liste_descripteurs_audios.txt");
+	remove("../Liste_descripteurs/Liste_descripteurs_images.txt");
+		
 }	
 	

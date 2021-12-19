@@ -4,7 +4,8 @@
 #include "descripteur_audio.h"
 
 int main (){
-	fichierIndexe();
+	automatisationAudio();
+
 
 	return 0;
 }

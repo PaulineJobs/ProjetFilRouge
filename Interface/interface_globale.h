@@ -11,5 +11,6 @@ void menuPrincipal();
 void seConnecter();
 //choixAdmin(): choix : rechercher, indexer ou configurer
 void choixAdmin();
+void rmListeDescripteurs();
 
 #endif
