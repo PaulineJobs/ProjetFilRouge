@@ -1,24 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <dirent.h>
+#include <unistd.h>
 #include "interface_globale.h"
 #include "../Configuration/modifParametre.c"
 #include "../IndexationAudio/histogramme_audio.c"
 
 //codé par Pauline
 
+
+
+
 // message d'ouverture de l'application 
 void ouverture(){
 	printf(" \n");
 	printf(" \n");
 	printf(" Ouverture de l'application \n");
-	printf(" Bienvenu sur le moteur de recherche Dora l'exploratrice ! \n");
+	rmDescripteurs("../Base_descripteurs/Base_descripteurs_audios");
+	rmDescripteurs("../Base_descripteurs/Base_descripteurs_textes");
+	rmDescripteurs("../Base_descripteurs/Base_descripteurs_images");
 	rmListeDescripteurs();
 	automatisationAudio(); //indexation des fichiers audio
+	printf(" Bienvenu sur le moteur de recherche AnimaSearch ! \n");
 	printf(" \n");
 	//on dirige l'utilisateur vers le menu pricipal
 	menuPrincipal();
 }
+
+
+
+
+
 
 
 // Menu principal : 3 choix : se connecter, faire une recherche, ou fermer l'application	
@@ -59,6 +72,8 @@ void menuPrincipal(){
 	}
 	printf("Fermeture de l'application\n");
 }
+
+
 
 
 
@@ -107,6 +122,10 @@ void seConnecter(){
 
 
 
+
+
+
+
 //administrateur : 4 choix : indexer, rechercher, configurer ou retour au menu principal
 void choixAdmin(){
 	printf(" \n");
@@ -117,7 +136,7 @@ void choixAdmin(){
 	//Fonction
 	//on demande le choix : recherche, configurer, indexer ou revenir au menu principal
 	//Tant que l'administrateur ne veux pas quitter le menu, on repasse par ce menu
-	while((choixAction[0]!='D')){
+	while((choixAction[0]!='C')){
 		//on demande le choix de l'administrateur
 		printf(" Que voulez-vous faire ? \n \r");
 		printf(" A- Faire une recherche \n \r");
@@ -147,17 +166,107 @@ void choixAdmin(){
 			break;
 		//Si le caractère est invalide, on redemande le choix
 		default :
-			printf(" Erreur : caractère invalide. Choisissez A, B, C, ou D\n \r");
+			printf(" Erreur : caractère invalide. Choisissez A, B ou C\n \r");
 
 		}
 	}
 }
 
 
+
+
+
+
+//On supprime la liste des descripteurs
 void rmListeDescripteurs(){
 	remove("../Liste_descripteurs/Liste_descripteurs_textes.txt");
 	remove("../Liste_descripteurs/Liste_descripteurs_audios.txt");
 	remove("../Liste_descripteurs/Liste_descripteurs_images.txt");
 		
 }	
+
+
+
+
+
+
+//On supprime les descripteurs crees precedement
+void rmDescripteurs(char *repertoireParam){
 	
+	//on ouvre le repertoire choisi en paramètre
+	char repertoire[strlen(repertoireParam)];
+	strcpy(repertoire,repertoireParam);
+    DIR *dir = opendir(repertoire); 
+    struct dirent *fichier;
+    char *emplacement;
+    size_t repertoire_len;
+    repertoire_len = strlen(repertoire);
+    
+    
+    //on verifie l'ouverture et on le parcourt
+    if (dir) {
+        while ((fichier = readdir(dir)) != NULL){
+			//On ne traite pas les fichiers "." et ".."
+			if (!strcmp(fichier->d_name, ".") || !strcmp(fichier->d_name, ".."))
+				continue;
+
+			//On supprime les autres fichiers
+			emplacement = calloc(repertoire_len + strlen(fichier->d_name) + 1, sizeof(char));
+			strcpy(emplacement, repertoire);
+			strcat(emplacement, "/");
+			strcat(emplacement, fichier->d_name);
+			(unlink(emplacement));
+			free(emplacement);
+		}
+
+		closedir(dir);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//On parcours le corpus et on indexe les documents
+void automatisationAudio(){
+	
+	//On lance l'indexation audio dans le repertoire contenant les fichiers audio
+    struct dirent *dir;
+    DIR *d = opendir("../Corpus/AUDIO/"); 
+    if (d) {
+        while ((dir = readdir(d)) != NULL){
+			typeFichierAudio(dir->d_name);
+        }
+        closedir(d);
+    }
+   
+	//On lance l'indexation texte dans le repertoire contenant les fichiers textes
+    DIR *dTexte= opendir("../Corpus/TEXTE/"); 
+    if (dTexte) {
+        while ((dir = readdir(dTexte)) != NULL){
+			//Indexation texte MANON
+        }
+        closedir(dTexte);
+    }
+    
+	//On lance l'indexation image dans le repertoire contenant les fichiers images
+    DIR *dImage = opendir("../Corpus/IMAGE/"); 
+    if (dImage) {
+        while ((dir = readdir(dImage)) != NULL){
+			//IndexationImage LUCAS
+        }
+        closedir(dImage);
+    }
+  
+}
+
+
+
+
