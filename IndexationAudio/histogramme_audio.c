@@ -9,21 +9,32 @@
 
 
 
-int lireConfigAudioM(){
-	
-	FILE * fichierConfig;
-	fichierConfig = fopen("../Configuration/.config","r");
-	
-	
-	int valeurLue;
+//Verifie que le fichier est bien un fichier audio avant indexation
+void typeFichierAudio(char* nomFichier){
+    int j;
+    if (strlen(nomFichier) > 4) {
+       for (j = 0; nomFichier[j + 3]; j++) {         
+          if (!strcmp(&nomFichier[j], ".bin")){
+			 histogrammeAudio(nomFichier);
+		 } 
+       }
+    }
+}
 
+
+
+
+//Lit le paramètre m dans la configuration
+int lireConfigAudioM(){
+	FILE * fichierConfig;
+	int valeurLue;
 	int numLigneLu;
 	int numLigne;
 	
+	//on va lire la valeur dans la config
+	fichierConfig = fopen("../Configuration/.config","r");
 	char* criterem="indexationAudioM";
 	char critereLu[50];
-	
-	
 	fscanf(fichierConfig, "%d %s %d",&numLigneLu, critereLu, &valeurLue);		
 	
     while (strcmp(critereLu,criterem)!=0){
@@ -36,25 +47,22 @@ int lireConfigAudioM(){
 }
 
 
+
+
+
+//Lit le paramètre n dans la configuration
 int lireConfigAudioN(){
-
-	
 	FILE * fichierConfig;
-	fichierConfig = fopen("../Configuration/.config","r");
-	
-	
 	int valeurLue;
-
 	int numLigneLu;
 	int numLigne;
 	
+	//on va lire la valeur dans la config
+	fichierConfig = fopen("../Configuration/.config","r");
 	char* criteren="indexationAudioN";
 	char critereLu[50];
-	
-	
 	fscanf(fichierConfig, "%d %s %d",&numLigneLu, critereLu, &valeurLue);
 
-	
     while (strcmp(critereLu,criteren)!=0){
 		fscanf(fichierConfig, "%d %s %d",&numLigneLu, critereLu, &valeurLue);
 	}
@@ -65,10 +73,9 @@ int lireConfigAudioN(){
 }
 
 
+
+
 //on cree l'histogramme du fichier audio
-
-
-
 void histogrammeAudio(char* NomFichierParam){
 	
 	//variables
@@ -79,13 +86,13 @@ void histogrammeAudio(char* NomFichierParam){
     int k;
     double valeurLue;
 	char emplacement []="../Corpus/AUDIO/";
-	char nomFichier[strlen(NomFichierParam)];
+	//char nomFichier[strlen(NomFichierParam)];
+	char *nomFichier=(char *)malloc(strlen(NomFichierParam)+1);
 	
+	//on va lire les paramètres dans la config
 	int m=lireConfigAudioM();
 	int n=lireConfigAudioN();
 
-	
-	
     // ouvrir le fichier en lecture et avoir le nombre de valeurs
     fichierbin = fopen(strcat(emplacement,NomFichierParam),"rb");
   
@@ -141,8 +148,6 @@ void histogrammeAudio(char* NomFichierParam){
 				
 				//on cree le descripteur
 				descripteurAudio(histogramme,NomFichierParam,m,k);
-				
-		
 		} 
 				
 	} else {
@@ -153,21 +158,29 @@ void histogrammeAudio(char* NomFichierParam){
 
 
 
+
 //on cree le descripteur du fichier audio
 void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 	
 	//variables
     FILE* descripteur=NULL;
 	char suffixeDescripteur[]="_descripteur.txt";
-	char identifiant[strlen(NomFichierParam)];
-	char nomDescripteur[strlen(NomFichierParam)+strlen(suffixeDescripteur)];
+	//char identifiant[strlen(NomFichierParam)];
+	//char nomDescripteur[strlen(NomFichierParam)+strlen(suffixeDescripteur)];
 	char emplacement[]="../Base_descripteurs/Base_descripteurs_audios/";
 	
+	char *identifiant=(char *)malloc(strlen(NomFichierParam)+1);
+	char *nomDescripteur=(char *)malloc(strlen(NomFichierParam)+strlen(suffixeDescripteur)+1);
+
 	//on cree les chaines de caractères correspondants à :
 	//L'identifiant qui sera écrit au debut du descripteur
 	strcpy(identifiant,NomFichierParam);
 	//Le nom du descripteur de la forme  nomDuFichier_descripteur.txt
 	strcpy(nomDescripteur,NomFichierParam);
+	strncpy(nomDescripteur,NomFichierParam,strlen(NomFichierParam)-4);
+	nomDescripteur[strlen(NomFichierParam)-4]='\0';
+	
+	//nomDescripteur[strlen(nomDescripteur) - 4] = '\0';
 	strcat(nomDescripteur,suffixeDescripteur);
 	//L'emplacement du descripteur et son nom
 	strcat(emplacement,nomDescripteur);
@@ -200,36 +213,8 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 
 
 
-void typeFichier(char* nomFichier){
-	
-    int j;
-    if (strlen(nomFichier) > 4) {
-       for (j = 0; nomFichier[j + 3]; j++) {         
-          if (!strcmp(&nomFichier[j], ".bin")){
-			 histogrammeAudio(nomFichier);
-			 
-		 } 
-	 
-       }
-    }
- 
-	
-}
 
-void automatisationAudio(){
-    struct dirent *dir;
-    // opendir() renvoie un pointeur de type DIR. 
-    DIR *d = opendir("../Corpus/AUDIO/"); 
-    if (d) {
-        while ((dir = readdir(d)) != NULL){
-			typeFichier(dir->d_name);
-        }
-        closedir(d);
-    }
-  
-}
-
-
+//écrit le nom du fichier dans la liste des descripteurs
 void miseAJourListeDescripteurs(char* nomFichierParam){
 	FILE* listeDescripteurs;
 	listeDescripteurs=fopen("../Liste_descripteurs/Liste_descripteurs_audios.txt","a");

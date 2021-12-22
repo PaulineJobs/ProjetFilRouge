@@ -1,9 +1,20 @@
+#ifndef MODULE_Audio           
+#define MODULE_Audio
 
-void fichierIndexe();
-void histogrammeAudio(char* nomDuFichier);
-void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k);
+
+//Indexation Audio
+//Verifie que le fichier est bien un fichier audio avant indexation
+void typeFichierAudio(char* nomFichier);
+//Lit le paramètre m dans la configuration
 int lireConfigAudioM();
+//Lit le paramètre n dans la configuration
 int lireConfigAudioN();
-void typeFichier(char* nomFichier);
-void automatisationAudio();
+//Cree l'histogramme d'un fichier audio
+void histogrammeAudio(char* nomDuFichier);
+//Cree le descripteur d'un fichier audio avec son identifiant et son histogramme 
+void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k);
+//écrit le nom du fichier dans la liste des descripteurs
 void miseAJourListeDescripteurs(char* nomFichierParam);
+
+
+#endif
