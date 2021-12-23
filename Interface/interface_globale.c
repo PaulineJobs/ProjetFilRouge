@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "interface_globale.h"
-#include "../Configuration/modifParametre.c"
+#include "../Configuration/configuration.h"
 //codé par Pauline
 
 // message d'ouverture de l'application 
@@ -138,10 +138,9 @@ void choixAdmin(){
 		//on configure
 		case 'C' :
 			printf(" Vous avez choisi de configurer la méthode d'indexation \n");
-			//printf("Cette fonction est en maintenance\n");
 			editConfig();
-			
-			exit(0);	
+			printf("\nModification effectuée \n\n");
+			//exit(0);	
 			break;	
 		//on retourne au Menu principal
 		case 'D' :
