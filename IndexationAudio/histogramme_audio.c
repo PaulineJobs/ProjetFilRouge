@@ -6,6 +6,7 @@
 #include <wchar.h>
 #include <dirent.h>
 #include "histogramme_audio.h"
+#include "../Configuration/configuration.h"
 
 
 
@@ -22,9 +23,9 @@ void typeFichierAudio(char* nomFichier){
 }
 
 
-
-
-//Lit le paramètre m dans la configuration
+//Plutôt utiliser l'outils de recherche de valeur de paramètre config(String nomParam) de configuration.c
+/*
+//Lit le paramètre m dans la configuration 
 int lireConfigAudioM(){
 	FILE * fichierConfig;
 	int valeurLue;
@@ -71,7 +72,7 @@ int lireConfigAudioN(){
 	
 	return valeurLue;
 }
-
+*/
 
 
 
@@ -90,8 +91,10 @@ void histogrammeAudio(char* NomFichierParam){
 	char *nomFichier=(char *)malloc(strlen(NomFichierParam)+1);
 	
 	//on va lire les paramètres dans la config
-	int m=lireConfigAudioM();
-	int n=lireConfigAudioN();
+	/*int m=lireConfigAudioM();
+	int n=lireConfigAudioN();*/
+	int m = config("indexationAudioM");
+	int n = config("indexationAudioN");
 
     // ouvrir le fichier en lecture et avoir le nombre de valeurs
     fichierbin = fopen(strcat(emplacement,NomFichierParam),"rb");
