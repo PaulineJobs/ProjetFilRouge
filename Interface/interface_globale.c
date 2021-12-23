@@ -4,7 +4,7 @@
 #include <dirent.h>
 #include <unistd.h>
 #include "interface_globale.h"
-#include "../Configuration/modifParametre.c"
+#include "../Configuration/configuration.h"
 #include "../IndexationAudio/histogramme_audio.c"
 
 //codé par Pauline
@@ -155,10 +155,9 @@ void choixAdmin(){
 		//on configure
 		case 'B' :
 			printf(" Vous avez choisi de configurer la méthode d'indexation \n");
-			//printf("Cette fonction est en maintenance\n");
 			editConfig();
-			
-			exit(0);	
+			printf("\nModification effectuée \n\n");
+			//exit(0);	
 			break;	
 		//on retourne au Menu principal
 		case 'C' :
