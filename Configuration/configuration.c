@@ -119,4 +119,5 @@ int main(){
     int parametre = config("max");
     printf("la valeur est: %d\n", parametre);
     return 0;
+}
 */
