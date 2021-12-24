@@ -91,10 +91,13 @@ void histogrammeAudio(char* NomFichierParam){
 	char *nomFichier=(char *)malloc(strlen(NomFichierParam)+1);
 	
 	//on va lire les paramètres dans la config
-	/*int m=lireConfigAudioM();
-	int n=lireConfigAudioN();*/
 	int m = config("indexationAudioM");
 	int n = config("indexationAudioN");
+
+	if(n<1 || m<1){
+		fprintf(stderr, "\e[0;31m\n/!\\Attention /!\\:\nLes valeurs n et/ou m de l'indexation audio sont mal configurées (<0).\nMerci de modifier ces paramètres dans la configuration.\n\n\e[0mMise à jour avec des valeurs par défaut : n = 1024 et m = 100.\n\n");
+		//fprintf(stdout,"\e[0mMise à jour avec des valeurs par défaut : n = 1024 et m = 100.\n\r");
+	}
 
     // ouvrir le fichier en lecture et avoir le nombre de valeurs
     fichierbin = fopen(strcat(emplacement,NomFichierParam),"rb");
@@ -192,8 +195,8 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 	descripteur = fopen(emplacement,"w");
 	if (descripteur != NULL){
 		//on ecrit l'identifiant
-		fprintf(descripteur,identifiant);
-		fprintf(descripteur,"\n");
+		fprintf(descripteur,"%s \n",identifiant);
+		//fprintf(descripteur,"\n");
 		//on écrit l'histogramme
 		for (int i=0; i<k;i++){
 			for(int j=0;j<m;j++){
@@ -221,8 +224,8 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 void miseAJourListeDescripteurs(char* nomFichierParam){
 	FILE* listeDescripteurs;
 	listeDescripteurs=fopen("../Liste_descripteurs/Liste_descripteurs_audios.txt","a");
-	fprintf(listeDescripteurs,nomFichierParam);
-	fprintf(listeDescripteurs,"\n");
+	fprintf(listeDescripteurs,"%s \n",nomFichierParam);
+	//fprintf(listeDescripteurs,"\n");
 	fclose(listeDescripteurs);
 	
 }
