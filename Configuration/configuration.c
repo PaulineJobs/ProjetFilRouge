@@ -21,7 +21,7 @@ int editConfig(){
     int numLigne = 0;//numero de la ligne de lecture
     char texte[256];//nom du parametre rechercher
     int valeur = 0;// valeur du parametre
-    int nouvelleValeur = 0;
+    char nouvelleValeur[10];
     int nbrLigne = 0;
 
 
@@ -40,10 +40,7 @@ int editConfig(){
         printf("\n\nEntrez le numéro du paramètre qui doit être modifié : ");
         fgets(testNumLigne, sizeof testNumLigne, stdin);
 
-        if(!atoi(testNumLigne)){
-            __fpurge(stdin); //On purge le stdin si la saisie est trop longue
-        }
-        __fpurge(stdin);
+        __fpurge(stdin);//On purge le stdin si la saisie est trop longue
 
     }   while(atoi(testNumLigne)<2 || atoi(testNumLigne)>nbrLigne);
 
@@ -54,9 +51,11 @@ int editConfig(){
     while(fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur)!=EOF){ // on lit dans le fichier d'origine
 
         if(newNumLigne == numLigne){
-            printf("Entrez la nouvelle valeur pour le paramètre n° %d : ",newNumLigne);
-            scanf("%d", &nouvelleValeur);
-            fprintf(ptrFichier2, "%d %s %d\n",numLigne, texte, nouvelleValeur);// on ecrit dans le fichier 2 le nom du parametre + ça new value
+            do{
+                printf("Entrez la nouvelle valeur pour le paramètre n° %d : ",newNumLigne);
+                fgets(nouvelleValeur, sizeof nouvelleValeur, stdin);
+            }   while(atoi(nouvelleValeur) == atoi("n"));
+            fprintf(ptrFichier2, "%d %s %d\n",numLigne, texte, atoi(nouvelleValeur));// on ecrit dans le fichier 2 le nom du parametre + ça new value
             fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);//on passe l'ancienne valeur du parametre
         }
 
@@ -121,6 +120,3 @@ int main(){
     return 0;
 }
 */
-
-//si changement ds .config -> supprimer ts les fichiers ds les dossiers
-//eventuellement faire un fichier par defaut si le .config est erroné
