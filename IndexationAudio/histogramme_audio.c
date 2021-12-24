@@ -96,7 +96,8 @@ void histogrammeAudio(char* NomFichierParam){
 
 	if(n<1 || m<1){
 		fprintf(stderr, "\e[0;31m\n/!\\Attention /!\\:\nLes valeurs n et/ou m de l'indexation audio sont mal configurées (<0).\nMerci de modifier ces paramètres dans la configuration.\n\n\e[0mMise à jour avec des valeurs par défaut : n = 1024 et m = 100.\n\n");
-		//fprintf(stdout,"\e[0mMise à jour avec des valeurs par défaut : n = 1024 et m = 100.\n\r");
+		m = 100;
+		n = 1024;
 	}
 
     // ouvrir le fichier en lecture et avoir le nombre de valeurs
