@@ -6,7 +6,8 @@
 #include "interface_globale.h"
 #include "../Configuration/modifParametre.c"
 #include "../IndexationAudio/histogramme_audio.c"
-
+#include "../RechercheAudio/rechercheAudio.c"
+#include "../RechercheAudio/arbre.c"
 //codé par Pauline
 
 
@@ -53,8 +54,7 @@ void menuPrincipal(){
 		case 'A' :
 			//Si l'utilisateur a demandé la fonction recherche 
 			printf(" Vous avez choisir d'effectuer une recherche\n");
-			printf("Cette fonction est en maintenance\n");
-			exit(0);	
+			IHM();	
 			break;
 		case 'B' :
 			//Si l'utilisateur a demandé la fonction connexion
@@ -147,9 +147,8 @@ void choixAdmin(){
 		switch (choixAction[0]){
 		//On fait une recherche 
 		case 'A': 
-			printf(" Vous avez choisir d'effectuer une recherche\n");
-			printf("Cette fonction est en maintenance\n");	
-			exit(0);
+			printf(" Vous avez choisir d'effectuer une recherche\n");	
+			IHM();
 			break;
 		//On indexe
 		//on configure
@@ -157,8 +156,7 @@ void choixAdmin(){
 			printf(" Vous avez choisi de configurer la méthode d'indexation \n");
 			//printf("Cette fonction est en maintenance\n");
 			editConfig();
-			
-			exit(0);	
+				
 			break;	
 		//on retourne au Menu principal
 		case 'C' :

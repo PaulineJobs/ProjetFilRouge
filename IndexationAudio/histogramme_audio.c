@@ -191,6 +191,10 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 		//on ecrit l'identifiant
 		fprintf(descripteur,identifiant);
 		fprintf(descripteur,"\n");
+		//on ecrit les dimensions de la matrice 
+		fprintf(descripteur,"%d ",m);
+		fprintf(descripteur,"%d ",k);
+		fprintf(descripteur,"\n");
 		//on écrit l'histogramme
 		for (int i=0; i<k;i++){
 			for(int j=0;j<m;j++){
