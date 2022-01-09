@@ -86,7 +86,6 @@ void histogrammeAudio(char* NomFichierParam){
     int k;
     double valeurLue;
 	char emplacement []="../Corpus/AUDIO/";
-	//char nomFichier[strlen(NomFichierParam)];
 	char *nomFichier=(char *)malloc(strlen(NomFichierParam)+1);
 	
 	//on va lire les paramètres dans la config
@@ -104,12 +103,15 @@ void histogrammeAudio(char* NomFichierParam){
 		fseek(fichierbin, 0, SEEK_END);	
 		nbrValeurs=ftell(fichierbin)/8;
 		fseek(fichierbin, 0,SEEK_SET);
+		//printf("Nombre de valeurs du fichier bin : %d\n",nbrValeurs);
 
 		//on determine le nombre d'intervalles k de n echantillons (on découpe l'axe des abscisses)
 		k=(nbrValeurs/n)+1;
+		//printf("k = : %d\n",k);
 		
 		//on calcule l'intevralle de frequence (on découpe l'axe des ordonnées)
 		intervalleFrequence=(float)2/(float)m;
+		//printf("m = : %d\n",m);
 		
 		//on alloue la matrice qui représente l' histogramme 
 		histogramme=(int**)malloc(k*sizeof(int*));
@@ -131,7 +133,7 @@ void histogrammeAudio(char* NomFichierParam){
 				
 
 				//on remplit l'histogramme
-				while (ftell(fichierbin)/8!=nbrValeurs){
+				while ((ftell(fichierbin)/8)!=nbrValeurs){
 					for (int i=0; i<k;i++){
 					fread(&valeurLue,sizeof(double),1,fichierbin);
 						for(int j=0;j<m;j++){

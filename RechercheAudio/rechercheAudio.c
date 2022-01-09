@@ -7,8 +7,9 @@
 #include "arbre.h"
 
 
-
+//Compare le fichier 1 avec le fichier 2
 float comparaison(char* Nomfichier1 , char* Nomfichier2){
+	//variables
 	FILE* fichier1;
 	FILE* fichier2;
 	fichier1=fopen(Nomfichier1,"r");
@@ -18,37 +19,38 @@ float comparaison(char* Nomfichier1 , char* Nomfichier2){
 	int valeur1=0;
 	int valeur2=0;
 	float pourcentage;
-	int pourcentageMin=100;
+	float pourcentageMin=100;
 	int frame=0;
 
 	
-	
+	//on verifie l'ouverture des descripteurs
 	if((fichier1!=NULL)&&(fichier2!=NULL)){
 		
 		//on récupère les identidiants 
+		
 		fgets(identifiant1,50,fichier1);
 		identifiant1[strlen(identifiant1)-1]='\0';
 		//strcat(identifiant1,".wav");
 		//printf("l'identifiant 1 est  : %s\n",identifiant1);
-		
+
 		fgets(identifiant2,50,fichier2);
 		identifiant2[strlen(identifiant2)-1]='\0';
 		//strcat(identifiant2,".wav");
 		//printf("l'identifiant 2 est  : %s\n",identifiant2);
 		
-		
+		//on reucupère les dimensions de l'histogramme
 		int m;
 		int k1;
-		
 		int k2;
-		
+	
 		fscanf(fichier1,"%d %d\n",&m,&k1);
 		fscanf(fichier2,"%d %d\n",&m,&k2);
 		
 		
+		//Si le fichier 1 est plus petit que le fichier 2
 		if (k2>=k1){
 	
-
+			//Pour chaque parcelle du fichier 2 qui va etre comparée au fichier 1
 			for (int p=1; p<=(k2-k1)+1; p++){
 				
 				int maxH1=0;
@@ -56,11 +58,12 @@ float comparaison(char* Nomfichier1 , char* Nomfichier2){
 				int difference;
 				int differenceTot=0;
 				
-				
+				//Pour chaque valeur des deux histogrammes
 				for (int i=0; i<k1;i++){
 					for(int j=0;j<m;j++){
 						
 						
+						//On recupère les valeurs 
 						
 						//valeur1=getc(fichier1);
 						fscanf(fichier1,"%d ", &valeur1);
@@ -70,16 +73,22 @@ float comparaison(char* Nomfichier1 , char* Nomfichier2){
 						//printf("la valeur 1 est  : %d\n",valeur1);
 						//printf("la valeur 2 est  : %d\n",valeur2);
 						
+						//On fait la somme de ces valeurs pour chaque histogramme
 						maxH1+=(int)valeur1;
 						maxH2+=(int)valeur2;
 						
+						//On calcule la difference des deux valeurs 
+						
 						difference = abs((int)valeur1-(int)valeur2);
+						
+						//on ajoute a la difference totale 
 						differenceTot+=difference;
 						//printf("La difference est de : %d ",difference);
 					}
 					
 				}
 				
+				//on calcule le poucentage
 				pourcentage = ((float)differenceTot/(float)(maxH1+maxH2))*100;
 				
 				//printf("La difference totale est de : %d \n",differenceTot);
@@ -87,11 +96,14 @@ float comparaison(char* Nomfichier1 , char* Nomfichier2){
 				//printf("maxh2 : %d \n",maxH2);
 				//printf(" le pourcentage est de difference est de %f \n",pourcentage);
 				
+				//on prends le pourcentage min
 				if(pourcentageMin>pourcentage){
 					pourcentageMin=pourcentage;
 					frame=p;
 				}
 				
+				
+				//on replace le curseur des fichiers 1 et 2 aux bons endroits pour refaire une comparaison
 				fseek(fichier1,0,SEEK_SET);
 				//printf("ftell fichier 1  %d\n",ftell(fichier1));
 				while (fgetc(fichier1)!='\n'){
@@ -116,12 +128,12 @@ float comparaison(char* Nomfichier1 , char* Nomfichier2){
 				
 
 			}
-			//printf("pourcentage min  %d  ",pourcentageMin);
+			//printf("pourcentage min  %f  ",pourcentageMin);
 			//printf("valeur p  %d  \n",frame);
 			
 		}
 	
-	
+	//Si le fichier 2 est plus petit que le fichier 1
 	else {
 		for (int p=1; p<=(k1-k2)+1; p++){
 				
@@ -219,7 +231,7 @@ void comparaisonRepertoire(char * fichierReference){
 				strcat(chemin,nomFichier);
 				float difference=comparaison(fichierReference,chemin);
 			
-				
+				//on met tout cela dans un arbre GRD
 				ELEMENT document;
 				
 				document.nom=dir->d_name;
@@ -267,13 +279,13 @@ void IHM(){
 				strcat(chemin,souhait);
 				existe=1;
 				comparaisonRepertoire(chemin);
-			} else {
-				existe=0;
-			}
+			} 
 		}
 		if (existe==0){
 			printf("document inconnu\n");
 		}
+		printf("\n");
+		printf("\n");
 	}
 
 
