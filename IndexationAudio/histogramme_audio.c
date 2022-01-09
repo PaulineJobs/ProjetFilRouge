@@ -6,6 +6,7 @@
 #include <wchar.h>
 #include <dirent.h>
 #include "histogramme_audio.h"
+#include "../Configuration/configuration.h"
 
 
 
@@ -22,9 +23,9 @@ void typeFichierAudio(char* nomFichier){
 }
 
 
-
-
-//Lit le paramètre m dans la configuration
+//Plutôt utiliser l'outils de recherche de valeur de paramètre config(String nomParam) de configuration.c
+/*
+//Lit le paramètre m dans la configuration 
 int lireConfigAudioM(){
 	FILE * fichierConfig;
 	int valeurLue;
@@ -71,7 +72,7 @@ int lireConfigAudioN(){
 	
 	return valeurLue;
 }
-
+*/
 
 
 
@@ -89,8 +90,15 @@ void histogrammeAudio(char* NomFichierParam){
 	char *nomFichier=(char *)malloc(strlen(NomFichierParam)+1);
 	
 	//on va lire les paramètres dans la config
-	int m=lireConfigAudioM();
-	int n=lireConfigAudioN();
+	int m = config("indexationAudioM");
+	int n = config("indexationAudioN");
+
+	//Vérification des valeurs de n et m dans le .config
+	if(n<1 || n>30000 || m<1){ //note : on pourrait peut être faire un renvoi direct vers la methode de modification de la config ? (pas sur de ça, c'est un peu lourd jtrouve)
+		fprintf(stderr, "\e[0;31m\n/!\\Attention /!\\\nLes valeurs n et/ou m de l'indexation audio sont mal configurées (<1 ou >30 000).\nMerci de modifier ces paramètres dans la configuration.\n\n\e[0mMise à jour avec des valeurs par défaut : n = 1024 et m = 100.\n\n");
+		m = 100;
+		n = 1024;
+	}
 
     // ouvrir le fichier en lecture et avoir le nombre de valeurs
     fichierbin = fopen(strcat(emplacement,NomFichierParam),"rb");
@@ -224,8 +232,8 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 void miseAJourListeDescripteurs(char* nomFichierParam){
 	FILE* listeDescripteurs;
 	listeDescripteurs=fopen("../Liste_descripteurs/Liste_descripteurs_audios.txt","a");
-	fprintf(listeDescripteurs,nomFichierParam);
-	fprintf(listeDescripteurs,"\n");
+	fprintf(listeDescripteurs,"%s \n",nomFichierParam);
+	//fprintf(listeDescripteurs,"\n");
 	fclose(listeDescripteurs);
 	
 }
