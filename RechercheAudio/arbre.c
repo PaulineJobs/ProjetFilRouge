@@ -7,7 +7,7 @@
 void affiche_ELEMENT(ELEMENT e){
 	printf("%s ",e.nom);
 	printf(" --> ");
-	printf("%d % \n", e.ressemblance);
+	printf("%d \n", e.ressemblance);
 }
 
 
