@@ -28,6 +28,13 @@ void seConnecter();
 //choixAdmin(): choix : rechercher ou configurer
 void choixAdmin();
 
+void recherche ();
+
+void RechercheClassique() ;
+
+void lanceFichierImage(char *fichierImage);
+void lanceFichierTexte(char *fichierTexte);
+
 
 
 #endif

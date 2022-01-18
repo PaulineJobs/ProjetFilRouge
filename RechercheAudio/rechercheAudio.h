@@ -4,6 +4,8 @@
 float comparaison(char* , char* );
 void comparaisonRepertoire(char *);
 void IHM();
+void ihm();
+void lanceFichierAudio(char *fichierAudio);
 
 
 

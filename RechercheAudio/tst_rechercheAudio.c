@@ -9,7 +9,8 @@ int main(){
 	//comparaisonRepertoire("../Base_descripteurs/Base_descripteurs_audios/jingle_fi_descripteur.txt");
 	//comparaisonRepertoire("../Base_descripteurs/Base_descripteurs_audios/corpus_fi_descripteur.txt");
 	//comparaison("../Base_descripteurs/Base_descripteurs_audios/jingle_fi_descripteur.txt","../Base_descripteurs/Base_descripteurs_audios/jingle_fi_descripteur.txt");
-	float valeur=comparaison("../Base_descripteurs/Base_descripteurs_audios/test1_descripteur.txt","../Base_descripteurs/Base_descripteurs_audios/test_descripteur.txt");
-	printf("%f",valeur);
+	//float valeur=comparaison("../Base_descripteurs/Base_descripteurs_audios/test1_descripteur.txt","../Base_descripteurs/Base_descripteurs_audios/test_descripteur.txt");
+	//printf("%f",valeur);
+	ihm();
 	return 0;
 }

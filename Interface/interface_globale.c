@@ -3,6 +3,7 @@
 #include <string.h>
 #include <dirent.h>
 #include <unistd.h>
+#include <unistd.h>
 #include "interface_globale.h"
 #include "../Configuration/configuration.h"
 #include "../IndexationAudio/histogramme_audio.c"
@@ -18,6 +19,7 @@ void ouverture(){
 	printf(" \n");
 	printf(" \n");
 	printf(" Ouverture de l'application \n");
+	printf(" Veuillez patienter... \n");
 	rmDescripteurs("../Base_descripteurs/Base_descripteurs_audios");
 	rmDescripteurs("../Base_descripteurs/Base_descripteurs_textes");
 	rmDescripteurs("../Base_descripteurs/Base_descripteurs_images");
@@ -53,8 +55,8 @@ void menuPrincipal(){
 		switch (choixAction[0]){	
 		case 'A' :
 			//Si l'utilisateur a demandé la fonction recherche 
-			printf(" Vous avez choisir d'effectuer une recherche\n");
-			IHM();	
+			printf(" Vous avez choisi d'effectuer une recherche\n");
+			recherche();	
 			break;
 		case 'B' :
 			//Si l'utilisateur a demandé la fonction connexion
@@ -148,7 +150,7 @@ void choixAdmin(){
 		//On fait une recherche 
 		case 'A': 
 			printf(" Vous avez choisir d'effectuer une recherche\n");	
-			IHM();
+			recherche ();
 			break;
 		//On indexe
 		//on configure
@@ -266,6 +268,170 @@ void automatisationAudio(){
   
 }
 
+
+void recherche (){
+	//variables
+	char choixAction[10];
+	choixAction[0]='0';
+	
+	
+	while((choixAction[0]!='D')){
+		printf(" Quel type de recherche voulez-vous effectuer ? \n \r");
+		printf("\n");
+		printf(" A - Recherche par nom de fichier  \n \r");
+		printf(" B - Recherche par mots clefs  \n \r");
+		printf(" C - Recherche par similitudes  \n \r");
+		printf(" D - Retour \n \r");
+		scanf("%s",choixAction);
+		
+		switch (choixAction[0]){
+			case 'A' : 
+			printf(" Vous avez choisi une recherche par nom de fichier  \n \r");
+			RechercheClassique();
+			choixAction[0]='D';
+			break;
+			
+			case 'B' :
+			printf(" Vous avez choisi une recherche par mots clefs \n \r");
+			printf(" Cette fonctionnalité est en maintenance  \n \r");
+			choixAction[0]='D';
+			break;
+			
+			case 'C':
+			printf(" Vous avez choisi une recherche par similitudes \n \r");
+			IHM();
+			choixAction[0]='D';
+			break;
+			
+			case 'D':
+			printf(" Vous avez choisi de retourner au Menu Principal \n \r");
+			choixAction[0]='D';
+			break;
+			
+			default :
+			printf(" Erreur : caractère invalide \n");
+		}
+		printf("\n ");
+		
+	}
+}
+
+
+void RechercheClassique() {
+	char souhait[100];
+	char suite[10];
+	int fichierConnu=0;
+	printf("Entrez le nom de votre fichier\n");
+	scanf("%s",&souhait);
+	
+    int j;
+    if (strlen(souhait) > 4) {
+       for (j = 0; souhait[j + 3]; j++) {         
+          if (!strcmp(&souhait[j], ".wav")){
+			//printf("fichier audio\n");
+			char chemin[strlen("../Corpus/AUDIO/")+1+ strlen(souhait)];
+			strcpy(chemin,"../Corpus/AUDIO/");
+			strcat(chemin,souhait);
+			char *fichier=(chemin);
+			lanceFichierAudio(fichier);
+			fichierConnu=1;
+			printf("\n");
+			 
+		 } 
+       }
+       
+       for (j = 0; souhait[j + 3]; j++) {         
+          if (!strcmp(&souhait[j], ".xml")){
+			  //printf("fichier texte\n");
+			char chemin[strlen("../Corpus/TEXTE/")+1+ strlen(souhait)];
+			strcpy(chemin,"../Corpus/TEXTE/");
+			strcat(chemin,souhait);
+			char *fichier=(chemin);
+			lanceFichierTexte(fichier);
+			fichierConnu=1;
+			printf("\n");
+			 
+		 } 
+       }
+       
+      for (j = 0; souhait[j + 3]; j++) {         
+          if (!strcmp(&souhait[j], ".bmp")){
+			//printf("fichier img nb\n");
+			char chemin[strlen("../Corpus/IMAGE/NB/")+1+ strlen(souhait)];
+			strcpy(chemin,"../Corpus/IMAGE/NB/");
+			strcat(chemin,souhait);
+			char *fichier=(chemin);
+			lanceFichierImage(fichier);
+			fichierConnu=1;
+			printf("\n");
+			 
+		 } 
+       }
+       
+      for (j = 0; souhait[j + 3]; j++) {         
+          if (!strcmp(&souhait[j], ".jpg")){
+			  //sprintf("fichier img rvb\n");
+			char chemin[strlen("../Corpus/IMAGE/RGB/")+1+ strlen(souhait)];
+			strcpy(chemin,"../Corpus/IMAGE/RGB/");
+			strcat(chemin,souhait);
+			char *fichier=(chemin);
+			lanceFichierImage(fichier);
+			fichierConnu=1;
+			printf("\n");
+			 
+		 } 
+       }
+       
+    
+    }
+    
+    if (fichierConnu==1){
+		sleep(2);
+		printf("\n");
+		printf("Appuyez sur n'importe qu'elle touche pour retourner au Menu Principal\n");
+		scanf("%s",&suite);
+		
+	} else {
+		printf("fichier inconnu\n");
+	}
+}
+
+
+void lanceFichierImage(char *fichierImage) {
+	char *lecteurImage="/usr/bin/eom";
+	char *commande;
+
+    // Allocation lecteurAudion + espace+ fichierAudio + &
+	commande=(char *)malloc(strlen(fichierImage)+strlen(lecteurImage)+1+1+1);
+	//printf("Malloc %d \n",strlen(fichierAudio)+strlen(lecteurAudio)+1+1);
+	if (commande !=NULL){
+		strcpy(commande,lecteurImage);
+		strcat(commande," ");
+		strcat(commande,fichierImage);
+		strcat(commande,"&");
+		//printf("Lancement de la commande %s\n",commande);
+		system(commande);
+		free(commande);
+	}
+}
+
+void lanceFichierTexte(char *fichierTexte) {
+	char *lecteurTexte="/usr/bin/gedit";
+	char *commande;
+
+    // Allocation lecteurAudion + espace+ fichierAudio + &
+	commande=(char *)malloc(strlen(fichierTexte)+strlen(lecteurTexte)+1+1+1);
+	//printf("Malloc %d \n",strlen(fichierAudio)+strlen(lecteurAudio)+1+1);
+	if (commande !=NULL){
+		strcpy(commande,lecteurTexte);
+		strcat(commande," ");
+		strcat(commande,fichierTexte);
+		strcat(commande,"&");
+		//printf("Lancement de la commande %s\n",commande);
+		system(commande);
+		free(commande);
+	}
+}
 
 
 

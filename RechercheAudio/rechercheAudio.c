@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include "rechercheAudio.h"
 #include "arbre.h"
+#
 
 
 //Compare le fichier 1 avec le fichier 2
@@ -290,4 +291,35 @@ void IHM(){
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+void lanceFichierAudio(char *fichierAudio) {
+	char *lecteurAudio="/usr/bin/vlc";
+	char *commande;
+
+    // Allocation lecteurAudion + espace+ fichierAudio + &
+	commande=(char *)malloc(strlen(fichierAudio)+strlen(lecteurAudio)+1+1+1);
+	//printf("Malloc %d \n",strlen(fichierAudio)+strlen(lecteurAudio)+1+1);
+	if (commande !=NULL){
+		strcpy(commande,lecteurAudio);
+		strcat(commande," ");
+		strcat(commande,fichierAudio);
+		strcat(commande,"&");
+		//printf("Lancement de la commande %s\n",commande);
+		system(commande);
+		free(commande);
+	}
+}
+
+
+
 	
