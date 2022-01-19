@@ -6,7 +6,6 @@ Lier aux fichiers : tstNettoyageTexte.c et nettoyageTexte.h
 
 #include <stdio.h>
 #include <dirent.h>
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -23,7 +22,7 @@ void passageXmlClean()//Mettre en paramettre d'entré le nom du fichier choisit
     texteXml = fopen("Corpus/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.xml", "r");
 
     // ouvrir le fichier en écriture
-    texteClean = fopen("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean", "w");
+    texteClean = fopen("Nettoyer/03-Des_chercheurs_parviennent_a_regenerer.clean", "w");
   
     // Lire le contenu du fichier
     while((var = getc(texteXml)) != EOF)
@@ -41,15 +40,16 @@ void majMin()
     int sup;
   
     // ouvrir le fichier en lecture
-    maj = fopen("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean", "r");
+    maj = fopen("Nettoyer/03-Des_chercheurs_parviennent_a_regenerer.clean", "r");
 
     // ouvrir le fichier en écriture
-    min = fopen("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrerr.clean", "w");
+    min = fopen("Nettoyer/03-Des_chercheurs_parviennent_a_regenererr.clean", "w");
 
   
     // Lire le contenu du fichier
     while((lettre = getc(maj)) != EOF){
-        if(lettre < 129){ //Verifit que la lettre n'est pas un accent (code ASCII)
+        if(lettre < 129)
+        { //Verifit que la lettre n'est pas un accent (code ASCII)
            lettre = tolower(lettre); //Transforme les Maj en min
         }
         putc(lettre, min); //ecriture de la nouvelle lettre dans le fichier
@@ -59,7 +59,7 @@ void majMin()
     fclose(maj);
     fclose(min);
 
-    sup = remove("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean");
+    sup = remove("Nettoyer/03-Des_chercheurs_parviennent_a_regenerer.clean");
 }
 
 void suppressionBalise(){
@@ -70,7 +70,7 @@ void suppressionBalise(){
     balise = 0;
   
     // ouvrir le fichier en lecture
-    init = fopen("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrerr.clean", "r");
+    init = fopen("Nettoyer/03-Des_chercheurs_parviennent_a_regenererr.clean", "r");
 
     // ouvrir le fichier en écriture
     clean = fopen("Nettoyer/plusDeBalise.clean", "w");
@@ -93,7 +93,7 @@ void suppressionBalise(){
     fclose(init);
     fclose(clean);
 
-    sup = remove("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrerr.clean");
+    sup = remove("Nettoyer/03-Des_chercheurs_parviennent_a_regenererr.clean");
   
 }
 
@@ -134,7 +134,7 @@ void retirePonctuation(){
     texte = fopen("Nettoyer/apostrophe.clean", "r");
 
     // ouvrir le fichier en écriture
-    ponctuation = fopen("Nettoyer/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.clean", "w");
+    ponctuation = fopen("Nettoyer/03-Des_chercheurs_parviennent_a_regenerer.clean", "w");
 
     while((lettre = getc(texte)) != EOF){
         if(lettre == '.'){ 

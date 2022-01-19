@@ -1,0 +1,16 @@
+chercheurs 6
+souris 5
+cellules F
+souches :
+institut 4
+isoler 3
+chez 4
+musculaires 7
+adultes 6
+régénération 3
+travaux 3
+être 3
+
+12
+
+227
