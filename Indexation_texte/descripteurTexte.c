@@ -1,7 +1,7 @@
 /*
 Fichier réalisé par : Manon COUFFIN
-Derniere modif le : 16/01/2022
-Lier aux fichiers : tstFiltrageTexte.c et filtrageTexte.h
+Derniere modif le : 19/01/2022
+Lier aux fichiers : nettoyageTexte.c, nettoyageTexte.c, filtrageTexte.c, filtrageTexte.h, tstDescripteurTexte.c et descripteurTexte.h
 */
 
 #include <stdio.h>

@@ -1,6 +1,6 @@
 /*
 Fichier réalisé par : Manon COUFFIN
-Derniere modif le : 16/01/2022
+Derniere modif le : 19/01/2022
 Lier aux fichiers : tstDescripteurTexte.c et descripteurTexte.c
 */
 
