@@ -13,6 +13,7 @@
 #include "../IndexationAudio/indexationAudio.c"
 #include "../RechercheAudio/rechercheAudio.h"
 #include "../RechercheAudio/arbre.c"
+#include "../Indexation_texte/descripteurTexte.h"
 
 
 
@@ -258,14 +259,17 @@ void automatisationIndexation(){
         closedir(d);
     }
    
+   /*
 	//On lance l'indexation texte dans le repertoire contenant les fichiers textes
     DIR *dTexte= opendir("../../Corpus/TEXTE/"); 
     if (dTexte) {
         while ((dir = readdir(dTexte)) != NULL){
-			
+			if (strlen(dir->d_name)>4){
+				traitementTexte(dir->d_name);
+			}
         }
         closedir(dTexte);
-    }
+    }*/
     
 	//On lance l'indexation image dans le repertoire contenant les fichiers images
     DIR *dImage = opendir("../../Corpus/IMAGE/"); 
@@ -359,6 +363,7 @@ void RechercheClassique() {
 			char *fichier=(chemin);
 			lanceFichierTexte(fichier);
 			fichierConnu=1;
+			
 			printf("\n");
 			 
 		 } 
@@ -408,7 +413,7 @@ void RechercheClassique() {
 
 
 void lanceFichierImage(char *fichierImage) {
-	char *lecteurImage="/usr/bin/eom";
+	char *lecteurImage="eom";
 	char *commande;
 
     // Allocation lecteurAudion + espace+ fichierAudio + &
