@@ -22,7 +22,7 @@ void passageXmlClean()//Mettre en paramettre d'entré le nom du fichier choisit
     texteXml = fopen("Corpus/03-Des_chercheurs_parviennent_α_rΘgΘnΘrer.xml", "r");
 
     // ouvrir le fichier en écriture
-    texteClean = fopen("Nettoyer/03-Des_chercheurs_parviennent_a_regenerer.clean", "w");
+    texteClean = fopen("Nettoyer/texteConvertit.clean", "w");
   
     // Lire le contenu du fichier
     while((var = getc(texteXml)) != EOF)
@@ -40,10 +40,10 @@ void majMin()
     int sup;
   
     // ouvrir le fichier en lecture
-    maj = fopen("Nettoyer/03-Des_chercheurs_parviennent_a_regenerer.clean", "r");
+    maj = fopen("Nettoyer/texteConvertit.clean", "r");
 
     // ouvrir le fichier en écriture
-    min = fopen("Nettoyer/03-Des_chercheurs_parviennent_a_regenererr.clean", "w");
+    min = fopen("Nettoyer/plusDeMaj.clean", "w");
 
   
     // Lire le contenu du fichier
@@ -59,7 +59,7 @@ void majMin()
     fclose(maj);
     fclose(min);
 
-    sup = remove("Nettoyer/03-Des_chercheurs_parviennent_a_regenerer.clean");
+    sup = remove("Nettoyer/texteConvertit.clean");
 }
 
 void suppressionBalise(){
@@ -70,7 +70,7 @@ void suppressionBalise(){
     balise = 0;
   
     // ouvrir le fichier en lecture
-    init = fopen("Nettoyer/03-Des_chercheurs_parviennent_a_regenererr.clean", "r");
+    init = fopen("Nettoyer/plusDeMaj.clean", "r");
 
     // ouvrir le fichier en écriture
     clean = fopen("Nettoyer/plusDeBalise.clean", "w");
@@ -93,7 +93,7 @@ void suppressionBalise(){
     fclose(init);
     fclose(clean);
 
-    sup = remove("Nettoyer/03-Des_chercheurs_parviennent_a_regenererr.clean");
+    sup = remove("Nettoyer/plusDeMaj.clean");
   
 }
 

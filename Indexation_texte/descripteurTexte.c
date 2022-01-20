@@ -1,7 +1,7 @@
 /*
 Fichier réalisé par : Manon COUFFIN
 Derniere modif le : 19/01/2022
-Lier aux fichiers : nettoyageTexte.c, nettoyageTexte.c, filtrageTexte.c, filtrageTexte.h, tstDescripteurTexte.c et descripteurTexte.h
+Lier aux fichiers : nettoyageTexte.c et nettoyageTexte.c, filtrageTexte.c, filtrageTexte.h, tstDescripteurTexte.c et descripteurTexte.h
 */
 
 #include <stdio.h>
@@ -34,12 +34,33 @@ void copieTexteTok(void)//Mettre en paramettre d'entré le nom du fichier choisi
     fclose(copie);
 }
 
+void recupId(char* fileName, char* theFileName){
+   //déclarations locales
+   int quitter = 0;
+   int cpt =0; //strlen(fileName);
+   char caractere;
+   int cpt1 = 0;
+   //fin déclarations locales
+
+   while(!quitter) {
+        caractere = fileName[cpt];
+        cpt++;
+        if(caractere != '-') 
+        {
+            theFileName[cpt1] = caractere;
+            cpt1++;
+        }
+        else
+            quitter = 1;
+   }
+}
+
 void comptage(void) //Mettre en paramettre d'entré le nom du fichier choisit
 {
 
     ///////////////// variables ////////////////////////
     FILE *mot, *descripteur, *texteTokCopie;
-    char token[500], synonyme[500];
+    char token[500], synonyme[500], chaine[5];
     int nbtokens = 0;
     char motId[500][500];
     int cpt = 0;
@@ -48,6 +69,7 @@ void comptage(void) //Mettre en paramettre d'entré le nom du fichier choisit
     int nbOcc= 0;
     int verif = 0;
     char nbOccChar;
+    char id, nomfile;
     int termesRetenus = 0;
 
 
@@ -59,6 +81,16 @@ void comptage(void) //Mettre en paramettre d'entré le nom du fichier choisit
 
     // ouvrir le fichier en écriture
     descripteur = fopen("Nettoyer/descripteur.txt", "w");
+
+
+    ///////// recup id ////////
+
+    recupId("03-Des_chercheurs_parviennent_a_regenerer.tok", chaine);
+    for(i=0; i < 2;i++) //Copie du mot dans le descripteur
+    {
+        putc(chaine[i], descripteur);
+    }
+    putc('\n', descripteur);
 
     /////////////// fonctions /////////////////
 
@@ -154,7 +186,6 @@ void comptage(void) //Mettre en paramettre d'entré le nom du fichier choisit
 
     }
 
-    char chaine[5];
     
     //Ajout du nombre de terme dans le descripteur
     putc('\n', descripteur);
@@ -180,11 +211,15 @@ void comptage(void) //Mettre en paramettre d'entré le nom du fichier choisit
     fclose(texteTokCopie);
     fclose(mot);
 
-
+    // supression du fichier copier
+    int sup = remove("Nettoyer/copieTexteSansStopword.tok");
 }
 
 void traitementTexte()
 {
+
+    ///////// fonction bilan de l'indexation texte///////
+    
     Nettoyage();
     passageCleanTok();
     copieTexteTok();

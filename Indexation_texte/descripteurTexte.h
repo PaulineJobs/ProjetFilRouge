@@ -19,5 +19,6 @@ Lier aux fichiers : tstDescripteurTexte.c et descripteurTexte.c
 void copieTexteTok(void);
 void comptage(void);
 void traitementTexte();
+void recupId(char* fileName, char* theFileName);
 
 #endif
