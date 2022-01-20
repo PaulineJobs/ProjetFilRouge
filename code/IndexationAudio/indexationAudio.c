@@ -5,13 +5,13 @@
 #include <ctype.h>
 #include <wchar.h>
 #include <dirent.h>
-#include "histogramme_audio.h"
+#include "indexationAudio.h"
 #include "../Configuration/configuration.h"
 
 
 
 //Verifie que le fichier est bien un fichier audio avant indexation
-void typeFichierAudio(char* nomFichier){
+void VerifTypeFichierAudio(char *nomFichier){
     int j;
     if (strlen(nomFichier) > 4) {
        for (j = 0; nomFichier[j + 3]; j++) {         
@@ -21,59 +21,6 @@ void typeFichierAudio(char* nomFichier){
        }
     }
 }
-
-
-//Plutôt utiliser l'outils de recherche de valeur de paramètre config(String nomParam) de configuration.c
-/*
-//Lit le paramètre m dans la configuration 
-int lireConfigAudioM(){
-	FILE * fichierConfig;
-	int valeurLue;
-	int numLigneLu;
-	int numLigne;
-	
-	//on va lire la valeur dans la config
-	fichierConfig = fopen("../Configuration/.config","r");
-	char* criterem="indexationAudioM";
-	char critereLu[50];
-	fscanf(fichierConfig, "%d %s %d",&numLigneLu, critereLu, &valeurLue);		
-	
-    while (strcmp(critereLu,criterem)!=0){
-		fscanf(fichierConfig, "%d %s %d",&numLigneLu, critereLu, &valeurLue);
-	}
-	
-	fclose(fichierConfig);
-	
-	return valeurLue;
-}
-
-
-
-
-
-//Lit le paramètre n dans la configuration
-int lireConfigAudioN(){
-	FILE * fichierConfig;
-	int valeurLue;
-	int numLigneLu;
-	int numLigne;
-	
-	//on va lire la valeur dans la config
-	fichierConfig = fopen("../Configuration/.config","r");
-	char* criteren="indexationAudioN";
-	char critereLu[50];
-	fscanf(fichierConfig, "%d %s %d",&numLigneLu, critereLu, &valeurLue);
-
-    while (strcmp(critereLu,criteren)!=0){
-		fscanf(fichierConfig, "%d %s %d",&numLigneLu, critereLu, &valeurLue);
-	}
-	
-	fclose(fichierConfig);
-	
-	return valeurLue;
-}
-*/
-
 
 
 //on cree l'histogramme du fichier audio
@@ -86,7 +33,7 @@ void histogrammeAudio(char* NomFichierParam){
     double intervalleFrequence;
     int k;
     double valeurLue;
-	char emplacement []="../Corpus/AUDIO/";
+	char emplacement []="../../Corpus/AUDIO/";
 	char *nomFichier=(char *)malloc(strlen(NomFichierParam)+1);
 	
 	//on va lire les paramètres dans la config
@@ -177,7 +124,7 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 	char suffixeDescripteur[]="_descripteur.txt";
 	//char identifiant[strlen(NomFichierParam)];
 	//char nomDescripteur[strlen(NomFichierParam)+strlen(suffixeDescripteur)];
-	char emplacement[]="../Base_descripteurs/Base_descripteurs_audios/";
+	char emplacement[]="../../Base_descripteurs/Base_descripteurs_audios/";
 	
 	char *identifiant=(char *)malloc(strlen(NomFichierParam)+1);
 	char *nomDescripteur=(char *)malloc(strlen(NomFichierParam)+strlen(suffixeDescripteur)+1);
@@ -231,7 +178,7 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 //écrit le nom du fichier dans la liste des descripteurs
 void miseAJourListeDescripteurs(char* nomFichierParam){
 	FILE* listeDescripteurs;
-	listeDescripteurs=fopen("../Liste_descripteurs/Liste_descripteurs_audios.txt","a");
+	listeDescripteurs=fopen("../../Liste_descripteurs/Liste_descripteurs_audios.txt","a");
 	fprintf(listeDescripteurs,"%s \n",nomFichierParam);
 	//fprintf(listeDescripteurs,"\n");
 	fclose(listeDescripteurs);
