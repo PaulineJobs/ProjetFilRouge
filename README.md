@@ -25,6 +25,7 @@ Ce projet est un moteur de recherche en language C, qui compare et recherche des
 A Chaque recherche, le logiciel va aller chercher la reponse au près des descripteurs des fichiers. L'admin lui va avoir accés au Coorpus pour y ajourter des fichiers ou en retirer. 
 
 ![algo](https://user-images.githubusercontent.com/92680110/150434166-d3b6f2fb-9e18-4ecb-9723-f64cfdde141d.png)
+
 Voici l'organigrame représentant le système de fonctionnement du logitiel.
 
 
