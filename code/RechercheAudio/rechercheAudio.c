@@ -251,7 +251,7 @@ void IHM(){
 
 
 void lanceFichierAudio(char *fichierAudio) {
-	char *lecteurAudio="/usr/bin/vlc";
+	char *lecteurAudio="vlc";
 	char *commande;
 
     // Allocation lecteurAudion + espace+ fichierAudio + &

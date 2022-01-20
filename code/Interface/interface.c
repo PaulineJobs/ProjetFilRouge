@@ -114,11 +114,13 @@ void menuPrincipal(){
 		switch (choixAction[0]){	
 		case 'A' :
 			//Si l'utilisateur a demandé la fonction recherche 
+			//system("clear");
 			printf(" Vous avez choisi d'effectuer une recherche\n");
 			recherche();	
 			break;
 		case 'B' :
 			//Si l'utilisateur a demandé la fonction connexion
+			//system("clear");
 			printf(" Vous avez choisi d'acceder aux droits administrateur\n");
 			printf(" \n");
 			seConnecter();	
@@ -159,6 +161,7 @@ void seConnecter(){
 		
 		//si le mot de passe est correcte, on connecte
 		if (strcmp(motDePasse,"1234")==0){
+			//system("clear");
 			printf("Connexion réussie\n");
 			printf(" Vous êtes désormais administrateur  \n \r");
 			printf(" \n");
@@ -170,6 +173,7 @@ void seConnecter(){
 		}else {
 			
 			//si le mot de passe est incorrecte, on repropose la connexion ou le retour au menu principal
+			//system("clear");
 			printf("Mot de passse incorrecte\n");
 			printf("Voulez-vous réessayer ?\n");
 			printf("A-Oui, je veux me reconnecter\n");
@@ -178,10 +182,12 @@ void seConnecter(){
 			
 			//reconnexion
 			if(choixConnexion[0]=='A'){
+				//system("clear");
 				printf("Vous avez choisi de vous reconnecter\n");
 			} else {
 				
 				//retour au menu principal
+				//system("clear");
 				printf("Vous avez choisi de retourner au menu principal\n");
 			}
 		}
@@ -219,12 +225,14 @@ void choixAdmin(){
 			
 		//On fait une recherche 
 		case 'A': 
+			//system("clear");
 			printf(" Vous avez choisir d'effectuer une recherche\n");	
 			recherche ();
 			break;
 			
 		//on configure
 		case 'B' :
+			//system("clear");
 			printf(" Vous avez choisi de configurer la méthode d'indexation \n");
 			editConfig();
 			printf("\nModification effectuée \n\n");	
@@ -232,11 +240,13 @@ void choixAdmin(){
 			
 		//on retourne au Menu principal
 		case 'C' :
+			//system("clear");
 			printf(" Vous avez choisi de retourner au menu principal\n");
 			break;
 			
 		//Si le caractère est invalide, on redemande le choix
 		default :
+			//system("clear");
 			printf(" Erreur : caractère invalide. Choisissez A, B ou C\n \r");
 
 		}
@@ -300,30 +310,35 @@ void recherche (){
 		
 		switch (choixAction[0]){
 			case 'A' : 
-			printf(" Vous avez choisi une recherche par nom de fichier  \n \r");
-			RechercheClassique();
-			choixAction[0]='D';
-			break;
+				//system("clear");
+				printf(" Vous avez choisi une recherche par nom de fichier  \n \r");
+				RechercheClassique();
+				choixAction[0]='D';
+				break;
 			
 			case 'B' :
-			printf(" Vous avez choisi une recherche par mots clefs \n \r");
-			printf(" Cette fonctionnalité est en maintenance  \n \r");
-			choixAction[0]='D';
-			break;
+				//system("clear");
+				printf(" Vous avez choisi une recherche par mots clefs \n \r");
+				printf(" Cette fonctionnalité est en maintenance  \n \r");
+				choixAction[0]='D';
+				break;
 			
 			case 'C':
-			printf(" Vous avez choisi une recherche par similitudes \n \r");
-			IHM();
-			choixAction[0]='D';
-			break;
+				//system("clear");
+				printf(" Vous avez choisi une recherche par similitudes \n \r");
+				IHM();
+				choixAction[0]='D';
+				break;
 			
 			case 'D':
-			printf(" Vous avez choisi de retourner au Menu Principal \n \r");
-			choixAction[0]='D';
-			break;
+				//system("clear");
+				printf(" Vous avez choisi de retourner au Menu Principal \n \r");
+				choixAction[0]='D';
+				break;
 			
 			default :
-			printf(" Erreur : caractère invalide \n");
+				//system("clear");
+				printf(" Erreur : caractère invalide \n");
 		}
 		printf("\n ");
 		
@@ -405,6 +420,7 @@ void RechercheClassique() {
 		printf("\n");
 		printf("Appuyez sur n'importe qu'elle touche pour retourner au Menu Principal\n");
 		scanf("%s",&suite);
+		//system("clear");
 		
 	} else {
 		printf("fichier inconnu\n");
@@ -431,7 +447,7 @@ void lanceFichierImage(char *fichierImage) {
 }
 
 void lanceFichierTexte(char *fichierTexte) {
-	char *lecteurTexte="/usr/bin/gedit";
+	char *lecteurTexte="gedit";
 	char *commande;
 
     // Allocation lecteurAudion + espace+ fichierAudio + &
