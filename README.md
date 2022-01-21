@@ -1,6 +1,7 @@
 # ProjetFilRouge
 *Auteurs : AMBLARD Lucas, BELLER Willy, COUFFIN Manon, JOBERT Pauline et LEVANEN Antoine*
-dernière mise à jour du README.md : 20/01/2022
+
+Dernière mise à jour du README.md : 20/01/2022
 
 
 Installation
@@ -15,6 +16,8 @@ Il ne reste plus qu'à lancer le code avec les lignes de commande :
 $ cd code/Interface
 $ make
 ```
+
+**ATTENTION**, il faut être sous Linux pour faire tourner le logiciel.
 
 Présentation du projet
 ----
