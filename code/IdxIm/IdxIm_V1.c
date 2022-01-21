@@ -123,7 +123,7 @@ void recupIdIm(char* fileName, char* theFileName){
 //---------------------------------------------------------
 void creaDescripteur(char* theFileName, int nbVal, int* tabValPix, int type){
    //Déclarations locales
-    char theTargetFileName[100] = "/home/lucas1/Documents/GitHub/ProjetFilRouge/Base_descripteurs/";	
+    char theTargetFileName[100] = "../../Base_descripteurs/";	
     FILE * fichierT;	
     int cpt;  
    //fin déclarations locales
