@@ -17,7 +17,7 @@ $ cd code/Interface
 $ make
 ```
 
-**ATTENTION**, il faut être sous Linux pour faire tourner le logiciel. Il faut aussi avoir vlc pour la lecture des audios, gedit pour le texte et eom pour les images.
+**ATTENTION**, il faut être sous Linux pour faire tourner le logiciel. Il faut aussi avoir vlc pour la lecture des audios, gedit pour les textes et eom pour les images.
 
 
 Présentation du projet
