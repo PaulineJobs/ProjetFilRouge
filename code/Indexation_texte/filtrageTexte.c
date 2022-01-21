@@ -21,7 +21,8 @@ void passageCleanTok(void) //Mettre en paramettre d'entré le nom du fichier cho
     FILE *texteTok, *texteClean, *stoplist;
     char token[20], stopword[20];
     int cpt = 0;
-    int i, sup;
+    int i;
+    int sup =1;
     int verif = 0;
     
     // ouvrir les fichiers en lecture
@@ -84,7 +85,10 @@ void passageCleanTok(void) //Mettre en paramettre d'entré le nom du fichier cho
     fclose(texteClean);
     
     //
-    int supprimer = remove("../Indexation_texte/Nettoyer/fichier.clean");
+    while(sup)
+    {
+       sup = remove("../Indexation_texte/Nettoyer/fichier.clean");
+    }
     
 }
 

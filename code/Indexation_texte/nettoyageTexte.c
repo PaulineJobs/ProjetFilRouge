@@ -32,7 +32,8 @@ void passageXmlClean(char * NomTexteXML)//Mettre en paramettre d'entré le nom d
 
     // ouvrir le fichier en écriture
     texteClean = fopen("../Indexation_texte/Nettoyer/texteConvertit.clean", "w");
-	if (texteClean !=NULL){
+	if (texteClean !=NULL)
+    {
 		// Lire le contenu du fichier
 		while((var = getc(texteXml)) != EOF)
 			putc(var, texteClean);
@@ -40,7 +41,9 @@ void passageXmlClean(char * NomTexteXML)//Mettre en paramettre d'entré le nom d
 		//Fermer les 2 textes
 		fclose(texteXml);
 		fclose(texteClean);
-	} else {
+	} 
+    else 
+    {
 		printf("malloc non effectué");
 	}
 	
@@ -50,7 +53,7 @@ void majMin()
 {
     FILE *maj, *min;
     char lettre;
-    int sup;
+    int sup=1;
   
     // ouvrir le fichier en lecture
     maj = fopen("../Indexation_texte/Nettoyer/texteConvertit.clean", "r");
@@ -72,13 +75,18 @@ void majMin()
     fclose(maj);
     fclose(min);
 
-    sup = remove("../Indexation_texte/Nettoyer/texteConvertit.clean");
+    while(sup)
+    {
+       sup = remove("../Indexation_texte/Nettoyer/texteConvertit.clean"); 
+    }
+    
 }
 
 void suppressionBalise(){
     FILE *init, *clean;
     char lettre;
-    int balise, sup;
+    int balise;
+    int sup = 1;
 
     balise = 0;
   
@@ -106,14 +114,17 @@ void suppressionBalise(){
     fclose(init);
     fclose(clean);
 
-    sup = remove("../Indexation_texte/Nettoyer/plusDeMaj.clean");
+    while(sup)
+    {
+       sup = remove("../Indexation_texte/Nettoyer/plusDeMaj.clean"); 
+    }
   
 }
 
 void espaceApostrophe(){
     FILE *texte, *apostrophe;
     char lettre;
-    int sup;
+    int sup = 1;
   
     // ouvrir le fichier en lecture 
     texte = fopen("../Indexation_texte/Nettoyer/plusDeBalise.clean", "r");
@@ -134,14 +145,17 @@ void espaceApostrophe(){
     fclose(texte);
     fclose(apostrophe);
 
-    sup = remove("../Indexation_texte/Nettoyer/plusDeBalise.clean");
-  
+    
+  while(sup)
+    {
+       sup = remove("../Indexation_texte/Nettoyer/plusDeBalise.clean"); 
+    }
 }
 
 void retirePonctuation(){
     FILE *texte, *ponctuation;
     char lettre;
-    int sup;
+    int sup =1;
   
     // ouvrir le fichier en lecture 
     texte = fopen("../Indexation_texte/Nettoyer/apostrophe.clean", "r");
@@ -166,7 +180,11 @@ void retirePonctuation(){
     fclose(texte);
     fclose(ponctuation);
 
-    sup = remove("../Indexation_texte/Nettoyer/apostrophe.clean");
+
+    while(sup)
+    {
+        sup = remove("../Indexation_texte/Nettoyer/apostrophe.clean"); 
+    }
   
 }
 

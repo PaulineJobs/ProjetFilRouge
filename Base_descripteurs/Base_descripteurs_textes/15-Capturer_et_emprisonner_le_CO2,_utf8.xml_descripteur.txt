@@ -1,0 +1,19 @@
+15
+co2 21
+gaz 6
+géologiques 4
+n' 6
+d' 17
+% 10
+l' 29
+charbon 4
+s' 5
+stockage 5
+coût 4
+milliards 4
+tonnes 4
+000 5
+
+14
+
+369

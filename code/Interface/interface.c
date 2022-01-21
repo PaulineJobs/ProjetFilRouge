@@ -269,7 +269,7 @@ void automatisationIndexation(){
         closedir(d);
     }
    
-   /*
+
 	//On lance l'indexation texte dans le repertoire contenant les fichiers textes
     DIR *dTexte= opendir("../../Corpus/TEXTE/"); 
     if (dTexte) {
@@ -279,7 +279,7 @@ void automatisationIndexation(){
 			}
         }
         closedir(dTexte);
-    }*/
+    }
     
 	//On lance l'indexation image dans le repertoire contenant les fichiers images
     DIR *dImage = opendir("../../Corpus/IMAGE/"); 
@@ -351,7 +351,7 @@ void RechercheClassique() {
 	char suite[10];
 	int fichierConnu=0;
 	printf("Entrez le nom de votre fichier\n");
-	scanf("%s",&souhait);
+	scanf("%s",souhait);
 	
     int j;
     if (strlen(souhait) > 4) {
@@ -419,7 +419,7 @@ void RechercheClassique() {
 		sleep(2);
 		printf("\n");
 		printf("Appuyez sur n'importe qu'elle touche pour retourner au Menu Principal\n");
-		scanf("%s",&suite);
+		scanf("%s",suite);
 		//system("clear");
 		
 	} else {

@@ -1,0 +1,10 @@
+30
+quasar 7
+d' 11
+astronomes 4
+galaxie 5
+l' 9
+
+5
+
+203

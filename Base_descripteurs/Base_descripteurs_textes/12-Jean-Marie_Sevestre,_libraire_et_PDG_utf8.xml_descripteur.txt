@@ -1,0 +1,18 @@
+12
+jean-marie 10
+sevestre 10
+littérature 4
+homme 4
+d' 17
+titres 6
+rentrée 7
+montpellier 5
+sauramps 6
+librairie 10
+l' 11
+s' 6
+n' 4
+
+13
+
+387

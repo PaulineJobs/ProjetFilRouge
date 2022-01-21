@@ -1,0 +1,15 @@
+10
+katrina 4
+navette 5
+nasa 6
+mars 4
+2006 5
+s' 6
+vols 4
+l' 11
+d' 5
+n' 4
+
+10
+
+274

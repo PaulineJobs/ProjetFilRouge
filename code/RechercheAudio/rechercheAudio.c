@@ -203,7 +203,7 @@ void comparaisonRepertoire(char * fichierReference){
 void IHM(){
 	char souhait[100];
 	printf("Entrez le nom de votre fichier\n");
-	scanf("%s",&souhait);
+	scanf("%s",souhait);
 	
 
 	printf("\n");

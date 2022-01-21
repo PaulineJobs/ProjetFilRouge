@@ -12,6 +12,7 @@ Lier aux fichiers : nettoyageTexte.c et nettoyageTexte.c, filtrageTexte.c, filtr
 #include "descripteurTexte.h"
 #include "nettoyageTexte.h"
 #include "filtrageTexte.h"
+#include "../Configuration/configuration.h"
 
 
 void copieTexteTok(void)//Mettre en paramettre d'entré le nom du fichier choisit
@@ -62,16 +63,20 @@ void comptage(char* NomFichier) //Mettre en paramettre d'entré le nom du fichie
     ///////////////// variables ////////////////////////
     FILE *mot, *descripteur, *texteTokCopie;
     char token[500], synonyme[500], chaine[5];
-    int nbtokens = 0;
     char motId[500][500];
+    int nbtokens = 0;
     int cpt = 0;
     int cpt2 = 0;
-    int i, j;
+    int termesRetenus = 0;
+    int diz = 0;
+    int unit =0;
+    int cent = 0;
+    int sup =1;
+    int sup2 =1;
     int nbOcc= 0;
     int verif = 0;
-    char nbOccChar;
-    char id, nomfile;
-    int termesRetenus = 0;
+    char nbOccChar, id, nomfile;
+    int i, j;
 
 
     /////////////// fichiers //////////////////
@@ -96,6 +101,14 @@ void comptage(char* NomFichier) //Mettre en paramettre d'entré le nom du fichie
         putc(chaine[i], descripteur);
     }
     putc('\n', descripteur);
+
+
+    ////////////////////////// recup la valeur de la config ///////////////////
+
+    int n;    
+    char param[]="nbrOccurence";
+
+    n=config(param);
 
     /////////////// fonctions /////////////////
 
@@ -165,22 +178,47 @@ void comptage(char* NomFichier) //Mettre en paramettre d'entré le nom du fichie
 
             ////////////// recopie dans le descripteur /////////////
 
-            if (nbOcc>= 3) // si le mot apparait plus de 3 fois dans le texte, on le met dans le descripteur
+            if (nbOcc > n) // si le mot apparait plus de 3 fois dans le texte, on le met dans le descripteur
             {
                 for(i=0; i < strlen(token);i++) //Copie du mot dans le descripteur
                 {
                     putc(token[i], descripteur);
                 }
                 putc(' ', descripteur);
-                nbOccChar = nbOcc +'0'; // Convertit int en char
-                putc(nbOccChar, descripteur);
+
+                if(nbOcc>99)
+                {
+                    cent = nbOcc/100;
+                    putc((cent+'0'), descripteur);
+                    diz = (nbOcc/10)-(cent*100);
+                    putc((diz+'0'), descripteur);
+                    unit = nbOcc-(diz*10);
+                    putc((unit+'0'), descripteur);
+
+                } 
+                else if(nbOcc>9)
+                {
+                    diz = nbOcc/10;
+                    putc((diz+'0'), descripteur);
+                    unit = nbOcc-(diz*10);
+                    putc((unit+'0'), descripteur);
+                }
+                else
+                {
+                    nbOccChar = nbOcc +'0'; // Convertit int en char
+                    putc(nbOccChar, descripteur);
+                }
+
                 putc('\n', descripteur);
 
                 termesRetenus++; //Incremente du nombre de termes retenus dans le descripteur
 
             }
 
-            nbOcc= 0;            
+            nbOcc= 0; 
+            unit =0;
+            diz =0;  
+            cent = 0;         
         }
 
         verif = 0;
@@ -194,12 +232,20 @@ void comptage(char* NomFichier) //Mettre en paramettre d'entré le nom du fichie
     
     //Ajout du nombre de terme dans le descripteur
     putc('\n', descripteur);
-    sprintf(chaine, "%d", termesRetenus);
-    for(i=0; i < 2;i++) //Copie du mot dans le descripteur
+    if(termesRetenus>9)
     {
-        putc(chaine[i], descripteur);
+        diz = termesRetenus/10;
+        putc((diz+'0'), descripteur);
+        unit = termesRetenus-(diz*10);
+        putc((unit+'0'), descripteur);
+    }
+    else
+    {
+        putc(termesRetenus +'0', descripteur);
     }
     putc('\n', descripteur);
+
+    unit = diz = 0;
 
     //Ajout du nombre total de token dans le descripteur
     putc('\n', descripteur);
@@ -217,8 +263,13 @@ void comptage(char* NomFichier) //Mettre en paramettre d'entré le nom du fichie
     fclose(mot);
 
     // supression du fichier copier
-    int sup = remove("../Indexation_texte/Nettoyer/copieTexteSansStopword.tok");
-    int supprimer = remove ("../Indexation_texte/Nettoyer/fichier.tok");
+
+    while(sup || sup2)
+    {
+       sup = remove("../Indexation_texte/Nettoyer/copieTexteSansStopword.tok");
+       sup2 = remove ("../Indexation_texte/Nettoyer/fichier.tok");
+    }
+  
     
 }
 

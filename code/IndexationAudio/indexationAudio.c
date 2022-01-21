@@ -146,7 +146,7 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 	descripteur = fopen(emplacement,"w");
 	if (descripteur != NULL){
 		//on ecrit l'identifiant
-		fprintf(descripteur,identifiant);
+		fprintf(descripteur,"%s",identifiant);
 		fprintf(descripteur,"\n");
 		//on ecrit les dimensions de la matrice 
 		fprintf(descripteur,"%d ",m);
