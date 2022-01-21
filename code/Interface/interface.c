@@ -1,6 +1,6 @@
 					/*-------------------------------------------/
 					/       AUTEUR : JOBERT Pauline             /
-                    /-------------------------------------------*/
+                  		       /-------------------------------------------*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,6 +13,14 @@
 #include "../IndexationAudio/indexationAudio.c"
 #include "../RechercheAudio/rechercheAudio.h"
 #include "../RechercheAudio/arbre.c"
+
+#include "../IdxIm/fifo.h"
+#include "../IdxIm/element.h"
+#include "../IdxIm/IdxIm_V1.h"
+
+#include "../RechercheImage/RechercheImComp.h"
+#include "../RechercheImage/RechercheImCrit.h"
+
 #include "../Indexation_texte/descripteurTexte.h"
 
 
@@ -27,16 +35,18 @@ void ouverture(){
 	//on supprime les descripteurs fait lors de la précedente ouverture d'application
 	rmDescripteurs("../../Base_descripteurs/Base_descripteurs_audios");
 	rmDescripteurs("../../Base_descripteurs/Base_descripteurs_textes");
-	rmDescripteurs("../../Base_descripteurs/Base_descripteurs_images");
+	rmDescripteurs("../../Base_descripteurs/Base_descripteurs_images_RGB");
+	rmDescripteurs("../../Base_descripteurs/Base_descripteurs_images_NB");
 	
 	//on supprime la liste des descripteurs faite lors de la précedente ouverture d'application
 	rmListeDescripteurs();
 	
 	//indexation des fichiers 
 	automatisationIndexation();
-	
-	printf(" Indexation réussie\n");
-	printf(" Bienvenu sur notre moteur de recherche ! \n");
+	printf(" ------------------------------------------ \n");
+	printf("|           Indexation réussie             |\n");
+	printf("| Bienvenu sur notre moteur de recherche ! |\n");
+	printf(" ------------------------------------------ \n");
 	printf(" \n");
 	printf(" \n");
 	//on dirige l'utilisateur vers le menu pricipal
@@ -91,8 +101,121 @@ void rmListeDescripteurs(){
 		
 }	
 
+void recherche (int type){
+	//variables
+	char choixAction[10];
+	choixAction[0]='0';
+	
+	
+	while((choixAction[0]!='D')){
+		
+		printf("| Quel type de recherche voulez-vous effectuer ? |\n \r");
+		printf("|                                                |\n");
+		printf("| A - Recherche par nom de fichier               | \n \r");
+		printf("| B - Recherche par mots clefs                   | \n \r");
+		printf("| C - Recherche par similitudes                  |\n \r");
+		printf("| D - Retour                                     |\n \r");
+		printf(" ------------------------------------------------ \n");
+		scanf("%s",choixAction);
+		
+		switch (choixAction[0]){
+			case 'A' : 
+			printf(" --------------------------------------------------- \n");
+			printf("| Vous avez choisi une recherche par nom de fichier | \n \r");
+			RechercheClassique();
+			choixAction[0]='D';
+			break;
+			
+			case 'B' :
+			printf(" ------------------------------------------------------------------------------ \n");
+			printf("| Vous avez choisi une recherche par mots clefs                                |\n \r");
+			//printf(" Cette fonctionnalité est en maintenance  \n \r");
+			if(type==2){
+			IHMCrit();												//Image
+			}
+			if(type==1){
+			printf("| Cette fonctionnalité est en maintenance                                      | \n \r");	//Texte
+			printf(" ------------------------------------------------------------------------------ \n");
+			}
+			if(type==3){
+			printf("| Cette fonctionnalité est en maintenance                                      | \n \r");	//Audio
+			printf(" ------------------------------------------------------------------------------ \n");
+			}
+			choixAction[0]='D';
+			break;
+			
+			case 'C':
+			printf(" ------------------------------------------------------------------------------ \n");
+			printf("| Vous avez choisi une recherche par similitudes                               |\n \r");
+			if(type==1){
+			printf("| Cette fonctionnalité est en maintenance                                      | \n \r");	//Texte
+			printf(" ------------------------------------------------------------------------------ \n");
+			}
+			if(type==2){
+			IHMComp();	//image
+			}
+			if(type==3){
+			IHM();	//audio			
+			}
+			choixAction[0]='D';
+			break;
+			
+			case 'D':
+			printf(" ------------------------------------------------ \n \r");
+			printf("| Vous avez choisi de retourner au Menu Principal |\n \r");
+			printf(" ------------------------------------------------ \n \r");
+			choixAction[0]='D';
+			break;
+			
+			default :
+			printf(" Erreur : caractère invalide \n");
+		}
+		printf("\n ");
+		
+	}
+}
 
+void choixTypeFich(){
+	char choixType[10];
+	choixType[0]='0';
+	int type;
 
+//on demande le choix de l'administrateur
+	printf("| Sur quel type de document faire la recherche ?| \n \r");
+	printf("| A- Texte                                      | \n \r");
+	printf("| B- Image                                      | \n \r");
+	printf("| C- Audio                                      |\n \r");
+	printf(" ----------------------------------------------- \n");
+	
+	scanf("%s",choixType);
+	
+	switch (choixType[0]){
+	case 'A' : 
+			type=1;
+			printf(" ------------------------------------------------ \n");
+			printf("| Vous avez choisi une recherche Texte           |  \n \r");
+			recherche(1);
+			break;
+			
+	case 'B' :
+			type=2;
+			printf(" ------------------------------------------------ \n");
+			printf("| Vous avez choisi une recherche Image           |\n \r");
+			recherche(2);
+			break;
+			
+	case 'C':
+			type=3;
+			printf(" ------------------------------------------------ \n");
+			printf("| Vous avez choisi une recherche Audio           | \n \r");
+			recherche(3);
+			break;
+			
+			default :
+			printf(" ------------------------------------------------ \n");
+			printf("| Erreur : caractère invalide                    |\n");
+		}
+}
 
 
 // Menu principal : 3 choix : se connecter, faire une recherche, ou fermer l'application	
@@ -106,35 +229,38 @@ void menuPrincipal(){
 	choixAction[0]='0';
 	while((choixAction[0]!='C')){
 		//On demande une première fois son choix à l'utilisateur : rechercher, se connecter ou fermer l'application
-		printf(" Menu Principal : Que voulez-vous faire ? \n \r");
-		printf(" A- Faire une recherche \n \r");
-		printf(" B- Accéder aux droits administrateur \n \r");
-		printf(" C- fermer l'application\n \r");
+		printf(" ------------------------------------------  \n");
+		printf("| Menu Principal : Que voulez-vous faire ? |\n \r");
+		printf("| A- Faire une recherche                   |\n \r");
+		printf("| B- Accéder aux droits administrateur     |\n \r");
+		printf("| C- fermer l'application                  |\n \r");
+		printf(" ------------------------------------------  \n");
 		scanf("%s",choixAction);
 		switch (choixAction[0]){	
 		case 'A' :
 			//Si l'utilisateur a demandé la fonction recherche 
-			//system("clear");
-			printf(" Vous avez choisi d'effectuer une recherche\n");
-			recherche();	
+			printf(" ----------------------------------------------- \n");
+			printf("| Vous avez choisi d'effectuer une recherche    |\n");
+			choixTypeFich();	
 			break;
 		case 'B' :
 			//Si l'utilisateur a demandé la fonction connexion
-			//system("clear");
 			printf(" Vous avez choisi d'acceder aux droits administrateur\n");
 			printf(" \n");
 			seConnecter();	
 			break;
 		case 'C' :
 			//Si l'utilisateur a demandé la fermeture de l'application
-			printf(" Vous avez choisi de fermer l'application\n");
+			printf(" ------------------------------------------ \n");
+			printf("| Vous avez choisi de fermer l'application |\n");
 			break;
 		default :
 			//Si l'utilisateur a demandé un caractère invalide, on reboucle
 			printf(" Erreur : caractère invalide. Choisissez A,B ou C\n \r");
 		}
 	}
-	printf("Fermeture de l'application\n");
+	printf("| Fermeture de l'application               |\n");
+	printf(" ------------------------------------------ \n");
 }
 
 
@@ -161,7 +287,6 @@ void seConnecter(){
 		
 		//si le mot de passe est correcte, on connecte
 		if (strcmp(motDePasse,"1234")==0){
-			//system("clear");
 			printf("Connexion réussie\n");
 			printf(" Vous êtes désormais administrateur  \n \r");
 			printf(" \n");
@@ -173,7 +298,6 @@ void seConnecter(){
 		}else {
 			
 			//si le mot de passe est incorrecte, on repropose la connexion ou le retour au menu principal
-			//system("clear");
 			printf("Mot de passse incorrecte\n");
 			printf("Voulez-vous réessayer ?\n");
 			printf("A-Oui, je veux me reconnecter\n");
@@ -182,12 +306,10 @@ void seConnecter(){
 			
 			//reconnexion
 			if(choixConnexion[0]=='A'){
-				//system("clear");
 				printf("Vous avez choisi de vous reconnecter\n");
 			} else {
 				
 				//retour au menu principal
-				//system("clear");
 				printf("Vous avez choisi de retourner au menu principal\n");
 			}
 		}
@@ -214,10 +336,12 @@ void choixAdmin(){
 	while((choixAction[0]!='C')){
 		
 		//on demande le choix de l'administrateur
-		printf(" Que voulez-vous faire ? \n \r");
-		printf(" A- Faire une recherche \n \r");
-		printf(" B- Configurer la méthode d'indexation \n \r");
-		printf(" C- Retourner au menu principal (attention, vous devrez à nouveau vous reconnecter pour acceder à ce menu) \n \r");
+		printf("------------------------------------------------------------------------------------------------------------\n");
+		printf("| Que voulez-vous faire ?                                                                                  |\n \r");
+		printf("| A- Faire une recherche                                                                                   |\n \r");
+		printf("| B- Configurer la méthode d'indexation                                                                    |\n \r");
+		printf("| C- Retourner au menu principal (attention, vous devrez à nouveau vous reconnecter pour acceder à ce menu)|\n \r");
+		printf("------------------------------------------------------------------------------------------------------------\n");
 		scanf("%s",choixAction);
 		
 		//on etudie le choix
@@ -225,14 +349,12 @@ void choixAdmin(){
 			
 		//On fait une recherche 
 		case 'A': 
-			//system("clear");
-			printf(" Vous avez choisir d'effectuer une recherche\n");	
-			recherche ();
+			printf(" Vous avez choisi d'effectuer une recherche\n");	
+			choixTypeFich();
 			break;
 			
 		//on configure
 		case 'B' :
-			//system("clear");
 			printf(" Vous avez choisi de configurer la méthode d'indexation \n");
 			editConfig();
 			printf("\nModification effectuée \n\n");	
@@ -240,13 +362,11 @@ void choixAdmin(){
 			
 		//on retourne au Menu principal
 		case 'C' :
-			//system("clear");
 			printf(" Vous avez choisi de retourner au menu principal\n");
 			break;
 			
 		//Si le caractère est invalide, on redemande le choix
 		default :
-			//system("clear");
 			printf(" Erreur : caractère invalide. Choisissez A, B ou C\n \r");
 
 		}
@@ -269,88 +389,50 @@ void automatisationIndexation(){
         closedir(d);
     }
    
-
 	//On lance l'indexation texte dans le repertoire contenant les fichiers textes
+    struct dirent *dirTxt;
     DIR *dTexte= opendir("../../Corpus/TEXTE/"); 
     if (dTexte) {
-        while ((dir = readdir(dTexte)) != NULL){
-			if (strlen(dir->d_name)>4){
-				traitementTexte(dir->d_name);
-			}
+        while ((dirTxt = readdir(dTexte)) != NULL){
+			traitementTexte(dirTxt->d_name);
         }
         closedir(dTexte);
     }
     
-	//On lance l'indexation image dans le repertoire contenant les fichiers images
-    DIR *dImage = opendir("../../Corpus/IMAGE/"); 
-    if (dImage) {
-        while ((dir = readdir(dImage)) != NULL){
-	
+	//On lance l'indexation image dans le repertoire contenant les fichiers images RGB
+    DIR *dImageRGB = opendir("../../Corpus/IMAGE/RGB/"); 
+    struct dirent *dirImRGB;
+    if (dImageRGB) {
+        while ((dirImRGB = readdir(dImageRGB)) != NULL){
+	   VerifTypeFichierImage(dirImRGB->d_name,0);
         }
-        closedir(dImage);
+        closedir(dImageRGB);
+    }
+
+	//On lance l'indexation image dans le repertoire contenant les fichiers images NB
+    DIR *dImageNB = opendir("../../Corpus/IMAGE/NB/"); 
+    struct dirent *dirImNB;
+    if (dImageNB) {
+        while ((dirImNB = readdir(dImageNB)) != NULL){
+	   VerifTypeFichierImage(dirImNB->d_name,1);
+        }
+        closedir(dImageNB);
     }
   
 }
 
 
-void recherche (){
-	//variables
-	char choixAction[10];
-	choixAction[0]='0';
-	
-	
-	while((choixAction[0]!='D')){
-		printf(" Quel type de recherche voulez-vous effectuer ? \n \r");
-		printf("\n");
-		printf(" A - Recherche par nom de fichier  \n \r");
-		printf(" B - Recherche par mots clefs  \n \r");
-		printf(" C - Recherche par similitudes  \n \r");
-		printf(" D - Retour \n \r");
-		scanf("%s",choixAction);
-		
-		switch (choixAction[0]){
-			case 'A' : 
-				//system("clear");
-				printf(" Vous avez choisi une recherche par nom de fichier  \n \r");
-				RechercheClassique();
-				choixAction[0]='D';
-				break;
-			
-			case 'B' :
-				//system("clear");
-				printf(" Vous avez choisi une recherche par mots clefs \n \r");
-				printf(" Cette fonctionnalité est en maintenance  \n \r");
-				choixAction[0]='D';
-				break;
-			
-			case 'C':
-				//system("clear");
-				printf(" Vous avez choisi une recherche par similitudes \n \r");
-				IHM();
-				choixAction[0]='D';
-				break;
-			
-			case 'D':
-				//system("clear");
-				printf(" Vous avez choisi de retourner au Menu Principal \n \r");
-				choixAction[0]='D';
-				break;
-			
-			default :
-				//system("clear");
-				printf(" Erreur : caractère invalide \n");
-		}
-		printf("\n ");
-		
-	}
-}
+
+
 
 
 void RechercheClassique() {
 	char souhait[100];
 	char suite[10];
 	int fichierConnu=0;
-	printf("Entrez le nom de votre fichier\n");
+	
+	printf("| Entrez le nom de votre fichier                    |\n");
+	printf(" --------------------------------------------------- \n");
 	scanf("%s",souhait);
 	
     int j;
@@ -378,7 +460,6 @@ void RechercheClassique() {
 			char *fichier=(chemin);
 			lanceFichierTexte(fichier);
 			fichierConnu=1;
-			
 			printf("\n");
 			 
 		 } 
@@ -420,7 +501,6 @@ void RechercheClassique() {
 		printf("\n");
 		printf("Appuyez sur n'importe qu'elle touche pour retourner au Menu Principal\n");
 		scanf("%s",suite);
-		//system("clear");
 		
 	} else {
 		printf("fichier inconnu\n");

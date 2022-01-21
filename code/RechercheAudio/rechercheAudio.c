@@ -57,7 +57,7 @@ float comparaisonDeuxFichiers(char* Nomfichier1 , char* Nomfichier2){
 
 			comparaisonDeuxHistogrammes(k1,k2,m,Nomfichier1,Nomfichier2,frame,pourcentage,pourcentageMin);
 		} else {
-			comparaisonDeuxHistogrammes(k2, k1,m, Nomfichier2 , Nomfichier1,frame,pourcentage, pourcentageMin);
+			comparaisonDeuxHistogrammes(k1, k2,m, Nomfichier2 , Nomfichier1,frame,pourcentage, pourcentageMin);
 		}
 			
 	
@@ -189,8 +189,10 @@ void comparaisonRepertoire(char * fichierReference){
 			}	
         }
         printf("\n");
-		printf("Voici les resultats\n");
-		printf("\n");
+        printf(" --------------------");
+	printf("|Voici les resultats |\n");
+	printf(" --------------------");
+	printf("\n");
         affiche_Arbre(ensembleFichiers);
         closedir(d);
     }
@@ -202,12 +204,15 @@ void comparaisonRepertoire(char * fichierReference){
 
 void IHM(){
 	char souhait[100];
-	printf("Entrez le nom de votre fichier\n");
+	printf("| Entrez le nom de votre fichier                                               |\n");
+	printf(" ------------------------------------------------------------------------------ \n");
 	scanf("%s",souhait);
 	
 
 	printf("\n");
-	printf("Veuillez patienter\n");
+	printf(" -------------------- \n");
+	printf("| Veuillez patienter | \n");
+	printf(" -------------------- \n");
 	printf("\n");
 	
 	struct dirent *dir;

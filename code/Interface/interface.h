@@ -28,7 +28,7 @@ void seConnecter();
 //choixAdmin(): choix : rechercher ou configurer
 void choixAdmin();
 
-void recherche ();
+void recherche (int type);
 
 void RechercheClassique() ;
 

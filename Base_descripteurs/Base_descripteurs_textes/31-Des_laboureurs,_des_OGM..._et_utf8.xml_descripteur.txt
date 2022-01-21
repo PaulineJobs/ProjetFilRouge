@@ -1,9 +1,9 @@
 31
 ogm 7
 faucheurs 4
-d' 18
 exploitation 5
 n' 5
+d' 18
 l' 22
 agricole 5
 qu' 8
@@ -19,4 +19,4 @@ j' 14
 
 17
 
-434
+433
