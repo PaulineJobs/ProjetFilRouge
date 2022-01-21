@@ -2,9 +2,7 @@
 27 5
 stade 25
 france 16
-s' 6
 clubs 5
-l' 18
 enceinte 5
 saint-denis 6
 matches 5
@@ -16,7 +14,6 @@ français 8
 championnat 4
 rugby 8
 politique 4
-d' 21
 football 5
 résidant 5
 monde 4
@@ -24,11 +21,10 @@ consortium 5
 ­ 8
 000 11
 places 6
-n' 4
 simonin 4
 max 4
 guazzini 4
 
-29
+25
 
-352
+347

@@ -4,17 +4,13 @@ deep 5
 impact 8
 comète 11
 violence 4
-l' 40
 tempel 8
-n' 7
 collision 4
 sonde 6
-d' 29
 qu' 4
 espace 4
-s' 4
 comètes 4
 
-15
+11
 
-393
+387

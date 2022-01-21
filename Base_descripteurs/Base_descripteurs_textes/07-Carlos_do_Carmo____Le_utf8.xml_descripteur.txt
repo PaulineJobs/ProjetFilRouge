@@ -3,12 +3,9 @@ carlos 5
 do 6
 carmo 6
 fado 28
-l' 15
-d' 13
 amalia 5
-j' 7
 qu' 5
 
-9
+6
 
-353
+348

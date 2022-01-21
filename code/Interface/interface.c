@@ -281,14 +281,18 @@ void seConnecter(){
 	while((choixConnexion[0]=='A')){
 		
 		//on rentre le mot de passe
-		printf("Une connexion est requise \n");
-		printf("Entrez le mot de passe à 4 chiffres (qui est 1234)\n"); 
+		printf(" ---------------------------------------------------- \n");
+		printf("| Une connexion est requise                          | \n");
+		printf("| Entrez le mot de passe à 4 chiffres (qui est 1234) |\n"); 
+		printf(" ---------------------------------------------------- \n");
 		scanf("%s",motDePasse); 
 		
 		//si le mot de passe est correcte, on connecte
 		if (strcmp(motDePasse,"1234")==0){
-			printf("Connexion réussie\n");
-			printf(" Vous êtes désormais administrateur  \n \r");
+			printf(" ---------------------------------------------------- \n");
+			printf("| Connexion réussie                                  |\n");
+			printf("| Vous êtes désormais administrateur                 | \n \r");
+			printf(" ---------------------------------------------------- \n");
 			printf(" \n");
 			choixAdmin();
 			
@@ -298,10 +302,12 @@ void seConnecter(){
 		}else {
 			
 			//si le mot de passe est incorrecte, on repropose la connexion ou le retour au menu principal
-			printf("Mot de passse incorrecte\n");
-			printf("Voulez-vous réessayer ?\n");
-			printf("A-Oui, je veux me reconnecter\n");
-			printf("Autre caractère-non, je veux retourner au menu principal\n");
+			printf(" -------------------------------------------------------- \n");
+			printf("| Mot de passse incorrecte                                 |\n");
+			printf("| Voulez-vous réessayer ?                                  |\n");
+			printf("| A-Oui, je veux me reconnecter                            |\n");
+			printf("| Autre caractère-non, je veux retourner au menu principal |\n");
+			printf(" -------------------------------------------------------- \n");
 			scanf("%s",choixConnexion);
 			
 			//reconnexion
@@ -336,12 +342,12 @@ void choixAdmin(){
 	while((choixAction[0]!='C')){
 		
 		//on demande le choix de l'administrateur
-		printf("------------------------------------------------------------------------------------------------------------\n");
+		printf(" ----------------------------------------------------------------------------------------------------------\n");
 		printf("| Que voulez-vous faire ?                                                                                  |\n \r");
 		printf("| A- Faire une recherche                                                                                   |\n \r");
 		printf("| B- Configurer la méthode d'indexation                                                                    |\n \r");
 		printf("| C- Retourner au menu principal (attention, vous devrez à nouveau vous reconnecter pour acceder à ce menu)|\n \r");
-		printf("------------------------------------------------------------------------------------------------------------\n");
+		printf(" ----------------------------------------------------------------------------------------------------------\n");
 		scanf("%s",choixAction);
 		
 		//on etudie le choix
@@ -349,15 +355,20 @@ void choixAdmin(){
 			
 		//On fait une recherche 
 		case 'A': 
-			printf(" Vous avez choisi d'effectuer une recherche\n");	
+			printf(" ----------------------------------------------- \n");
+			printf("| Vous avez choisi d'effectuer une recherche    |\n");	
 			choixTypeFich();
 			break;
 			
 		//on configure
 		case 'B' :
-			printf(" Vous avez choisi de configurer la méthode d'indexation \n");
+			printf(" ------------------------------------------------------- \n");
+			printf("| Vous avez choisi de configurer la méthode d'indexation| \n");
+			printf(" ------------------------------------------------------- \n");
 			editConfig();
-			printf("\nModification effectuée \n\n");	
+			printf(" ------------------------ \n");
+			printf("| Modification effectuée | \n");	
+			printf(" ------------------------ \n");
 			break;	
 			
 		//on retourne au Menu principal

@@ -2,21 +2,15 @@
 ogm 7
 faucheurs 4
 exploitation 5
-n' 5
-d' 18
-l' 22
 agricole 5
 qu' 8
-s' 5
 champs 4
 ­ 5
-c' 4
 agriculteurs 5
 chantal 4
 faut 4
 père 4
-j' 14
 
-17
+11
 
-433
+425

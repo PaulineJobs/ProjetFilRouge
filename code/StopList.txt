@@ -65,7 +65,6 @@ avons
 ayant
 ayez
 ayons
-b
 bah
 bas
 basee
@@ -78,7 +77,6 @@ bon
 boum
 bravo
 brrr
-c
 car
 ce
 ceci
@@ -134,7 +132,6 @@ concernant
 contre
 couic
 crac
-d
 da
 dans
 de
@@ -197,7 +194,6 @@ durant
 dès
 début
 désormais
-e
 effet
 egale
 egalement
@@ -241,7 +237,6 @@ exterieur
 eûmes
 eût
 eûtes
-f
 fais
 faisaient
 faisant
@@ -266,9 +261,7 @@ fut
 fûmes
 fût
 fûtes
-g
 gens
-h
 ha
 haut
 hein
@@ -290,7 +283,6 @@ hum
 hurrah
 hé
 hélas
-i
 ici
 il
 ils
@@ -300,8 +292,6 @@ je
 jusqu
 jusque
 juste
-k
-l
 la
 laisser
 laquelle
@@ -321,7 +311,6 @@ lui-meme
 lui-même
 là
 lès
-m
 ma
 maint
 maintenant
@@ -354,7 +343,6 @@ multiple
 multiples
 même
 mêmes
-n
 na
 naturel
 naturelle
@@ -381,7 +369,6 @@ nul
 néanmoins
 nôtre
 nôtres
-o
 oh
 ohé
 ollé
@@ -400,9 +387,7 @@ outre
 ouvert
 ouverte
 ouverts
-o|
 où
-p
 paf
 pan
 par
@@ -468,7 +453,6 @@ puis
 puisque
 pur
 pure
-q
 qu
 quand
 quant
@@ -494,7 +478,6 @@ quiconque
 quinze
 quoi
 quoique
-r
 rare
 rarement
 rares
@@ -511,7 +494,6 @@ retour
 revoici
 revoilà
 rien
-s
 sa
 sacrebleu
 sait
@@ -585,7 +567,6 @@ sujet
 superpose
 sur
 surtout
-t
 ta
 tac
 tandis
@@ -629,8 +610,6 @@ très
 tsoin
 tsouin
 tu
-té
-u
 un
 une
 unes
@@ -638,7 +617,6 @@ uniformement
 unique
 uniques
 uns
-v
 va
 vais
 valeur
@@ -666,10 +644,6 @@ vu
 vé
 vôtre
 vôtres
-w
-x
-y
-z
 zut
 à
 â
@@ -689,3 +663,15 @@ zut
 êtes
 être
 ô
+t'
+s'
+d'
+j'
+l'
+m'
+c'
+n'
+%
+x
+y
+z

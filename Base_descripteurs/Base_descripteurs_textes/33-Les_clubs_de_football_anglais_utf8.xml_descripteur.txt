@@ -1,16 +1,12 @@
 33
 clubs 5
 football 12
-s' 4
 supporteurs 4
 stades 6
-l' 16
-d' 10
 championnat 4
 britannique 6
 league 5
 fréquentation 5
-% 4
 saison 12
 prix 7
 2004-2005 4
@@ -19,6 +15,6 @@ prix 7
 jeu 5
 matches 7
 
-19
+15
 
-309
+303

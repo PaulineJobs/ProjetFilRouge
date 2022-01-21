@@ -4,7 +4,6 @@ pablo 6
 montoya 6
 grand 7
 prix 6
-d' 19
 italie 4
 circuit 4
 monza 5
@@ -12,13 +11,11 @@ renault 10
 place 4
 monde 7
 pilotes 6
-l' 24
 4 5
 fernando 6
 alonso 4
 giancarlo 5
 fisichella 5
-n' 7
 épreuves 4
 fin 5
 saison 7
@@ -35,11 +32,9 @@ points 9
 11 4
 27 4
 ­ 6
-s' 6
-c' 4
 qu' 4
 podium 5
 
-40
+35
 
-379
+374

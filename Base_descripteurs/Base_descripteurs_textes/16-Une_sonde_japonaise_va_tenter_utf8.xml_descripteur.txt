@@ -1,24 +1,20 @@
 16
 sonde 9
 échantillons 5
-d' 28
 astéroïde 5
 terre 8
-l' 28
 exploration 4
 spatiale 4
 comète 4
 mission 6
 hayabusa 6
 surface 5
-s' 6
 kilomètres 4
 itokawa 7
 ­ 4
-n' 4
 qu' 6
 michel 4
 
-19
+15
 
-396
+391

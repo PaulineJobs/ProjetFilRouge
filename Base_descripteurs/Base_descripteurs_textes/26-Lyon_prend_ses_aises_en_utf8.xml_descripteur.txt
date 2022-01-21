@@ -1,13 +1,8 @@
 26
 tête 5
-l' 12
-d' 6
 journée 4
-c' 6
-s' 7
-n' 6
 entraîneur 4
 
-8
+3
 
-217
+211

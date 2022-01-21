@@ -1,14 +1,10 @@
 25
 sélectionneur 4
-l' 18
 équipe 9
 france 8
 championnat 4
-d' 5
 qu' 5
-c' 7
-n' 11
 
-9
+5
 
-251
+245
