@@ -1,17 +1,17 @@
 # ProjetFilRouge
 *Auteurs : AMBLARD Lucas, BELLER Willy, COUFFIN Manon, JOBERT Pauline et LEVANEN Antoine*
 
-Dernière mise à jour du README.md : 20/01/2022
+Dernière mise à jour du README.md : 26/01/2022
 
 
 Installation
 ----
 Pour récupérer le projet, il faut dans un premier temps télécharger ce qui permettra de le faire fonctionner :
-* Télécharger le code sur le gitub en suivant le lien : https://github.com/PaulineJobs/ProjetFilRouge
-* Récupérer le Corpus disponible **au même endroit**
-* **Décompresser** le Corpus avec la ligne : ```unzip Corpus.zip```
+* Téléchargez l'application sur le gitub en suivant le lien : https://github.com/PaulineJobs/ProjetFilRouge
+* Clonnez le projet sur votre ordinateur sous linux 
+* **Décompressez** le Corpus ```unzip Corpus.zip```
 
-Il ne reste plus qu'à lancer le code avec les lignes de commande :
+Il ne reste plus qu'à lancer le code avec les lignes de commande suivantes :
 ```
 $ cd code/Interface
 $ make
