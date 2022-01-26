@@ -44,7 +44,7 @@ void ouverture(){
 	//indexation des fichiers 
 	automatisationIndexation();
 	printf(" ------------------------------------------ \n");
-	printf("|           Indexation réussie             |\n");
+	printf("|           Indexation terminée            |\n");
 	printf("| Bienvenu sur notre moteur de recherche ! |\n");
 	printf(" ------------------------------------------ \n");
 	printf(" \n");
@@ -395,7 +395,11 @@ void automatisationIndexation(){
     DIR *d = opendir("../../Corpus/AUDIO/"); 
     if (d) {
         while ((dir = readdir(d)) != NULL){
+			if(strlen(dir->d_name)>4){
+			printf(" %s\n ",dir->d_name);
 			VerifTypeFichierAudio(dir->d_name);
+		}
+			
         }
         closedir(d);
     }
@@ -405,7 +409,9 @@ void automatisationIndexation(){
     DIR *dTexte= opendir("../../Corpus/TEXTE/"); 
     if (dTexte) {
         while ((dirTxt = readdir(dTexte)) != NULL){
-			traitementTexte(dirTxt->d_name);
+			if (strlen(dirTxt->d_name)>4){
+				traitementTexte(dirTxt->d_name);
+			}
         }
         closedir(dTexte);
     }
