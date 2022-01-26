@@ -8,8 +8,9 @@ Installation
 ----
 Pour récupérer le projet, il faut dans un premier temps télécharger ce qui permettra de le faire fonctionner :
 * Téléchargez l'application sur le gitub en suivant le lien : https://github.com/PaulineJobs/ProjetFilRouge
-* Clonnez le projet sur votre ordinateur sous linux 
-* **Décompressez** le Corpus ```unzip Corpus.zip```
+* Clonnez le projet sur votre ordinateur et placez vous à l'interieur
+* **Décompressez** le Corpus avec la ligne de code suivante :
+```$ unzip Corpus.zip```
 
 Il ne reste plus qu'à lancer le code avec les lignes de commande suivantes :
 ```
