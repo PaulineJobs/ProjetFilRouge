@@ -88,6 +88,16 @@ void comparaisonDeuxHistogrammes(int k1, int k2, int m, char* Nomfichier1 , char
 			int valeur1=0;
 			int valeur2=0;
 			
+			//on accède aux histogrammes en sautant les deux premieres lignes qui designe l'identifiant et les dimensions
+				while (fgetc(fichier2)!='\n'){
+				}
+				while (fgetc(fichier2)!='\n'){
+				}
+				while (fgetc(fichier1)!='\n'){
+				}
+				while (fgetc(fichier1)!='\n'){
+				}
+			
 			//Si les histogrammes sont de tailles differentes, on imbrique le plus petit dans le plus grand et on décale d'une ligne à chaque boucle
 			for (int p=1; p<=(k2-k1)+1; p++){
 				
@@ -98,15 +108,7 @@ void comparaisonDeuxHistogrammes(int k1, int k2, int m, char* Nomfichier1 , char
 				int differenceTot=0;
 				
 				
-				//on accède aux histogrammes en sautant les deux premieres lignes qui designe l'identifiant et les dimensions
-				while (fgetc(fichier2)!='\n'){
-				}
-				while (fgetc(fichier2)!='\n'){
-				}
-				while (fgetc(fichier1)!='\n'){
-				}
-				while (fgetc(fichier1)!='\n'){
-				}
+
 				
 				//Pour chaque valeur des deux histogrammes
 				for (int i=0; i<k1;i++){
@@ -174,26 +176,30 @@ void comparaisonRepertoire(char * fichierReference){
     if (d) {
 		//on traite chacun des fichiers du repertoire
         while ((dir = readdir(d)) != NULL){
-			if((strlen(dir->d_name)>3)||strcmp){
+		
+			if(strlen(dir->d_name)>3) {
 				
-				//on construit le chemin menant aux descripteurs audio
-				char chemin[strlen("../../Base_descripteurs/Base_descripteurs_audios/")+strlen(dir->d_name)+1];
-				char nomFichier[strlen(dir->d_name)+1];
-				strcpy(chemin,"../../Base_descripteurs/Base_descripteurs_audios/");
-				strcpy(nomFichier, dir->d_name);
-				strcat(chemin,nomFichier);
 				
-				//on compare le fichier de reference avec le fichier courant 
-				float difference=comparaisonDeuxFichiers(fichierReference,chemin);
-			
-				//on met tous les fichiers et leur ressemblance dans un arbre GRD
-				ELEMENT document;
-	
-				document.nom=dir->d_name;
-				document.nom[strlen(document.nom)-strlen("_descripteur.txt")]='\0';
-				strcat(document.nom,".wav");
-				document.ressemblance=100-difference;
-				ajout_dans_arbre(&ensembleFichiers,document);
+					//on construit le chemin menant aux descripteurs audio
+					char chemin[strlen("../../Base_descripteurs/Base_descripteurs_audios/")+strlen(dir->d_name)+1];
+					char nomFichier[strlen(dir->d_name)+1];
+					strcpy(chemin,"../../Base_descripteurs/Base_descripteurs_audios/");
+					strcpy(nomFichier, dir->d_name);
+					strcat(chemin,nomFichier);
+					
+						if (strcmp(chemin,fichierReference)!=0){
+					//on compare le fichier de reference avec le fichier courant 
+					float difference=comparaisonDeuxFichiers(fichierReference,chemin);
+				
+					//on met tous les fichiers et leur ressemblance dans un arbre GRD
+					ELEMENT document;
+		
+					document.nom=dir->d_name;
+					document.nom[strlen(document.nom)-strlen("_descripteur.txt")]='\0';
+					strcat(document.nom,".wav");
+					document.ressemblance=100-difference;
+					ajout_dans_arbre(&ensembleFichiers,document);
+				}
 			}	
         }
         printf("\n");

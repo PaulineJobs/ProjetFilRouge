@@ -135,15 +135,17 @@ void IHMCrit(){
     DIR *dImageRGB = opendir("../../Corpus/IMAGE/RGB");
     if (dImageRGB) {
         while ((dir = readdir(dImageRGB)) != NULL){
-		float pourcentage = critere(dir->d_name,choix[0]);
-	       ELEMENT document;
-               if(pourcentage != -1){
-                  document.nom=dir->d_name;
-                  document.nom[strlen(document.nom)-strlen(".dsc")]='\0';
-                  strcat(document.nom,".jpg");
-                  document.ressemblance=pourcentage;
-                  ajout_dans_arbre(&ensembleFichiers,document);
-               }
+			if (strlen(dir->d_name)>4){
+						float pourcentage = critere(dir->d_name,choix[0]);
+						ELEMENT document;
+					   if(pourcentage != -1){
+						  document.nom=dir->d_name;
+						  document.nom[strlen(document.nom)-strlen(".dsc")]='\0';
+						  strcat(document.nom,".jpg");
+						  document.ressemblance=pourcentage;
+						  ajout_dans_arbre(&ensembleFichiers,document);
+					   }
+				   }
 	 }
 	 printf("\n");
 	 printf(" ---------------------  \n");

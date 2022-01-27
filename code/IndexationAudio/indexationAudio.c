@@ -1,3 +1,12 @@
+
+
+					/*-------------------------------------------/
+					/        AUTEUR : JOBERT Pauline             /
+                    /-------------------------------------------*/
+                    
+/*ROLE : indexation des fichiers audios */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>

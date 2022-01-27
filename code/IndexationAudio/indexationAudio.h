@@ -1,3 +1,10 @@
+
+
+					/*-------------------------------------------/
+					/        AUTEUR : JOBERT Pauline             /
+                    /-------------------------------------------*/
+                    
+
 #ifndef MODULE_Audio           
 #define MODULE_Audio
 

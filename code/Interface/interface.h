@@ -1,5 +1,7 @@
-
-
+					/*-------------------------------------------/
+					/       AUTEUR : JOBERT Pauline             /
+                    /------------------------------------------*/
+                    
 #ifndef MODULE_interface             
 #define MODULE_interface  
 
@@ -28,11 +30,14 @@ void seConnecter();
 //choixAdmin(): choix : rechercher ou configurer
 void choixAdmin();
 
+
+//on choisi le type de fichier que l'on veut rechercher
 void recherche (int type);
-
+//Lance une recherche par nom de fichier selon son extension 
 void RechercheClassique() ;
-
+//on lance un fichier image avec EOM
 void lanceFichierImage(char *fichierImage);
+//Lancement d'un fichier texte avec gedit
 void lanceFichierTexte(char *fichierTexte);
 
 

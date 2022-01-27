@@ -89,16 +89,19 @@ void comparaisonRepertoireIm(char * fichierReference, char type){
                strcpy(chemin,"../../Base_descripteurs/Base_descripteurs_images_RGB/");
                strcpy(nomFichier, dir->d_name);
                strcat(chemin,nomFichier);
-               float difference=comparaison(fichierReference,chemin,type);
+               
+               if (strcmp(chemin,fichierReference)!=0){
+				   float difference=comparaison(fichierReference,chemin,type);
 
-//on met tout cela dans un arbre GRD
-               ELEMENT document;
+	//on met tout cela dans un arbre GRD
+				   ELEMENT document;
 
-               document.nom=dir->d_name;
-               document.nom[strlen(document.nom)-strlen(".dsc")]='\0';
-               strcat(document.nom,".jpg");
-               document.ressemblance=100-difference;
-               ajout_dans_arbre(&ensembleFichiers,document);
+				   document.nom=dir->d_name;
+				   document.nom[strlen(document.nom)-strlen(".dsc")]='\0';
+				   strcat(document.nom,".jpg");
+				   document.ressemblance=100-difference;
+				   ajout_dans_arbre(&ensembleFichiers,document);
+			   }
             }	
          }
          printf("\n");

@@ -1,6 +1,7 @@
 					/*-------------------------------------------/
 					/       AUTEUR : JOBERT Pauline             /
 					/----Completé par Lucas AMBLARD-------------*/
+					//ROLE : gestion du menu !
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -103,6 +104,8 @@ void rmListeDescripteurs(){
 		
 }	
 
+
+//propose differentes recherches possibles selon le type d'image selectionné
 void recherche (int type){
 	//variables
 	char choixAction[10];
@@ -110,7 +113,7 @@ void recherche (int type){
 	
 	
 	while((choixAction[0]!='D')){
-		
+		//si on recherche un texte
 		if (type==1){
 			printf(" ------------------------------------------------ \n");
 			printf("| Quel type de recherche voulez-vous effectuer ? |\n \r");
@@ -126,6 +129,7 @@ void recherche (int type){
 					RechercheClassique();
 					choixAction[0]='D';
 					break;
+				
 				case 'B' :
 					choixAction[0]='D';
 					break;
@@ -134,7 +138,7 @@ void recherche (int type){
 				
 			}
 		}
-		
+		//si on recherche une image
 		if (type==2){
 			printf(" ------------------------------------------------ \n");
 			printf("| Quel type de recherche voulez-vous effectuer ? |\n \r");
@@ -174,7 +178,7 @@ void recherche (int type){
 					printf(" Erreur : caractère invalide\n \r");
 			}
 		}
-		
+		//si on recherche un audio
 		if (type==3){
 			
 			printf(" ------------------------------------------------ \n");
@@ -212,6 +216,8 @@ void recherche (int type){
 	printf("\n ");
 }
 
+
+//on choisi le type de fichier que l'on veut rechercher
 void choixTypeFich(){
 	char choixType[100];
 	choixType[0]='0';
@@ -480,7 +486,7 @@ void automatisationIndexation(){
 
 
 
-
+//Lance une recherche par nom de fichier selon son extension 
 void RechercheClassique() {
 	char souhait[100];
 	char suite[10];
@@ -494,8 +500,7 @@ void RechercheClassique() {
     if (strlen(souhait) > 4) {
        for (j = 0; souhait[j + 3]; j++) {         
           if (!strcmp(&souhait[j], ".wav")){
-			//printf("fichier audio\n");
-			char chemin[strlen("../../Corpus/AUDIO/")+1+ strlen(souhait)];
+			char chemin[strlen("../../Corpus/AUDIO/")+1+ strlen(souhait)];  //fichier audio
 			strcpy(chemin,"../../Corpus/AUDIO/");
 			strcat(chemin,souhait);
 			char *fichier=(chemin);
@@ -509,7 +514,7 @@ void RechercheClassique() {
        for (j = 0; souhait[j + 3]; j++) {         
           if (!strcmp(&souhait[j], ".xml")){
 			  //printf("fichier texte\n");
-			char chemin[strlen("../../Corpus/TEXTE/")+1+ strlen(souhait)];
+			char chemin[strlen("../../Corpus/TEXTE/")+1+ strlen(souhait)]; //fichier texte
 			strcpy(chemin,"../../Corpus/TEXTE/");
 			strcat(chemin,souhait);
 			char *fichier=(chemin);
@@ -523,7 +528,7 @@ void RechercheClassique() {
       for (j = 0; souhait[j + 3]; j++) {         
           if (!strcmp(&souhait[j], ".bmp")){
 			//printf("fichier img nb\n");
-			char chemin[strlen("../../Corpus/IMAGE/NB/")+1+ strlen(souhait)];
+			char chemin[strlen("../../Corpus/IMAGE/NB/")+1+ strlen(souhait)]; //fichier image NB
 			strcpy(chemin,"../../Corpus/IMAGE/NB/");
 			strcat(chemin,souhait);
 			char *fichier=(chemin);
@@ -537,7 +542,7 @@ void RechercheClassique() {
       for (j = 0; souhait[j + 3]; j++) {         
           if (!strcmp(&souhait[j], ".jpg")){
 			  //sprintf("fichier img rvb\n");
-			char chemin[strlen("../../Corpus/IMAGE/RGB/")+1+ strlen(souhait)];
+			char chemin[strlen("../../Corpus/IMAGE/RGB/")+1+ strlen(souhait)]; //fichier RVB
 			strcpy(chemin,"../../Corpus/IMAGE/RGB/");
 			strcat(chemin,souhait);
 			char *fichier=(chemin);
@@ -563,6 +568,7 @@ void RechercheClassique() {
 }
 
 
+//on lance un fichier image avec EOM
 void lanceFichierImage(char *fichierImage) {
 	char *lecteurImage="eom";
 	char *commande;
@@ -581,6 +587,7 @@ void lanceFichierImage(char *fichierImage) {
 	}
 }
 
+//Lancement d'un fichier texte avec gedit
 void lanceFichierTexte(char *fichierTexte) {
 	char *lecteurTexte="gedit";
 	char *commande;
