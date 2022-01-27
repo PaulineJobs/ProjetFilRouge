@@ -25,7 +25,6 @@ joueurs 3
 stratégie 2
 dimension 3
 qualité 2
-franchir 2
 terrain 3
 capable 2
 gérard 2
@@ -45,6 +44,6 @@ stade 3
 gerland 2
 000 3
 
-45
+44
 
-262
+261

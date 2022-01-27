@@ -20,7 +20,6 @@ orchestre 2
 alfredo 3
 marceneiro 2
 guitare 2
-portugaise 2
 duarte 2
 silence 2
 années 3
@@ -43,6 +42,6 @@ sentiment 2
 pays 2
 € 2
 
-43
+42
 
-348
+346

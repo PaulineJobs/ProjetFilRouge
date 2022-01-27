@@ -30,3 +30,4 @@ Architecture
 |Liste_Descripteurs|Contient toutes les listes des descripteurs|
 |code|Contient tous les fichiers.c et fichiers.h qui servent à faire tourner le projet ainsi que son makefile|
 |sujet|Contient l'énoncé du projet, son cahier des charges|
+|Validation_G5|Contient le script de validation du 21/01/2022 et le complément de validation|
