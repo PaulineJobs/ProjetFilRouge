@@ -1,0 +1,35 @@
+26
+lyon 2
+aises 2
+tête 5
+ligue 2
+grégory 3
+coupet 3
+issue 2
+septembre 2
+journée 4
+grâce 2
+gardien 2
+but 3
+imposé 3
+france 2
+face 2
+7e 2
+points 3
+déclaré 2
+entraîneur 4
+match 2
+marqué 2
+matches 2
+signé 2
+victoire 3
+place 3
+vainqueur 2
+classement 2
+2-1 3
+5e 2
+1-2 2
+
+30
+
+209
