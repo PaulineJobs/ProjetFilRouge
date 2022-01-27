@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "arbre.h"
-
+#include "../Configuration/configuration.h"
 
 //initialisation de l'arbre 
 void affiche_ELEMENT(ELEMENT e){
@@ -41,6 +41,9 @@ ARBRE INIT_ARBRE(){
 
 //Affiche  l'arbre dans l'odre décroissant de ressemblance
 void affiche_Arbre(ARBRE monArbre){
+   //Déclarations locales
+   int seuil=config("seuil");
+   //fin déclarations locales
 	if (monArbre!=NULL){
 
 		//Affiche le sous arbre droit
@@ -50,8 +53,9 @@ void affiche_Arbre(ARBRE monArbre){
 		
 			
 		//affiche la racine
-		affiche_ELEMENT(monArbre->document);
-		
+		if(monArbre->document.ressemblance >= seuil){
+		   affiche_ELEMENT(monArbre->document);
+		}
 		//affiche le sous arbre gauche
 		if(monArbre->sousArbreGauche!=NULL){
 			affiche_Arbre(monArbre->sousArbreGauche);

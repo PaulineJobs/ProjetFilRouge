@@ -41,6 +41,7 @@ match 6
 us 3
 open 6
 series 3
+meilleure 2
 victoire 4
 battu 2
 fort 2
@@ -48,7 +49,6 @@ carrière 3
 6-2 2
 n؛ 2
 qualité 2
-finales 2
 service 5
 aces 2
 lignes 2
@@ -70,4 +70,4 @@ demi-finales 2
 
 68
 
-307
+309
