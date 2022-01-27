@@ -90,7 +90,7 @@ void comparaisonRepertoireIm(char * fichierReference, char type){
                strcpy(nomFichier, dir->d_name);
                strcat(chemin,nomFichier);
                
-               if (strcmp(chemin,fichierReference)!=0 && strcmp(".",fichierReference)!=0 && strcmp("..",fichierReference)!=0){
+               if (strcmp(chemin,fichierReference)!=0){
 				   float difference=comparaison(fichierReference,chemin,type);
 
 	//on met tout cela dans un arbre GRD
@@ -125,18 +125,16 @@ void comparaisonRepertoireIm(char * fichierReference, char type){
                   strcpy(chemin,"../../Base_descripteurs/Base_descripteurs_images_NB/");
                   strcpy(nomFichier, dir->d_name);
                   strcat(chemin,nomFichier);
-                  if (strcmp(chemin,fichierReference)!=0 && strcmp(".",fichierReference)!=0 && strcmp("..",fichierReference)!=0){
-			  float difference=comparaison(fichierReference,chemin,type);
+                  float difference=comparaison(fichierReference,chemin,type);
 
-			  //on met tout cela dans un arbre GRD
-			  ELEMENT document;
+//on met tout cela dans un arbre GRD
+                  ELEMENT document;
 
-			  document.nom=dir->d_name;
-			  document.nom[strlen(document.nom)-strlen(".dsc")]='\0';
-			  strcat(document.nom,".jpg");
-			  document.ressemblance=100-difference;
-			  ajout_dans_arbre(&ensembleFichiers,document);
-                  }
+                  document.nom=dir->d_name;
+                  document.nom[strlen(document.nom)-strlen(".dsc")]='\0';
+                  strcat(document.nom,".jpg");
+                  document.ressemblance=100-difference;
+                  ajout_dans_arbre(&ensembleFichiers,document);
                }	
             }
             printf("\n");
