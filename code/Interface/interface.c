@@ -1,6 +1,6 @@
 					/*-------------------------------------------/
 					/       AUTEUR : JOBERT Pauline             /
-                  		       /-------------------------------------------*/
+					/----Completé par Lucas AMBLARD-------------*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -176,7 +176,7 @@ void recherche (int type){
 }
 
 void choixTypeFich(){
-	char choixType[10];
+	char choixType[100];
 	choixType[0]='0';
 	int type;
 
@@ -396,7 +396,7 @@ void automatisationIndexation(){
     if (d) {
         while ((dir = readdir(d)) != NULL){
 			if(strlen(dir->d_name)>4){
-			printf(" %s\n ",dir->d_name);
+			
 			VerifTypeFichierAudio(dir->d_name);
 		}
 			

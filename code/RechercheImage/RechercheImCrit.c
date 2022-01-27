@@ -115,24 +115,27 @@ float critere(char* nomFichier, char choix){
 
 void IHMCrit(){
    //Declarations locales
-   char choix;
+   char choix[100];
    
    //fin declarations locales
    
    ARBRE ensembleFichiers=INIT_ARBRE();
-
-   printf("|  selon quel critère souhaitez vous faire la recherche :                      |\n");
-   printf("|   - Rouge (R)                                                                |\n");
-   printf("|   - Vert  (V)                                                                |\n");
-   printf("|   - Bleu  (B)                                                                 |\n");
-   printf(" ------------------------------------------------------------------------------ \n");
-   scanf("%c",&choix);
-   scanf("%c",&choix);
+   while ((choix[0]!='R') && (choix[0]!='V') && (choix[0]!='B') ){
+       printf(" ------------------------------------------------------------------------------ \n");
+	   printf("|  selon quel critère souhaitez vous faire la recherche :                      |\n");
+	   printf("|   - Rouge (R)                                                                |\n");
+	   printf("|   - Vert  (V)                                                                |\n");
+	   printf("|   - Bleu  (B)                                                                 |\n");
+	   printf(" ------------------------------------------------------------------------------ \n");
+	   scanf("%s",choix);
+	   
+	}
+	printf(" Veuillez patienter...\n");
     struct dirent *dir;
     DIR *dImageRGB = opendir("../../Corpus/IMAGE/RGB");
     if (dImageRGB) {
         while ((dir = readdir(dImageRGB)) != NULL){
-		float pourcentage = critere(dir->d_name,choix);
+		float pourcentage = critere(dir->d_name,choix[0]);
 	       ELEMENT document;
                if(pourcentage != -1){
                   document.nom=dir->d_name;
