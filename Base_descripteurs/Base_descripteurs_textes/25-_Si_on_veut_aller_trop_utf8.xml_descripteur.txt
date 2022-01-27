@@ -1,10 +1,59 @@
 25
+2005 2
+veut 3
+aller 2
+vite 2
+courrons 2
+basket-ball 2
+claude 2
+bergeaud 2
 sélectionneur 4
-équipe 9
 france 8
+premiers 2
 championnat 4
+europe 2
+qualifier 2
+2006 2
+septembre 2
+ans 3
+équipe 9
+juin 2
+club 2
+villeurbanne 2
+proa 2
+1998 3
+2003 2
 qu' 5
+monde 2
+compétition 2
+contrairement 2
+italie 2
+espagne 2
+jamais 2
+français 3
+faute 3
+médias 3
+travaillé 2
+nba 3
+su 3
+contrôler 2
+fantastique 2
+mal 2
+rugby 3
+vrai 2
+sport 3
+développer 2
+tony 2
+collectives 2
+vraie 2
+message 3
+valeurs 2
+intéresse 2
+fort 2
+faire 2
+mois 2
+matches 2
 
-5
+54
 
 244

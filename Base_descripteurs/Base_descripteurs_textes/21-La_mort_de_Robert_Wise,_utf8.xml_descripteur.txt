@@ -1,18 +1,73 @@
 21
+mort 2
 robert 15
 wise 13
 réalisateur 4
 side 5
+cinéaste 2
+monteur 3
+orson 2
 welles 4
+moment 2
+festival 2
+saint-sébastien 2
+apprêtait 2
+hommage 2
+cinéma 2
+septembre 3
+jour 2
 west 4
+­ 2
+- 2
 film 14
+oscars 2
 films 4
+né 3
+tuer 2
+mademoiselle 2
+fifi 2
+gagné 2
+soir 2
 ryan 4
+maison 2
+diable 2
+julie 3
+coup 2
+escalier 2
+harry 2
+belafonte 2
+canonnière 2
+steve 2
+mcqueen 2
+mélodie 3
+bonheur 3
+andrews 2
 ans 4
+10 2
 succès 7
+histoire 2
+pourtant 2
+spécialiste 2
+horreur 2
+science-fiction 3
+western 2
+hollywood 2
 rko 4
+demande 2
+retient 2
+passe 2
+revient 2
+tâche 2
+1949 2
+mettant 2
 scène 4
+série 2
+affrontement 2
+immense 2
+tard 2
+ensuite 2
+star 2
 
-13
+68
 
-333
+334

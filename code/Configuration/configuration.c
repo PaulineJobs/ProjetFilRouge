@@ -1,4 +1,5 @@
 //lecture et ecriture du fichier de configuration!
+//BELLER Willy LEVANEN Antoine
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,6 +7,11 @@
 #include <string.h>
 #include "configuration.h"
 
+/*
+editConfig() permet de modifier un parameter dans le .config
+la fonction demande le numéro de la ligne où se trouve le paramètre choisi
+puis la nouvelle valeur
+*/
 int editConfig(){
     //creation de pointeur pour acceder au fichier
     FILE *ptrFichier1, *ptrFichier2;
@@ -21,14 +27,14 @@ int editConfig(){
     int numLigne = 0;//numero de la ligne de lecture
     char texte[256];//nom du parametre rechercher
     int valeur = 0;// valeur du parametre
-    char nouvelleValeur[10];
-    int nbrLigne = 0;
+    char nouvelleValeur[10];//récupère la saisi utilisateur
+    int nbrLigne = 0;//nombre de ligne dans le .config (pour l'affichage)
 
 
     fscanf(ptrFichier1, "%d %s %d", &numLigne, texte, &nbrLigne);
 
-    for(int i=0; i<(nbrLigne - 1); i++){//on affiche le fichier tant que EndOfFile est faux
-        fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);// on lie le nom et la valeur
+    for(int i=0; i<(nbrLigne - 1); i++){//on affiche le fichier
+        fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);// // on lie le nom du paramètre et sa valeur
         printf("\n%d %s %d\n",numLigne, texte, valeur);// on affiche dans le terminal
     }
 
@@ -76,7 +82,7 @@ int editConfig(){
 
     //juste pour l'affichage :
     nbrLigne++;
-    for(int i=0; i<(nbrLigne - 1); i++){  //on affiche le fichier tant que EndOfFile est faux
+    for(int i=0; i<(nbrLigne - 1); i++){  //on affiche le fichier
        fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);
        printf("\n%d %s %d\n",numLigne, texte, valeur);
     }
@@ -88,30 +94,35 @@ int editConfig(){
 
 //------------------------------------------------------------------------------------
 
-
+/*
+config(char nom[]) prend en paramètre le nom du paramètre au quel on veut récupérer la valeur
+la fonction renvoie un entier
+*/
 int config(char nom[]){
     int valeur, numLigne, nbrLigne = 0;
-    char nomFichier[] = "../Configuration/.config";
+    char nomFichier[] = "../Configuration/.config";//chemin d'accès au .config
     char texte[256];
 
     FILE *ptrFichier1;
     ptrFichier1 = fopen(nomFichier, "r");//ouverture du fichier en lecture seul
 
-    if(ptrFichier1 == NULL){// si le fichier n'est pas ouvert on arrete tout!
-        exit(1);//
+    if(ptrFichier1 == NULL){// si le fichier n'est pas ouvert on sort de la fonction
+        printf("Erreur, ouverture du fichier de configuration imposible");
+        return -1;
     }
     fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &nbrLigne);
     for(int i=0; i<(nbrLigne - 1); i++){
-        fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);// on lie le nom et la valeur
-        if((strcmp(texte, nom)) == 0){
+        fscanf(ptrFichier1, "%d %s %d",&numLigne, texte, &valeur);// on lie le nom du paramètre et sa valeur
+        if((strcmp(texte, nom)) == 0){//si on trouve un correspondance
             fclose(ptrFichier1);
-            return valeur;
+            return valeur;//on retourne la valeur
         }
     }
     fclose(ptrFichier1);
     return -1;
 }
 
+//test unitaire
 /*
 int main(){
     editConfig();

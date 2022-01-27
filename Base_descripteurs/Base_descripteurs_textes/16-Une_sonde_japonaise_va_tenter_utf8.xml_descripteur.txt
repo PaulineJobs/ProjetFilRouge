@@ -1,20 +1,78 @@
 16
+16 2
 sonde 9
+tenter 2
+ramener 3
+premiers 2
 échantillons 5
 astéroïde 5
 terre 8
+débutants 2
 exploration 4
 spatiale 4
+apprendre 2
+matière 3
+communication 2
+hauts 2
+faits 2
+4 2
+juillet 3
+autour 3
+deep 2
+impact 3
+collision 3
 comète 4
+mois 2
+jaxa 3
+vient 2
+premières 2
 mission 6
+promet 2
+nasa 2
 hayabusa 6
+entrée 2
 surface 5
+agit 2
+américaine 3
+near 2
+eros 2
+2001 2
+comètes 3
+objet 2
+projectile 3
+particules 3
+2004 2
+lune 2
+mars 2
+céleste 2
+arracher 3
 kilomètres 4
 itokawa 7
+déjà 3
+propulsion 2
+ionique 2
+vitesse 2
 ­ 4
+années 2
+300 2
+pari 2
+jusqu' 2
+mètres 2
+taille 2
 qu' 6
+orbite 2
+petite 2
+étude 2
+patrick 3
 michel 4
+astéroïdes 2
+gravité 2
+prises 2
+poussière 2
+gros 2
+roches 2
+espace 2
 
-15
+73
 
-392
+390

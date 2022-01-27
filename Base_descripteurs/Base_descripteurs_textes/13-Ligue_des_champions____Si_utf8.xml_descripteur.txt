@@ -1,14 +1,49 @@
 13
+ligue 2
 real 4
 madrid 4
+multinationale 2
+olympique 2
+lyonnais 2
+représente 2
 club 9
+symbole 2
 football 5
+niveau 2
+dure 2
+inscrit 2
+racines 2
+performance 2
 image 4
+atteindre 3
+construction 2
+faut 2
+vrai 2
+choix 2
+effectif 2
+joueurs 3
+stratégie 2
+dimension 3
+qualité 2
+terrain 3
+capable 2
+gérard 2
+coffre 2
+équipe 3
+faire 2
 communication 5
+autour 2
+président 2
 michael 5
 essien 4
+meilleur 2
+chef 2
+entreprise 2
 grand 4
+stade 3
+gerland 2
+000 3
 
-9
+44
 
-262
+261

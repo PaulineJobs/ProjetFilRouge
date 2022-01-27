@@ -23,6 +23,7 @@
 #include "../RechercheImage/RechercheImCrit.h"
 
 #include "../Indexation_texte/descripteurTexte.h"
+#include "../RechercheTexte/rechercheTexte.h"
 
 
 
@@ -118,7 +119,8 @@ void recherche (int type){
 			printf(" ------------------------------------------------ \n");
 			printf("| Quel type de recherche voulez-vous effectuer ? |\n \r");
 			printf("| A - Recherche par nom de fichier               | \n \r");
-			printf("| B - Retour                                     |\n \r");
+			printf("| B - Recherche par mot clé                      | \n \r");
+			printf("| C - Retour                                     |\n \r");
 			printf(" ------------------------------------------------ \n");
 			scanf("%s",choixAction);
 			
@@ -131,8 +133,17 @@ void recherche (int type){
 					break;
 				
 				case 'B' :
+					printf(" ---------------------------------------------------- \n");
+					printf("| Vous avez choisi une recherche de textes par mot clé | \n \r");
+					rechCritTexte();
 					choixAction[0]='D';
 					break;
+
+				case 'C' :
+					choixAction[0]='D';
+					break;
+
+
 				default :
 					printf(" Erreur : caractère invalide\n \r");
 				
@@ -327,7 +338,7 @@ void seConnecter(){
 		//on rentre le mot de passe
 		printf(" ---------------------------------------------------- \n");
 		printf("| Une connexion est requise                          | \n");
-		printf("| Entrez le mot de passe à 4 chiffres (qui est 1234) |\n"); 
+		printf("| Entrez le mot de passe                             |\n"); 
 		printf(" ---------------------------------------------------- \n");
 		scanf("%s",motDePasse); 
 		
