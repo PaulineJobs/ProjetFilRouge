@@ -1,0 +1,14 @@
+13
+real 4
+madrid 4
+club 9
+football 5
+image 4
+communication 5
+michael 5
+essien 4
+grand 4
+
+9
+
+262

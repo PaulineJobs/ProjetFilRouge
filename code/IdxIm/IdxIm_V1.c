@@ -129,9 +129,11 @@ void creaDescripteur(char* theFileName, int nbVal, int* tabValPix, int type){
    //fin déclarations locales
    if(type==0){
       strcat(theTargetFileName,"Base_descripteurs_images_RGB/");
+      miseAJourListeDescripteursImageRVB(theFileName);
    }
    else{
       strcat(theTargetFileName,"Base_descripteurs_images_NB/");
+      miseAJourListeDescripteursImageNB(theFileName);
    }
    strcat(theTargetFileName,theFileName);	
    strcat(theTargetFileName,".dsc");
@@ -149,6 +151,8 @@ void creaDescripteur(char* theFileName, int nbVal, int* tabValPix, int type){
    }
    //printf(" \n ");
    fclose(fichierT);							//fermeture du descripteur
+
+	
 }
 
 //---------------------------------------------------------
@@ -318,4 +322,22 @@ void INDEXIMAGE(char* nomFichier,int type){
 	}
 }
 
+
+void miseAJourListeDescripteursImageNB(char* nomFichierParam){
+	FILE* listeDescripteurs;
+	listeDescripteurs=fopen("../../Liste_descripteurs/Liste_descripteurs_imageNB.txt","a");
+	fprintf(listeDescripteurs,"%s \n",nomFichierParam);
+	//fprintf(listeDescripteurs,"\n");
+	fclose(listeDescripteurs);
+	
+}
+
+void miseAJourListeDescripteursImageRVB(char* nomFichierParam){
+	FILE* listeDescripteurs;
+	listeDescripteurs=fopen("../../Liste_descripteurs/Liste_descripteurs_imageRVB.txt","a");
+	fprintf(listeDescripteurs,"%s \n",nomFichierParam);
+	//fprintf(listeDescripteurs,"\n");
+	fclose(listeDescripteurs);
+	
+}
 

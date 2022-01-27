@@ -1,9 +1,15 @@
+					/*-------------------------------------------/
+					/        AUTEUR : JOBERT Pauline             /
+                    /-------------------------------------------/
+/ROLE : Construire le fonctions permettant de manipuler les structures ELEMENT et ARBRE utilisés pour manipuler des fichiers audios*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "arbre.h"
 
 
-
+//initialisation de l'arbre 
 void affiche_ELEMENT(ELEMENT e){
 	printf("%s ",e.nom);
 	printf(" --> ");
@@ -26,11 +32,14 @@ int compare_ELEMENT(ELEMENT e1, ELEMENT e2){
 	}
 }
 
+
+//initialisation de l'arbre 
 ARBRE INIT_ARBRE(){
 	return NULL;
 }
 
 
+//Affiche  l'arbre dans l'odre décroissant de ressemblance
 void affiche_Arbre(ARBRE monArbre){
 	if (monArbre!=NULL){
 
@@ -55,12 +64,13 @@ void affiche_Arbre(ARBRE monArbre){
 }
 
 
+//Renvoie 1 si l'arbre est vide
 int EST_VIDE(ARBRE monArbre){
 	return monArbre==NULL;
 }
 
 
-
+//Permet de placer une structure dans un arbre
 void ajout_dans_arbre(ARBRE* monArbre, ELEMENT doc){
 
 

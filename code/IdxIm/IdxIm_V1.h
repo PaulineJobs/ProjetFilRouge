@@ -21,6 +21,8 @@ int calculValPixRVB(int elValR, int elValV, int elValB,int n);
 void recupIdIm(char* fileName, char* theFileName);
 void creaDescripteur(char* theFileName, int nbVal, int* tabValPix, int type);
 void IdxImage(char* fileName, int n, int type);
+void miseAJourListeDescripteursImageNB(char* nomFichierParam);
+void miseAJourListeDescripteursImageRVB(char* nomFichierParam);
 
 void INDEXIMAGE(char* nomFichier,int type);
 

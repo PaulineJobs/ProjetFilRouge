@@ -1,0 +1,12 @@
+14
+grippe 7
+oms 4
+plans 4
+pandémie 4
+docteur 5
+stohr 5
+pays 8
+
+7
+
+174

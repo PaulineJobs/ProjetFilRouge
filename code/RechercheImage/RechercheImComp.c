@@ -75,9 +75,9 @@ float comparaison(char* Nomfichier1 , char* Nomfichier2, int type){
 return pourcentage;
 }
 
-void comparaisonRepertoireIm(char * fichierReference, int type){
+void comparaisonRepertoireIm(char * fichierReference, char type){
    ARBRE ensembleFichiers=INIT_ARBRE();
-   if(type==1){
+   if(type=='1'){
       //On lance l'indexation audio dans le repertoire contenant les fichiers audio
       struct dirent *dir;
       DIR *d = opendir("../../Base_descripteurs/Base_descripteurs_images_RGB/"); 
@@ -150,18 +150,18 @@ void comparaisonRepertoireIm(char * fichierReference, int type){
 void IHMComp(){
    //déclarations locales
    char souhait[100];
-   int typeIm;
+   char typeIm[100];
    //fin déclarations locales
    
    do{
 
       printf("| Quel type d'image souhaitez vous traiter : Couleurs (1) ou noir et blanc (2) | \n");
       printf(" ------------------------------------------------------------------------------ \n");
-      scanf("%d",&typeIm);
-      if(typeIm!=1 && typeIm!=2){
+      scanf("%s",typeIm);
+      if(typeIm[0]!='1' && typeIm[0]!='2'){
          printf("Valeur érronée, saisir 1 ou 2"); 
       }
-   }while(typeIm!=1 && typeIm!=2);
+   }while(typeIm[0]!='1' && typeIm[0]!='2');
 
    printf(" ---------------------------------- \n");
    printf("| Entrez le nom de votre fichier : |\n");
@@ -171,7 +171,7 @@ void IHMComp(){
    printf("Veuillez patienter\n");
    printf("\n");
 
-   if(typeIm==1){
+   if(typeIm[0]=='1'){
    struct dirent *dir;
    int existe=0;
    DIR *d = opendir("../../Corpus/IMAGE/RGB"); 
@@ -184,7 +184,7 @@ void IHMComp(){
             strcpy(chemin,"../../Base_descripteurs/Base_descripteurs_images_RGB/");
             strcat(chemin,souhait);
             existe=1;
-            comparaisonRepertoireIm(chemin,typeIm);
+            comparaisonRepertoireIm(chemin,typeIm[0]);
          } 
       }
       if (existe==0){
@@ -208,7 +208,7 @@ else
             strcpy(chemin,"../../Base_descripteurs/Base_descripteurs_images_NB/");
             strcat(chemin,souhait);
             existe=1;
-            comparaisonRepertoireIm(chemin,typeIm);
+            comparaisonRepertoireIm(chemin,typeIm[0]);
          } 
       }
       if (existe==0){

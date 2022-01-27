@@ -3,8 +3,8 @@
 
 float comparaisonDeuxFichiers(char* , char* );
 void comparaisonRepertoire(char *);
-void IHM();
-void ihm();
+void resultatRechercheAudio();
+
 void lanceFichierAudio(char *fichierAudio);
 void comparaisonDeuxHistogrammes(int , int , int , char*  , char* , int* , float* , float* );
 

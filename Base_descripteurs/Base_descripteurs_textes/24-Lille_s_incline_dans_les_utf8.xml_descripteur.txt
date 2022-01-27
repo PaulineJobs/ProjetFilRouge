@@ -1,0 +1,15 @@
+24
+lille 5
+benfica 4
+mercredi 4
+ligue 4
+équipe 4
+claude 4
+puel 4
+stade 4
+turin 4
+groupe 5
+
+10
+
+286

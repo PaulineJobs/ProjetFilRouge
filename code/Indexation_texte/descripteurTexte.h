@@ -20,5 +20,6 @@ void copieTexteTok(void);
 void comptage(char* NomFichier);
 void traitementTexte();
 void recupId(char* fileName, char* theFileName);
+void miseAJourListeDescripteurstextes(char* nomFichierParam);
 
 #endif

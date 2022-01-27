@@ -88,6 +88,7 @@ void comptage(char* NomFichier) //Mettre en paramettre d'entré le nom du fichie
     // ouvrir le fichier en écriture
     char *emplacement=(char *)malloc(strlen("../../Base_descripteurs/Base_descripteurs_textes/")+strlen("_descripteur.txt")+strlen(NomFichier)+1);
     strcpy(emplacement,"../../Base_descripteurs/Base_descripteurs_textes/");
+    
     strcat(emplacement,NomFichier);
     strcat(emplacement,"_descripteur.txt");
     descripteur = fopen(emplacement, "w");
@@ -273,6 +274,16 @@ void comptage(char* NomFichier) //Mettre en paramettre d'entré le nom du fichie
     
 }
 
+
+void miseAJourListeDescripteurstextes(char* nomFichierParam){
+	FILE* listeDescripteurs;
+	listeDescripteurs=fopen("../../Liste_descripteurs/Liste_descripteurs_textes.txt","a");
+	fprintf(listeDescripteurs,"%s \n",nomFichierParam);
+	//fprintf(listeDescripteurs,"\n");
+	fclose(listeDescripteurs);
+	
+}
+
 void traitementTexte(char* NomFichier)
 {
 	
@@ -282,5 +293,6 @@ void traitementTexte(char* NomFichier)
     passageCleanTok();
     copieTexteTok();
     comptage(NomFichier);
+    miseAJourListeDescripteurstextes(NomFichier);
 
 }

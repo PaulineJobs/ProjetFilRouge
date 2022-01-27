@@ -14,7 +14,7 @@ void histogrammeAudio(char* nomDuFichier);
 //Cree le descripteur d'un fichier audio avec son identifiant et son histogramme 
 void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k);
 //écrit le nom du fichier dans la liste des descripteurs
-void miseAJourListeDescripteurs(char* nomFichierParam);
+void miseAJourListeDescripteursAudio(char* nomFichierParam);
 
 
 #endif

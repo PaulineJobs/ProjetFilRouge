@@ -1,0 +1,8 @@
+30
+quasar 7
+astronomes 4
+galaxie 5
+
+3
+
+198

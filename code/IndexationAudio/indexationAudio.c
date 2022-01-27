@@ -163,7 +163,7 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 	fclose(descripteur);
 	
 	//MAJ liste descripteurs
-	miseAJourListeDescripteurs(NomFichierParam);
+	miseAJourListeDescripteursAudio(NomFichierParam);
 
 	
 	} else {
@@ -176,7 +176,7 @@ void descripteurAudio(int **histogramme,char* NomFichierParam, int m, int k){
 
 
 //écrit le nom du fichier dans la liste des descripteurs
-void miseAJourListeDescripteurs(char* nomFichierParam){
+void miseAJourListeDescripteursAudio(char* nomFichierParam){
 	FILE* listeDescripteurs;
 	listeDescripteurs=fopen("../../Liste_descripteurs/Liste_descripteurs_audios.txt","a");
 	fprintf(listeDescripteurs,"%s \n",nomFichierParam);

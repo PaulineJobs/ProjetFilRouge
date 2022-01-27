@@ -3,7 +3,7 @@
 
 
 float comparaison(char* , char*,int type );
-void comparaisonRepertoireIm(char *, int);
+void comparaisonRepertoireIm(char *, char);
 void IHMComp();
 
 #endif

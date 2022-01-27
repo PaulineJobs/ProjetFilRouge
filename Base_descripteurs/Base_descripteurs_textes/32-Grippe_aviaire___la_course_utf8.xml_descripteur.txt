@@ -1,0 +1,19 @@
+32
+grippe 5
+aviaire 4
+vaccin 7
+oms 6
+malte 4
+pandémie 5
+production 4
+vaccins 4
+firmes 4
+virus 12
+h5n1 6
+millions 5
+sanofi-pasteur 4
+doses 4
+
+14
+
+333

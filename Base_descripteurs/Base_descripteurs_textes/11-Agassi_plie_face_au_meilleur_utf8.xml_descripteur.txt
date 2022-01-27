@@ -1,0 +1,31 @@
+11
+agassi 10
+face 5
+joueur 4
+qu' 6
+roger 10
+federer 11
+mondial 5
+année 4
+américain 6
+andre 8
+no 4
+remporter 4
+tournoi 8
+grand 8
+chelem 8
+kim 4
+clijsters 4
+ans 6
+finale 6
+roland-garros 4
+match 6
+open 6
+victoire 4
+service 5
+jeu 4
+manche 4
+
+26
+
+309
