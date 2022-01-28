@@ -161,9 +161,11 @@ void IHMComp(){
       printf("| Quel type d'image souhaitez vous traiter : Couleurs (1) ou noir et blanc (2) | \n");
       printf(" ------------------------------------------------------------------------------ \n");
       scanf("%s",typeIm);
+      printf("\n");
       if(typeIm[0]!='1' && typeIm[0]!='2'){
-         printf("Valeur érronée, saisir 1 ou 2"); 
+         printf("Valeur érronée, saisir 1 ou 2 \n"); 
       }
+      printf("\n");
    }while(typeIm[0]!='1' && typeIm[0]!='2');
 
    printf(" ---------------------------------- \n");

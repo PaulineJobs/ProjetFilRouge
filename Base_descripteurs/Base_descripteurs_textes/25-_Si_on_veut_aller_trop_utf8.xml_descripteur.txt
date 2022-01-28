@@ -8,6 +8,7 @@ basket-ball 2
 claude 2
 bergeaud 2
 sélectionneur 4
+équipe 9
 france 8
 premiers 2
 championnat 4
@@ -16,7 +17,6 @@ qualifier 2
 2006 2
 septembre 2
 ans 3
-équipe 9
 juin 2
 club 2
 villeurbanne 2
@@ -56,4 +56,4 @@ matches 2
 
 54
 
-244
+245

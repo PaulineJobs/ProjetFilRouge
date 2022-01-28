@@ -63,7 +63,6 @@ synthèse 2
 résultats 2
 national 2
 directeur 2
-américaine 2
 français 2
 doses 4
 produit 2
@@ -76,6 +75,6 @@ antigènes 2
 microgrammes 2
 adjuvant 2
 
-76
+75
 
-333
+332

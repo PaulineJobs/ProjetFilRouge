@@ -46,10 +46,10 @@ void ouverture(){
 	//indexation des fichiers 
 	automatisationIndexation();
 
-	printf(" ------------------------------------------ \n");
-	printf("|           Indexation terminée            |\n");
-	printf("| Bienvenu sur notre moteur de recherche ! |\n");
-	printf(" ------------------------------------------ \n");
+	printf(" ------------------------------------------- \n");
+	printf("|           Indexation terminée             |\n");
+	printf("| Bienvenue sur notre moteur de recherche ! |\n");
+	printf(" ------------------------------------------- \n");
 	printf(" \n");
 	printf(" \n");
 	//on dirige l'utilisateur vers le menu pricipal
@@ -126,15 +126,15 @@ void recherche (int type){
 			
 			switch (choixAction[0]){
 				case 'A' : 
-					printf(" --------------------------------------------------- \n");
-					printf("| Vous avez choisi une recherche de textes par nom de fichier | \n \r");
+					printf(" ----------------------------------------------------------------- \n");
+					printf("| Vous avez choisi une recherche de texte par nom de fichier      | \n \r");
 					RechercheClassique();
 					choixAction[0]='D';
 					break;
 				
 				case 'B' :
-					printf(" ---------------------------------------------------- \n");
-					printf("| Vous avez choisi une recherche de textes par mot clé | \n \r");
+					printf(" ------------------------------------------------------ \n");
+					printf("| Vous avez choisi une recherche de texte par mot clé  | \n \r");
 					rechCritTexte();
 					choixAction[0]='D';
 					break;
@@ -163,22 +163,22 @@ void recherche (int type){
 		
 			switch (choixAction[0]){
 				case 'A' : 
-					printf(" --------------------------------------------------- \n");
-					printf("| Vous avez choisi une recherche de texte par nom de fichier | \n \r");
+					printf(" ----------------------------------------------------------------- \n");
+					printf("| Vous avez choisi une recherche d'image par nom de fichier       | \n \r");
 					RechercheClassique();
 					choixAction[0]='D';
 					break;
 			
 				case 'B' :
 					printf(" ------------------------------------------------------------------------------ \n");
-					printf("| Vous avez choisi une recherche d'image par mots clefs                                |\n \r");
+					printf("| Vous avez choisi une recherche d'image par mots clefs                        |\n \r");
 					IHMCrit();
 					choixAction[0]='D';
 					break;
 					
 				case 'C':
 					printf(" ------------------------------------------------------------------------------ \n");
-					printf("| Vous avez choisi une recherche d'image par similitudes                               |\n \r");
+					printf("| Vous avez choisi une recherche d'image par similitudes                       |\n \r");
 					IHMComp();
 					choixAction[0]='D';
 					break;
@@ -202,8 +202,8 @@ void recherche (int type){
 			scanf("%s",choixAction);
 						switch (choixAction[0]){
 				case 'A' : 
-					printf(" --------------------------------------------------- \n");
-					printf("| Vous avez choisi une recherche de d'un audio par nom de fichier | \n \r");
+					printf(" ----------------------------------------------------------------- \n");
+					printf("| Vous avez choisi une recherche d'un audio par nom de fichier    | \n \r");
 					RechercheClassique();
 					choixAction[0]='D';
 					break;
@@ -284,12 +284,12 @@ void menuPrincipal(){
 	choixAction[0]='0';
 	while((choixAction[0]!='C')){
 		//On demande une première fois son choix à l'utilisateur : rechercher, se connecter ou fermer l'application
-		printf(" ------------------------------------------  \n");
+		printf(" ------------------------------------------ \n");
 		printf("| Menu Principal : Que voulez-vous faire ? |\n \r");
 		printf("| A- Faire une recherche                   |\n \r");
 		printf("| B- Accéder aux droits administrateur     |\n \r");
 		printf("| C- fermer l'application                  |\n \r");
-		printf(" ------------------------------------------  \n");
+		printf(" ------------------------------------------ \n");
 		scanf("%s",choixAction);
 		switch (choixAction[0]){	
 		case 'A' :
@@ -503,8 +503,8 @@ void RechercheClassique() {
 	char suite[10];
 	int fichierConnu=0;
 	
-	printf("| Entrez le nom de votre fichier                    |\n");
-	printf(" --------------------------------------------------- \n");
+	printf("| Entrez le nom de votre fichier                                  |\n");
+	printf(" ----------------------------------------------------------------- \n");
 	scanf("%s",souhait);
 	
     int j;

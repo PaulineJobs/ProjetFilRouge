@@ -9,7 +9,6 @@ mercredi 4
 ligue 4
 champions 3
 équipe 4
-septembre 2
 lillois 2
 qu' 3
 faire 2
@@ -53,6 +52,7 @@ pourtant 3
 manchester 2
 espagnols 2
 villareal 2
+septembre 2
 modeste 2
 millions 2
 imposés 2
@@ -60,4 +60,4 @@ allemands 2
 
 58
 
-284
+287
