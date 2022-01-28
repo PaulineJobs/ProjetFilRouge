@@ -11,6 +11,7 @@ Pour récupérer le projet, il faut dans un premier temps télécharger ce qui p
 * Clonnez le projet sur votre ordinateur et placez vous à l'interieur
 * **Décompressez** le Corpus avec la ligne de code suivante :
 ```$ unzip Corpus.zip```
+
 Il ne reste plus qu'à lancer le code avec les lignes de commande suivantes :
 ```
 $ cd code/Interface
