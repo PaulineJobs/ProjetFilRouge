@@ -1,4 +1,5 @@
 /Corpus
+/partie1/Corpus
 
 # Prerequisites
 *.d
@@ -54,11 +55,11 @@ Mkfile.old
 dkms.conf
 
 # Eclipse
-.classpath
-.project
-.settings/
+/partie2/.classpath
+/partie2/.project
+/partie2/.settings/
 
 # Intellij
-.idea/
-*.iml
-*.iws
+/partie2/.idea/
+/partie2/*.iml
+/partie2/*.iws
