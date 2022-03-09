@@ -1,0 +1,52 @@
+10
+cyclone 3
+katrina 4
+vol 2
+navette 5
+spatiale 3
+dégâts 2
+pourraient 2
+nasa 6
+tir 2
+mars 4
+2006 5
+nouvelles 2
+discovery 3
+août 2
+programme 2
+nouvelle-orléans 2
+lancement 2
+calendrier 2
+vols 4
+note 2
+interne 2
+évoque 2
+report 2
+américains 3
+faire 2
+partenaires 3
+station 2
+iss 3
+qu' 2
+dollars 2
+employés 2
+usine 2
+assemblage 2
+michoud 3
+mise 2
+lookheed-martin 2
+partie 2
+8 2
+septembre 2
+modifications 2
+réservoir 2
+externe 2
+kennedy 2
+reprise 2
+échéance 2
+sites 2
+navettes 2
+
+47
+
+268

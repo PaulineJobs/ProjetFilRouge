@@ -1,0 +1,49 @@
+35
+danse 4
+robyn 6
+orlin 5
+danseurs 4
+sud-africains 3
+cnd 2
+pantin 3
+sida 6
+2002 3
+paris 3
+commence 2
+nouvelle 2
+tournée 4
+ile-de-france 3
+sucettes 2
+qu' 5
+afrique 3
+spectacle 3
+chorégraphe 2
+we 3
+must 3
+eat 3
+our 3
+suckers 3
+with 2
+the 2
+wrappers 2
+théâtre 3
+centre 2
+national 2
+seine-saint-denis 2
+johannesburg 2
+vraiment 2
+tshepo 2
+gaborone 2
+ans 5
+écoles 2
+partir 2
+raconte 2
+pays 2
+cours 2
+travailler 2
+mort 2
+€ 2
+
+44
+
+256
