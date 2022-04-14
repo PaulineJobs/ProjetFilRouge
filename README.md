@@ -6,18 +6,20 @@
 
 ###  Avant l'installation    
 
-   > cd ~    
-   > type java    
+```
+   $cd ~    
+   $ type java 
+```   
   
-  Ceci vous retournera un résultat du type :     
+Ceci vous retournera un résultat du type :     
   
   > java is *resultat1*    
  
-  Ensuite, faites :     
+Ensuite, faites :     
   
   > ll *resultat1*
 
-  Ceci vous retournera un résultat du type :
+Ceci vous retournera un résultat du type :
  
   > *resultat1* -> *resultat2* 
   
@@ -25,44 +27,42 @@
   
   > ll *resultat2*
   
-  Ceci vous retournera un résultat du type :
+Ceci vous retournera un résultat du type :
   
-  *resultat1* -> *monResultat*/bin/java
+  > *resultat1* -> *monResultat*/bin/java
   
-  Copiez soignement *monResultat* et mettez le de coté, nous le réutiliserons plus tard
+Copiez soignesement *monResultat*  et mettez le de coté, nous le réutiliserons plus tard.
   
 
 ###  Installation
 
-Mettez vous dans l'emplacement souhaité et clonez le projet :
+Mettez vous dans l'emplacement souhaité et clonez le projet : ```$ git cone chemin/voulu/pour/copier/le/projet ```
 
-> git cone MettreLeLien
+Deplacez vous dans l'emplacement suivant : ```$ cd ProjetFilRouge/partie1 ```
 
-Deplcez vous dans l'emplacement suivant :
-> cd ProjetFilRouge/partie1
+Dézippez le fichier suivant : ```$ unzip -r Corpus.zip Corpus ```
 
-Dézippez le fichier suivant :
-> unzip -r Corpus.zip Corpus
+Déplacez vous dans l'emplacement suivant : ```$ cd ../partie2/src/main/java ```
 
-Déplacez vous dans l'emplacement suivant :
-> cd ../partie2/src/main/java
+Ouvrez le fichier : ```$ gedit Makefile ```
 
-Ouvrez le fichier suivant 
-> gedit Makefile
-
-A la première ligne, remplacez la valeur du JAVA_HOME par *monResultat* récupéré précedement
+**A la première ligne**, remplacez la valeur du JAVA_HOME par *monResultat* récupéré précedement
 Fermez le fichier 
 
 
 ###  Execution
+***Lancer l'application textuelle :***
+* Dans le projet, se placer au niveau de *ProjetFilRouge/pfr/src/main/java.*
+* Faire un ```$ make clean ```
+* Faire un : ```$ make all ```
+* Excuter avec  : 
+```$ java -cp . -Djava.library.path=./com/example/pfr/JNI com.example.pfr.test.Main ```
+   
+***Lancer l'application graphique***
+* Ouvrir le Projet Fil rouge au niveau du dossier pfr avec IntelliJ
+* Ouvrir la classe **"Application"** se situant dans *ProjetFilRouge/pfr/src/main/java.com/example/pfr*
+* Run la classe
 
-Executez les commandes suivantes et suivez les instructions d'utilisation :
-> make all
-> java -cp machin truc
+### Détail des fonctionnalités
 
-
-## Détail des fonctionnalités
-
-Vous pourrez directement les retrouver dans notre rapport fourni dans ProjetFilRouge/partie2 (il faudra l'y mettre bien sur)
-
-
+Vous pourrez directement les retrouver dans notre rapport fourni dans ProjetFilRouge/partie2
