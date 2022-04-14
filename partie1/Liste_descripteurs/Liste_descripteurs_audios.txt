@@ -1,0 +1,2 @@
+jingle_fi.bin 
+corpus_fi.bin 

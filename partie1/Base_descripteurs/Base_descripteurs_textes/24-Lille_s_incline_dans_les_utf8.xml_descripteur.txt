@@ -1,0 +1,63 @@
+24
+lille 5
+secondes 3
+face 3
+benfica 4
+lisbonne 3
+soirée 2
+mercredi 4
+ligue 4
+champions 3
+équipe 4
+septembre 2
+lillois 2
+qu' 3
+faire 2
+partie 2
+claude 4
+puel 4
+1-0 2
+stade 4
+rapid 2
+vienne 2
+munich 2
+bruges 3
+turin 4
+fc 3
+juventus 3
+66e 2
+sparta 2
+prague 2
+amsterdam 2
+arsenal 3
+bergkamp 2
+thoune 2
+udinese 2
+brême 2
+groupe 5
+miccoli 2
+united 3
+coup 2
+tête 2
+match 3
+fini 2
+joueurs 2
+bonnes 2
+choses 3
+compétition 2
+france 2
+figure 2
+désignée 2
+adversaires 2
+pourtant 3
+manchester 2
+espagnols 2
+villareal 2
+modeste 2
+millions 2
+imposés 2
+allemands 2
+
+58
+
+287

@@ -1,0 +1,38 @@
+19
+musiques 2
+susheela 9
+raman 10
+face 2
+contradiction 3
+insoluble 2
+née 2
+indienne 2
+grandi 2
+australie 2
+possède 2
+temps 2
+culture 5
+rock 2
+musicale 3
+religieuse 2
+compositeur 2
+sam 4
+mills 6
+films 2
+for 5
+crocodiles 5
+album 2
+chanteuse 4
+qu' 2
+relecture 2
+carnatique 4
+inde 2
+sud 2
+tyagaraja 2
+exil 3
+trouve 2
+voyage 2
+
+33
+
+249

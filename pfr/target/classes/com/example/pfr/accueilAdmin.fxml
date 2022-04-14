@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane fx:id="accueilAdminPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pfr.controleur.vueGraphique.AccueilAdminController">
+<children>
+    <Rectangle fx:id="acceuilAdminBackground" arcHeight="5.0" arcWidth="5.0" fill="#f1f2eb" height="700.0" stroke="WHITE" strokeType="INSIDE" width="900.0" />
+    <ImageView fx:id="accueilAdminLogo" fitHeight="223.0" fitWidth="594.0" layoutX="165.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@logo.png" />
+        </image></ImageView>
+    <TextField fx:id="accueilAdminBarreRecherche" layoutX="165.0" layoutY="430.0" prefHeight="38.0" prefWidth="570.0">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+    <Button fx:id="accueilAdminBontonRecherche" layoutX="282.0" layoutY="495.0" mnemonicParsing="false" onAction="#onBoutonRecherche" prefHeight="38.0" prefWidth="337.0" text="Recherche">
+        <font>
+            <Font name="System Bold" size="20.0" />
+        </font></Button>
+    <Button fx:id="accueilAdminBoutonParametres" layoutX="522.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBoutonParametre" prefHeight="75.0" prefWidth="180.0" text="  Paramètres" textOverrun="CENTER_ELLIPSIS">
+         <graphic>
+            <ImageView fx:id="accueilAdminImageParametre" fitHeight="46.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@parametres.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <MenuButton fx:id="accueilAdminMenuDeroulantAdmin" layoutX="711.0" layoutY="14.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="180.0" text="Admin">
+        <items>
+          <MenuItem fx:id="accueilAdminBoutonDeconnexion" mnemonicParsing="false" onAction="#onDeconnexion" text="Deconnexion" />
+        </items>
+         <graphic>
+            <ImageView fx:id="accueilAdminImageAdmin" fitHeight="65.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@connexion.png" />
+                </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </MenuButton>
+</children>
+</Pane>

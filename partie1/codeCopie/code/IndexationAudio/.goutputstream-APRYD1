@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+#include <string.h>
+#include <ctype.h>
+#include <wchar.h>
+#include "histogramme_audio.h"
+#include "descripteur_audio.h"
+
+
+void ouvertureFichierBin(){
+    FILE *fichierbin;
+    double buffer[100];
+
+    // ouvrir le fichier en lecture
+    fichierbin = fopen("./TEST_SON/jingle_fi.bin","rb");
+	fread(buffer,sizeof(buffer),1,fichierbin);
+	fclose(fichierbin);
+	
+	for(int i = 0; i<100; i++){
+		printf("%lf ", buffer[i]);
+	}	
+ 
+}
+
+
+void créationHistogramme (int m, int n){
+	int matrice[5][5];
+	//on découpe le signal pour avoir des intervalles de n échantillons (abscisses)--> k intervalles
+	//on decoupe le signal pour avoir m intervalles de fréquences entre -1 et 1
+	double echantillon=10;
+	float  intervalle = 2.00/m;
+	int valeurHistogramme=0;
+	int l,p;
+	
+	//Tant qu'on a pas parcouru tout le fichier
+	while (echantillon !=EOF){
+		//pour chaque intervalle k de n echantillons
+		for (int i=echantillon; i<=echantillon+n; i++){
+			//pour chaque intervalle m de fréquences
+			for (int j=-1; i<=1;j+intervalle){
+				if (j<echantillon<=j+intervalle){
+					valeurHistogramme+=1;
+				}
+			//read valeur
+			}
+			matrice[l][p]=valeurHistogramme;
+			valeurHistogramme=0;
+		}
+		echantillon+=n;
+	}
+	
+		
+}	
+	
+	
+	
+	
+	
+
