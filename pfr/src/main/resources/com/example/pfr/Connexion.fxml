@@ -36,7 +36,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="83.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En vous connectant, vous allez pouvoir acceder au parametres de recherche">
+      <Text layoutX="83.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En vous connectant, vous allez pouvoir accéder aux parametres de recherche">
          <font>
             <Font size="20.0" />
          </font>
