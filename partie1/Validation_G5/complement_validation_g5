@@ -1,121 +1,0 @@
-Script started on 2022-01-27 23:12:06+01:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
-]0;willy@willy-VirtualBox: ~/Bureau/GIT/ProjetFilRouge[01;32mwilly@willy-VirtualBox[00m:[01;34m~/Bureau/GIT/ProjetFilRouge[00m$ cd code/I
-IdxIm/            IndexationAudio/  Indexation_texte/ Interface/
-]0;willy@willy-VirtualBox: ~/Bureau/GIT/ProjetFilRouge[01;32mwilly@willy-VirtualBox[00m:[01;34m~/Bureau/GIT/ProjetFilRouge[00m$ cd code/Interface/
-]0;willy@willy-VirtualBox: ~/Bureau/GIT/ProjetFilRouge/code/Interface[01;32mwilly@willy-VirtualBox[00m:[01;34m~/Bureau/GIT/ProjetFilRouge/code/Interface[00m$ mka[K[Kake
-gcc -c ../Indexation_texte/descripteurTexte.c -lm
-gcc -c ../Indexation_texte/nettoyageTexte.c -lm
-gcc -c ../Indexation_texte/filtrageTexte.c -lm
-gcc -c ../RechercheImage/RechercheImCrit.c -lm
-gcc -c ../RechercheImage/RechercheImComp.c -lm
-gcc -c ../IdxIm/IdxIm_V1.c -lm
-gcc -c ../IdxIm/fifo.c -lm
-gcc -c ../IdxIm/element.c
-gcc -c ../Configuration/configuration.c -lm
-gcc -c ../RechercheAudio/rechercheAudio.c -lm
-gcc -c ../RechercheTexte/rechercheTexte.c -lm
-gcc -fno-stack-protector -c interface.c -lm
-gcc -c main.c -lm
-gcc -o interface.out interface.o configuration.o rechercheAudio.o main.o IdxIm_V1.o fifo.o element.o RechercheImCrit.o RechercheImComp.o descripteurTexte.o nettoyageTexte.o filtrageTexte.o rechercheTexte.o -lm
-./interface.out
- 
- 
- Ouverture de l'application 
- Indexation des fichiers. Veuillez patienter... 
- ------------------------------------------ 
-|           Indexation terminée            |
-| Bienvenu sur notre moteur de recherche ! |
- ------------------------------------------ 
- 
- 
- ------------------------------------------  
-| Menu Principal : Que voulez-vous faire ? |
- | A- Faire une recherche                   |
- | B- Accéder aux droits administrateur     |
- | C- fermer l'application                  |
-  ------------------------------------------  
-A
- ----------------------------------------------- 
-| Vous avez choisi d'effectuer une recherche    |
- ----------------------------------------------- 
-| Sur quel type de document faire la recherche ?| 
- | A- Texte                                      | 
- | B- Image                                      | 
- | C- Audio                                      |
-  ----------------------------------------------- 
-A
- ------------------------------------------------ 
-| Vous avez choisi une recherche Texte           |  
-  ------------------------------------------------ 
-| Quel type de recherche voulez-vous effectuer ? |
- | A - Recherche par nom de fichier               | 
- | B - Recherche par mot clé                      | 
- | C - Retour                                     |
-  ------------------------------------------------ 
-B
- ---------------------------------------------------- 
-| Vous avez choisi une recherche de textes par mot clé | 
- | Entrez un critère (un mot) :                         |
-  ----------------------------------------------------- 
-musique
-
- --------------- 
-|  Résultats :  |
- --------------- 
-17-Musique_classique___un__Oberon__utf8 3
-22-Danse___quarante_jeunes_de_utf8 3
-
-
-
-  ------------------------------------------  
-| Menu Principal : Que voulez-vous faire ? |
- | A- Faire une recherche                   |
- | B- Accéder aux droits administrateur     |
- | C- fermer l'application                  |
-  ------------------------------------------  
-A
- ----------------------------------------------- 
-| Vous avez choisi d'effectuer une recherche    |
- ----------------------------------------------- 
-| Sur quel type de document faire la recherche ?| 
- | A- Texte                                      | 
- | B- Image                                      | 
- | C- Audio                                      |
-  ----------------------------------------------- 
-A
- ------------------------------------------------ 
-| Vous avez choisi une recherche Texte           |  
-  ------------------------------------------------ 
-| Quel type de recherche voulez-vous effectuer ? |
- | A - Recherche par nom de fichier               | 
- | B - Recherche par mot clé                      | 
- | C - Retour                                     |
-  ------------------------------------------------ 
-B
- ---------------------------------------------------- 
-| Vous avez choisi une recherche de textes par mot clé | 
- | Entrez un critère (un mot) :                         |
-  ----------------------------------------------------- 
-girafe
-
- --------------- 
-|  Résultats :  |
- --------------- 
-Aucun fichier ne correspond à ce critère
-
-
-  ------------------------------------------  
-| Menu Principal : Que voulez-vous faire ? |
- | A- Faire une recherche                   |
- | B- Accéder aux droits administrateur     |
- | C- fermer l'application                  |
-  ------------------------------------------  
-C
- ------------------------------------------ 
-| Vous avez choisi de fermer l'application |
-| Fermeture de l'application               |
- ------------------------------------------ 
-]0;willy@willy-VirtualBox: ~/Bureau/GIT/ProjetFilRouge/code/Interface[01;32mwilly@willy-VirtualBox[00m:[01;34m~/Bureau/GIT/ProjetFilRouge/code/Interface[00m$ exit
-exit
-
-Script done on 2022-01-27 23:14:10+01:00 [COMMAND_EXIT_CODE="0"]
